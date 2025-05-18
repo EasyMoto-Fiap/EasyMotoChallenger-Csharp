@@ -13,5 +13,6 @@ namespace EasyMoto.Infrastructure.Context
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Operador> Operadores { get; set; }
         public DbSet<Patio> Patios { get; set; }
+        public DbSet<ClienteLocacao> ClienteLocacoes { get; set; }
     }
 }

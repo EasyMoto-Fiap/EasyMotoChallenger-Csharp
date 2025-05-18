@@ -9,5 +9,6 @@ namespace EasyMoto.Infrastructure.Context
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Empresa> Empresas { get; set; }
+        public DbSet<Filial> Filiais { get; set; }
     }
 }

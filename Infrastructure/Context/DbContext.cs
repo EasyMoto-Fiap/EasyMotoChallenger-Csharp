@@ -15,5 +15,6 @@ namespace EasyMoto.Infrastructure.Context
         public DbSet<Patio> Patios { get; set; }
         public DbSet<ClienteLocacao> ClienteLocacoes { get; set; }
         public DbSet<Localizacao> Localizacoes { get; set; }
+        public DbSet<Moto> Motos { get; set; }
     }
 }

@@ -1,22 +1,22 @@
-# ?? EasyMoto API � FIAP Challenger
+# 🚦 EasyMoto API – FIAP Challenger
 
-EasyMoto � uma API RESTful desenvolvida como solu��o para um desafio real da Mottu.  
-O objetivo � facilitar o mapeamento inteligente de p�tios, o gerenciamento de motos e toda a jornada de aluguel e localiza��o em m�ltiplas filiais, trazendo escalabilidade, performance e integra��o real.
-
----
-
-## ??? Tecnologias Utilizadas
-
-- ?? .NET 8 / ASP.NET Core
-- ??? Entity Framework Core
-- ?? EF Core Migrations
-- ?? AutoMapper
-- ?? Swagger/OpenAPI
-- ??? Oracle SQL Developer
+EasyMoto é uma API RESTful desenvolvida como solução para um desafio real da Mottu.  
+O objetivo é facilitar o mapeamento inteligente de pátios, o gerenciamento de motos e toda a jornada de aluguel e localização em múltiplas filiais, trazendo escalabilidade, performance e integração real.
 
 ---
 
-## ??? Entidades e Relacionamentos
+## 🛠️ Tecnologias Utilizadas
+
+- 🟦 .NET 8 / ASP.NET Core
+- 🗃️ Entity Framework Core
+- 📦 EF Core Migrations
+- 🔄 AutoMapper
+- 📄 Swagger/OpenAPI
+- 🛢️ Oracle SQL Developer
+
+---
+
+## 🗂️ Entidades e Relacionamentos
 
 O projeto implementa as seguintes entidades, com relacionamentos via chave estrangeira conforme a modelagem Oracle:
 
@@ -35,7 +35,7 @@ Cada entidade possui CRUD completo (GET, GET/{id}, POST, PUT, DELETE).
 
 ---
 
-## ?? Rotas Principais (Exemplo Cliente)
+## 🔗 Rotas Principais (Exemplo Cliente)
 
 - `GET    /api/Cliente`
 - `GET    /api/Cliente/{id}`
@@ -43,17 +43,17 @@ Cada entidade possui CRUD completo (GET, GET/{id}, POST, PUT, DELETE).
 - `PUT    /api/Cliente/{id}`
 - `DELETE /api/Cliente/{id}`
 
-Demais entidades possuem as mesmas rotas padr�o REST, trocando "Cliente" por Empresa, Filial, Funcionario, Operador, Patio, ClienteLocacao, Localizacao, Moto e Vaga.
+Demais entidades possuem as mesmas rotas padrão REST, trocando "Cliente" por Empresa, Filial, Funcionario, Operador, Patio, ClienteLocacao, Localizacao, Moto e Vaga.
 
 ---
 
-## ?? Como rodar o projeto
+## 🚀 Como rodar o projeto
 
-1. **Clone o reposit�rio:**
+1. **Clone o repositório:**
    ```bash
    https://github.com/akemilol/EasyMotoChallenger-Csharp.git
    
-2. **Configure a string de conex�o Oracle:**
+2. **Configure a string de conexão Oracle:**
  No arquivo `appsettings.json`, insira sua connection string.
 
 3. **Restaure e execute:**
@@ -62,6 +62,6 @@ Demais entidades possuem as mesmas rotas padr�o REST, trocando "Cliente" por Emp
     dotnet run
 4. **Acesse o Swagger**
 
-## ????? Integrantes: 
-- ?????Val�ria Concei��o Dos Santos - RM: 557177
-- ?????Mirela Pinheiro Silva Rodrigues - RM: 558191
+## 👩‍💻 Integrantes: 
+- 💁‍♀️Valéria Conceição Dos Santos - RM: 557177
+- 💁‍♀️Mirela Pinheiro Silva Rodrigues - RM: 558191

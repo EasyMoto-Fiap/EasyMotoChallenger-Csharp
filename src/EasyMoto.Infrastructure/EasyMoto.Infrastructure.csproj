@@ -10,4 +10,10 @@
     <ProjectReference Include="..\EasyMoto.Domain\EasyMoto.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+    <Folder Include="Persistence\Migrations\" />
+    <Folder Include="Persistence\Configurations\" />
+  </ItemGroup>
+
 </Project>

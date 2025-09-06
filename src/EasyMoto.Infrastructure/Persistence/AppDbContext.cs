@@ -1,7 +1,5 @@
 ﻿using EasyMoto.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Reflection.Emit;
 
 namespace EasyMoto.Infrastructure.Persistence;
 

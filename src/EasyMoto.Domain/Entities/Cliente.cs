@@ -32,11 +32,13 @@ public sealed class Cliente
 
     public void SetTelefone(string value)
     {
-        TelefoneCliente = (value ?? string.Empty).Trim();
+        if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("Telefone obrigatório");
+        TelefoneCliente = value.Trim();
     }
 
     public void SetEmail(string value)
     {
-        EmailCliente = (value ?? string.Empty).Trim();
+        if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("Email obrigatório");
+        EmailCliente = value.Trim();
     }
 }

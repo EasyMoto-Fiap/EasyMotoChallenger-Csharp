@@ -10,11 +10,16 @@ public sealed class MotosController : ControllerBase
 {
     private readonly CriarMotoHandler _criar;
     private readonly ObterMotoPorIdHandler _obter;
+    private readonly ListarMotosHandler _listar;
 
-    public MotosController(CriarMotoHandler criar, ObterMotoPorIdHandler obter)
+    public MotosController(
+        CriarMotoHandler criar,
+        ObterMotoPorIdHandler obter,
+        ListarMotosHandler listar)
     {
         _criar = criar;
         _obter = obter;
+        _listar = listar;
     }
 
     [HttpPost]
@@ -31,4 +36,12 @@ public sealed class MotosController : ControllerBase
         if (result is null) return NotFound();
         return Ok(result);
     }
+
+    [HttpGet]
+    public async Task<IActionResult> Listar(CancellationToken ct)
+    {
+        var result = await _listar.Handle(ct);
+        return Ok(result);
+    }
 }
+

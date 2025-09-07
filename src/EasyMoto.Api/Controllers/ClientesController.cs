@@ -12,17 +12,20 @@ public sealed class ClientesController : ControllerBase
     private readonly ObterClientePorIdHandler _obter;
     private readonly ListarClientesHandler _listar;
     private readonly AtualizarClienteHandler _atualizar;
+    private readonly ExcluirClienteHandler _excluir;
 
     public ClientesController(
         CriarClienteHandler criar,
         ObterClientePorIdHandler obter,
         ListarClientesHandler listar,
-        AtualizarClienteHandler atualizar)
+        AtualizarClienteHandler atualizar,
+        ExcluirClienteHandler excluir)
     {
         _criar = criar;
         _obter = obter;
         _listar = listar;
         _atualizar = atualizar;
+        _excluir = excluir;
     }
 
     [HttpPost]
@@ -53,5 +56,13 @@ public sealed class ClientesController : ControllerBase
         var result = await _atualizar.Handle(id, request, ct);
         if (result is null) return NotFound();
         return Ok(result);
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Excluir([FromRoute] int id, CancellationToken ct)
+    {
+        var ok = await _excluir.Handle(id, ct);
+        if (!ok) return NotFound();
+        return NoContent();
     }
 }

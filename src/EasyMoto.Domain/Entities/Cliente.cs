@@ -1,12 +1,14 @@
-﻿namespace EasyMoto.Domain.Entities;
+﻿using EasyMoto.Domain.ValueObjects;
+
+namespace EasyMoto.Domain.Entities;
 
 public sealed class Cliente
 {
     public int IdCliente { get; private set; }
-    public string NomeCliente { get; private set; }
-    public string CpfCliente { get; private set; }
-    public string TelefoneCliente { get; private set; }
-    public string EmailCliente { get; private set; }
+    public string NomeCliente { get; private set; } = null!;
+    public Cpf CpfCliente { get; private set; } = null!;
+    public string TelefoneCliente { get; private set; } = null!;
+    public string EmailCliente { get; private set; } = null!;
 
     private Cliente() { }
 
@@ -26,8 +28,7 @@ public sealed class Cliente
 
     public void SetCpf(string value)
     {
-        if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("CPF obrigatório");
-        CpfCliente = value.Trim();
+        CpfCliente = Cpf.From(value);
     }
 
     public void SetTelefone(string value)

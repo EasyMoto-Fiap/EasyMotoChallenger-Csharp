@@ -3,6 +3,7 @@ using EasyMoto.Infrastructure.Persistence;
 using EasyMoto.Domain.Repositories;
 using EasyMoto.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using EasyMoto.Application.Motos;
 using Oracle.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,7 @@ builder.Services.AddScoped<AtualizarClienteHandler>();
 builder.Services.AddScoped<ExcluirClienteHandler>();
 
 builder.Services.AddScoped<IMotoRepository, MotoRepository>();
+builder.Services.AddScoped<CriarMotoHandler>();
 
 
 var app = builder.Build();

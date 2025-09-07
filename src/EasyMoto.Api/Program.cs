@@ -24,6 +24,7 @@ builder.Services.AddScoped<ExcluirClienteHandler>();
 
 builder.Services.AddScoped<IMotoRepository, MotoRepository>();
 builder.Services.AddScoped<CriarMotoHandler>();
+builder.Services.AddScoped<ObterMotoPorIdHandler>();
 
 
 var app = builder.Build();

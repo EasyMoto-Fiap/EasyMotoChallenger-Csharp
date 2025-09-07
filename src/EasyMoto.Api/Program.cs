@@ -27,6 +27,8 @@ builder.Services.AddScoped<CriarMotoHandler>();
 builder.Services.AddScoped<ObterMotoPorIdHandler>();
 builder.Services.AddScoped<ListarMotosHandler>();
 builder.Services.AddScoped<AtualizarMotoHandler>();
+builder.Services.AddScoped<ExcluirMotoHandler>();
+
 
 
 var app = builder.Build();

@@ -1,5 +1,6 @@
 ﻿using EasyMoto.Domain.Entities;
 using EasyMoto.Domain.Repositories;
+using EasyMoto.Domain.ValueObjects;
 using EasyMoto.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,7 +37,8 @@ public sealed class ClienteRepository : IClienteRepository
 
     public async Task<bool> ExistsByCpfAsync(string cpf, CancellationToken ct)
     {
-        var count = await _db.Clientes.CountAsync(c => c.CpfCliente == cpf, ct);
+        var cpfVo = Cpf.From(cpf);
+        var count = await _db.Clientes.CountAsync(c => c.CpfCliente == cpfVo, ct);
         return count > 0;
     }
 

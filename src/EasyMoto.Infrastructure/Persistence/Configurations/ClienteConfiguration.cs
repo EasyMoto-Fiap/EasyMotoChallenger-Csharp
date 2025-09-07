@@ -1,4 +1,5 @@
 ﻿using EasyMoto.Domain.Entities;
+using EasyMoto.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -21,6 +22,9 @@ public sealed class ClienteConfiguration : IEntityTypeConfiguration<Cliente>
 
         b.Property(x => x.CpfCliente)
             .HasColumnName("CPF_CLIENTE")
+            .HasConversion(
+                v => v.Value,
+                v => Cpf.From(v))
             .IsRequired();
 
         b.Property(x => x.TelefoneCliente)

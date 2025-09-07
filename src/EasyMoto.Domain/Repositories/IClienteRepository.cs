@@ -5,6 +5,7 @@ namespace EasyMoto.Domain.Repositories;
 public interface IClienteRepository
 {
     Task<Cliente?> GetByIdAsync(int id, CancellationToken ct);
+    Task<List<Cliente>> GetAllAsync(CancellationToken ct);
     Task AddAsync(Cliente cliente, CancellationToken ct);
     Task UpdateAsync(Cliente cliente, CancellationToken ct);
     Task DeleteAsync(int id, CancellationToken ct);

@@ -2,11 +2,13 @@ using EasyMoto.Domain.Repositories;
 using EasyMoto.Infrastructure.Persistence;
 using EasyMoto.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using EasyMoto.Application.Clientes;
 using Oracle.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<CriarClienteHandler>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

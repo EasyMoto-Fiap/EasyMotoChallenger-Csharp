@@ -21,6 +21,8 @@ builder.Services.AddScoped<ListarClientesHandler>();
 builder.Services.AddScoped<AtualizarClienteHandler>();
 builder.Services.AddScoped<ExcluirClienteHandler>();
 
+builder.Services.AddScoped<IMotoRepository, MotoRepository>();
+
 
 var app = builder.Build();
 

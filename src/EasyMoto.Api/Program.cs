@@ -19,6 +19,8 @@ builder.Services.AddScoped<CriarClienteHandler>();
 builder.Services.AddScoped<ObterClientePorIdHandler>();
 builder.Services.AddScoped<ListarClientesHandler>();
 builder.Services.AddScoped<AtualizarClienteHandler>();
+builder.Services.AddScoped<ExcluirClienteHandler>();
+
 
 var app = builder.Build();
 

@@ -1,22 +1,24 @@
-using EasyMoto.Domain.Repositories;
+using EasyMoto.Application.Clientes;
 using EasyMoto.Infrastructure.Persistence;
+using EasyMoto.Domain.Repositories;
 using EasyMoto.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using EasyMoto.Application.Clientes;
 using Oracle.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
-builder.Services.AddScoped<CriarClienteHandler>();
-builder.Services.AddScoped<ObterClientePorIdHandler>();
-builder.Services.AddScoped<ListarClientesHandler>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseOracle(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<CriarClienteHandler>();
+builder.Services.AddScoped<ObterClientePorIdHandler>();
+builder.Services.AddScoped<ListarClientesHandler>();
+builder.Services.AddScoped<AtualizarClienteHandler>();
 
 var app = builder.Build();
 

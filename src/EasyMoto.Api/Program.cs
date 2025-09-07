@@ -4,6 +4,7 @@ using EasyMoto.Domain.Repositories;
 using EasyMoto.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using EasyMoto.Application.Motos;
+using EasyMoto.Application.Locacoes;
 using Oracle.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +31,11 @@ builder.Services.AddScoped<AtualizarMotoHandler>();
 builder.Services.AddScoped<ExcluirMotoHandler>();
 
 builder.Services.AddScoped<ILocacaoRepository, LocacaoRepository>();
+builder.Services.AddScoped<CriarLocacaoHandler>();
+builder.Services.AddScoped<ObterLocacaoPorIdHandler>();
+builder.Services.AddScoped<ListarLocacoesHandler>();
+builder.Services.AddScoped<AtualizarLocacaoHandler>();
+builder.Services.AddScoped<ExcluirLocacaoHandler>();
 
 
 var app = builder.Build();

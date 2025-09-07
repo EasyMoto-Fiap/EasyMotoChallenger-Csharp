@@ -31,9 +31,11 @@ public sealed class ClienteRepository : IClienteRepository
         var entity = await _db.Clientes.FirstOrDefaultAsync(c => c.IdCliente == id, ct);
         if (entity is not null) _db.Clientes.Remove(entity);
     }
-
-    public Task<bool> ExistsByCpfAsync(string cpf, CancellationToken ct) =>
-        _db.Clientes.AnyAsync(c => c.CpfCliente == cpf, ct);
+    public async Task<bool> ExistsByCpfAsync(string cpf, CancellationToken ct)
+    {
+        var count = await _db.Clientes.CountAsync(c => c.CpfCliente == cpf, ct);
+        return count > 0;
+    }
 
     public Task SaveChangesAsync(CancellationToken ct) => _db.SaveChangesAsync(ct);
 }

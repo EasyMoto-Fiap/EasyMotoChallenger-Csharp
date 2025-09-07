@@ -15,7 +15,7 @@ public sealed class ClienteRepository : IClienteRepository
         _db.Clientes.AsNoTracking().OrderBy(c => c.IdCliente).ToListAsync(ct);
 
     public Task<Cliente?> GetByIdAsync(int id, CancellationToken ct) =>
-        _db.Clientes.AsNoTracking().FirstOrDefaultAsync(c => c.IdCliente == id, ct);
+        _db.Clientes.FirstOrDefaultAsync(c => c.IdCliente == id, ct);
 
     public async Task AddAsync(Cliente cliente, CancellationToken ct)
     {

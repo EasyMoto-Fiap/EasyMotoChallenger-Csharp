@@ -10,11 +10,16 @@ public sealed class ClientesController : ControllerBase
 {
     private readonly CriarClienteHandler _criar;
     private readonly ObterClientePorIdHandler _obter;
+    private readonly ListarClientesHandler _listar;
 
-    public ClientesController(CriarClienteHandler criar, ObterClientePorIdHandler obter)
+    public ClientesController(
+        CriarClienteHandler criar,
+        ObterClientePorIdHandler obter,
+        ListarClientesHandler listar)
     {
         _criar = criar;
         _obter = obter;
+        _listar = listar;
     }
 
     [HttpPost]
@@ -29,6 +34,13 @@ public sealed class ClientesController : ControllerBase
     {
         var result = await _obter.Handle(id, ct);
         if (result is null) return NotFound();
+        return Ok(result);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Listar(CancellationToken ct)
+    {
+        var result = await _listar.Handle(ct);
         return Ok(result);
     }
 }

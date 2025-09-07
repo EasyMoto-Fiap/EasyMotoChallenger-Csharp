@@ -1,4 +1,4 @@
-using EasyMoto.Domain.Entities;
+﻿using EasyMoto.Domain.Entities;
 
 namespace EasyMoto.Domain.Repositories;
 

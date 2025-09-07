@@ -29,6 +29,7 @@ builder.Services.AddScoped<ListarMotosHandler>();
 builder.Services.AddScoped<AtualizarMotoHandler>();
 builder.Services.AddScoped<ExcluirMotoHandler>();
 
+builder.Services.AddScoped<ILocacaoRepository, LocacaoRepository>();
 
 
 var app = builder.Build();

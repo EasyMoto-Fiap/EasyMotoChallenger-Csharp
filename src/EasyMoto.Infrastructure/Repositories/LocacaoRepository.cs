@@ -34,16 +34,5 @@ public sealed class LocacaoRepository : ILocacaoRepository
         if (entity is not null) _db.Locacoes.Remove(entity);
     }
 
-    public async Task<bool> ExisteSobreposicaoAsync(int motoId, DateTime inicio, DateTime fim, CancellationToken ct)
-    {
-        var count = await _db.Locacoes.CountAsync(
-            l => l.MotoId == motoId
-                 && l.Status == LocacaoStatus.Aberta
-                 && l.Periodo.Inicio <= fim
-                 && inicio <= l.Periodo.Fim,
-            ct);
-        return count > 0;
-    }
-
     public Task SaveChangesAsync(CancellationToken ct) => _db.SaveChangesAsync(ct);
 }

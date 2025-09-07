@@ -8,7 +8,8 @@ public sealed class LocacaoConfiguration : IEntityTypeConfiguration<Locacao>
 {
     public void Configure(EntityTypeBuilder<Locacao> b)
     {
-        b.ToTable("CLIENTE_LOCACAO");
+        b.ToTable("LOCACAO");
+
         b.HasKey(x => x.IdLocacao);
 
         b.Property(x => x.IdLocacao)

@@ -157,7 +157,7 @@ namespace EasyMoto.Infrastructure.Persistence.Migrations
 
                             b1.HasKey("LocacaoIdLocacao");
 
-                            b1.ToTable("LOCACAO");
+                            b1.ToTable("LOCACAO", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("LocacaoIdLocacao");

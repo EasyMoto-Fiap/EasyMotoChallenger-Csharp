@@ -9,6 +9,5 @@ public interface ILocacaoRepository
     Task AddAsync(Locacao locacao, CancellationToken ct);
     Task UpdateAsync(Locacao locacao, CancellationToken ct);
     Task DeleteAsync(int id, CancellationToken ct);
-    Task<bool> ExisteSobreposicaoAsync(int motoId, DateTime inicio, DateTime fim, CancellationToken ct);
     Task SaveChangesAsync(CancellationToken ct);
 }

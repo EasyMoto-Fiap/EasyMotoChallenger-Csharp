@@ -1,4 +1,4 @@
-using EasyMoto.Application.Clientes;
+ using EasyMoto.Application.Clientes;
 using EasyMoto.Application.Locacoes;
 using EasyMoto.Application.Motos;
 using EasyMoto.Domain.Repositories;
@@ -53,7 +53,7 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger(); // Tem que vir ANTES do UseSwaggerUI
+    app.UseSwagger();
     app.UseSwaggerUI(ui =>
     {
         ui.SwaggerEndpoint("/swagger/v1/swagger.json", "EasyMoto API v1");

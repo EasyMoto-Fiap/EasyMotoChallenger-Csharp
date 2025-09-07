@@ -11,15 +11,18 @@ public sealed class MotosController : ControllerBase
     private readonly CriarMotoHandler _criar;
     private readonly ObterMotoPorIdHandler _obter;
     private readonly ListarMotosHandler _listar;
+    private readonly AtualizarMotoHandler _atualizar;
 
     public MotosController(
         CriarMotoHandler criar,
         ObterMotoPorIdHandler obter,
-        ListarMotosHandler listar)
+        ListarMotosHandler listar,
+        AtualizarMotoHandler atualizar)
     {
         _criar = criar;
         _obter = obter;
         _listar = listar;
+        _atualizar = atualizar;
     }
 
     [HttpPost]
@@ -43,5 +46,12 @@ public sealed class MotosController : ControllerBase
         var result = await _listar.Handle(ct);
         return Ok(result);
     }
-}
 
+    [HttpPut("{id:int}")]
+    public async Task<IActionResult> Atualizar([FromRoute] int id, [FromBody] AtualizarMotoRequest request, CancellationToken ct)
+    {
+        var result = await _atualizar.Handle(id, request, ct);
+        if (result is null) return NotFound();
+        return Ok(result);
+    }
+}

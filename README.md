@@ -7,31 +7,57 @@
 ## 🧭 Descrição do domínio:
 API para gestão de locações de motos: cadastro de clientes e motos, criação de locações com período e status.
 
-## ▶️ Como executar:
-**Pré-requisitos**
-- .NET SDK 8.0+
-- Oracle Database (XE ou equivalente)
-- EF Core CLI (`dotnet-ef`)
+## ▶️ Como rodar o projeto:
 
-**Configurar a string de conexão**
-- `appsettings.json` (exemplo):
+### 0) Pré‑requisitos
+- .NET SDK 8 instalado
+- Acesso ao Oracle Sql Developer
+
+### 1) Ir para a raiz do repositório
+
+```bash
+dotnet tool update --global dotnet-ef
+```
+
+### 2) Configurar a connection string
+**appsettings.json**  
+Edite `src/EasyMoto.Api/appsettings.json` e adicione:
 ```json
 {
+  "Logging": { "LogLevel": { "Default": "Information", "Microsoft.AspNetCore": "Warning" } },
+  "AllowedHosts": "*",
   "ConnectionStrings": {
-    "DefaultConnection": "User Id=USUARIO;Password=SENHA;Data Source=localhost:1521/XE"
+    "DefaultConnection": "Data Source=oracle.fiap.com.br:1521/orcl; User Id=SEU_USUARIO; Password=SUA_SENHA;"
   }
 }
 ```
 
-**Aplicar migrations**
-```bash
-dotnet ef database update --project src/EasyMoto.Infrastructure --startup-project src/EasyMoto.Api
+### 3) Restore e build
+```powershell
+dotnet restore
+dotnet build
 ```
 
-**Rodar a API**
-```bash
-dotnet run --project src/EasyMoto.Api
+### 4) Aplicar migrations
+> Se as tabelas já existirem, o comando apenas sincroniza o histórico.
+```powershell
+dotnet ef database update `
+  --project src/EasyMoto.Infrastructure/EasyMoto.Infrastructure.csproj `
+  --startup-project src/EasyMoto.Api/EasyMoto.Api.csproj
 ```
+
+### 5) Rodar a API
+```powershell
+dotnet run --project src/EasyMoto.Api/EasyMoto.Api.csproj
+```
+
+### Resultado esperado
+No console:
+```
+Now listening on: https://localhost:7230
+Now listening on: http://localhost:5284
+```
+Acesse: `http://localhost:5284/swagger`
 
 ## 🏗️ Arquitetura (Clean Architecture)
 `Api` | `Application` | `Domain` | `Infrastructure`
@@ -41,7 +67,7 @@ dotnet run --project src/EasyMoto.Api
 - `EasyMoto.Domain/` — Entidades, Value Objects, Interfaces de Repositório  
 - `EasyMoto.Infrastructure/` — EF Core (DbContext, Configurations, Repositories, Migrations)
 
-## 🧠 DDD (resumo)
+## 🧠 DDD 
 - **Aggregate Root**: `Locacao`  
 - **Value Objects**: `Periodo`, `Cpf`  
 - **Invariantes**:
@@ -80,3 +106,4 @@ dotnet run --project src/EasyMoto.Api
   "statusLocacao": "Aberta"
 }
 ```
+

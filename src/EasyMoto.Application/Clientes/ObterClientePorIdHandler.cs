@@ -13,13 +13,14 @@ public sealed class ObterClientePorIdHandler
     {
         var c = await _repo.GetByIdAsync(id, ct);
         if (c is null) return null;
+
         return new ClienteResponse
         {
             IdCliente = c.IdCliente,
             NomeCliente = c.NomeCliente,
-            CpfCliente = c.CpfCliente,
-            TelefoneCliente = c.TelefoneCliente ?? "",
-            EmailCliente = c.EmailCliente ?? ""
+            CpfCliente = c.CpfCliente.Value,
+            TelefoneCliente = c.TelefoneCliente,
+            EmailCliente = c.EmailCliente
         };
     }
 }

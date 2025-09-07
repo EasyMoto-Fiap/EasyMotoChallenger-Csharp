@@ -26,9 +26,9 @@ public sealed class AtualizarClienteHandler
         {
             IdCliente = c.IdCliente,
             NomeCliente = c.NomeCliente,
-            CpfCliente = c.CpfCliente,
-            TelefoneCliente = c.TelefoneCliente ?? "",
-            EmailCliente = c.EmailCliente ?? ""
+            CpfCliente = c.CpfCliente.Value,
+            TelefoneCliente = c.TelefoneCliente,
+            EmailCliente = c.EmailCliente
         };
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace EasyMoto.Domain.Abstractions;
+﻿using System.Linq;
+
+namespace EasyMoto.Domain.Abstractions;
 
 public abstract class ValueObject
 {

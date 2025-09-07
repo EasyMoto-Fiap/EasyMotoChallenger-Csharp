@@ -24,7 +24,7 @@ public sealed class CriarClienteHandler
         {
             IdCliente = salvo.IdCliente,
             NomeCliente = salvo.NomeCliente,
-            CpfCliente = salvo.CpfCliente,
+            CpfCliente = salvo.CpfCliente.Value,
             TelefoneCliente = salvo.TelefoneCliente,
             EmailCliente = salvo.EmailCliente
         };

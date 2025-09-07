@@ -14,8 +14,8 @@ public sealed class AtualizarLocacaoHandler
         var l = await _repo.GetByIdAsync(id, ct);
         if (l is null) return null;
 
-        l.DefinirPeriodo(req.Inicio, req.Fim);
-        l.DefinirValorDiaria(req.ValorDiaria);
+        l.DefinirPeriodo(req.DataInicio, req.DataFim);
+        l.DefinirStatus(req.StatusLocacao);
 
         await _repo.UpdateAsync(l, ct);
         await _repo.SaveChangesAsync(ct);
@@ -24,12 +24,9 @@ public sealed class AtualizarLocacaoHandler
         {
             IdLocacao = l.IdLocacao,
             ClienteId = l.ClienteId,
-            MotoId = l.MotoId,
-            Inicio = l.Periodo.Inicio,
-            Fim = l.Periodo.Fim,
-            ValorDiaria = l.ValorDiaria,
-            ValorTotal = l.ValorTotal,
-            Status = l.Status.ToString()
+            DataInicio = l.Periodo.Inicio,
+            DataFim = l.Periodo.Fim,
+            StatusLocacao = l.StatusLocacao
         };
     }
 }

@@ -8,7 +8,7 @@ public sealed class LocacaoConfiguration : IEntityTypeConfiguration<Locacao>
 {
     public void Configure(EntityTypeBuilder<Locacao> b)
     {
-        b.ToTable("LOCACAO");
+        b.ToTable("CLIENTE_LOCACAO");
         b.HasKey(x => x.IdLocacao);
 
         b.Property(x => x.IdLocacao)
@@ -19,41 +19,19 @@ public sealed class LocacaoConfiguration : IEntityTypeConfiguration<Locacao>
             .HasColumnName("CLIENTE_ID")
             .IsRequired();
 
-        b.Property(x => x.MotoId)
-            .HasColumnName("MOTO_ID")
-            .IsRequired();
-
         b.OwnsOne(x => x.Periodo, p =>
         {
             p.Property(pp => pp.Inicio)
-                .HasColumnName("INICIO")
+                .HasColumnName("DATA_INICIO")
                 .IsRequired();
 
             p.Property(pp => pp.Fim)
-                .HasColumnName("FIM")
+                .HasColumnName("DATA_FIM")
                 .IsRequired();
         });
 
-        b.Property(x => x.ValorDiaria)
-            .HasColumnName("VALOR_DIARIA")
-            .HasPrecision(18, 2)
+        b.Property(x => x.StatusLocacao)
+            .HasColumnName("STATUS_LOCACAO")
             .IsRequired();
-
-        b.Property(x => x.ValorTotal)
-            .HasColumnName("VALOR_TOTAL")
-            .HasPrecision(18, 2)
-            .IsRequired();
-
-        b.Property(x => x.Status)
-            .HasColumnName("STATUS")
-            .HasConversion<int>()
-            .IsRequired();
-
-        b.Property(x => x.CriadoEm)
-            .HasColumnName("CRIADO_EM")
-            .IsRequired();
-
-        b.Property(x => x.EncerradoEm)
-            .HasColumnName("ENCERRADO_EM");
     }
 }

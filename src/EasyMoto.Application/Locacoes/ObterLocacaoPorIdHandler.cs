@@ -18,12 +18,9 @@ public sealed class ObterLocacaoPorIdHandler
         {
             IdLocacao = l.IdLocacao,
             ClienteId = l.ClienteId,
-            MotoId = l.MotoId,
-            Inicio = l.Periodo.Inicio,
-            Fim = l.Periodo.Fim,
-            ValorDiaria = l.ValorDiaria,
-            ValorTotal = l.ValorTotal,
-            Status = l.Status.ToString()
+            DataInicio = l.Periodo.Inicio,
+            DataFim = l.Periodo.Fim,
+            StatusLocacao = l.StatusLocacao
         };
     }
 }

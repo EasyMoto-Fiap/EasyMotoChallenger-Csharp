@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repositories\ILocacaoRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Aggregates\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Repositories\ILocacaoRepository.cs" />
   </ItemGroup>
 
 </Project>

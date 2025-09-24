@@ -1,27 +1,27 @@
+using System;
+using System.Collections.Generic;
 using EasyMoto.Domain.Abstractions;
 
-namespace EasyMoto.Domain.ValueObjects;
-
-public sealed class Periodo : ValueObject
+namespace EasyMoto.Domain.ValueObjects
 {
-    public DateTime Inicio { get; }
-    public DateTime Fim { get; }
-
-    private Periodo(DateTime inicio, DateTime fim)
+    public sealed class Periodo : ValueObject
     {
-        Inicio = inicio;
-        Fim = fim;
-    }
+        public DateTime Inicio { get; private set; }
+        public DateTime Fim { get; private set; }
 
-    public static Periodo Create(DateTime inicio, DateTime fim)
-    {
-        if (fim < inicio) throw new ArgumentException("Período inválido");
-        return new Periodo(inicio, fim);
-    }
+        private Periodo() { }
 
-    protected override IEnumerable<object?> GetEqualityComponents()
-    {
-        yield return Inicio;
-        yield return Fim;
+        public Periodo(DateTime inicio, DateTime fim)
+        {
+            if (fim <= inicio) throw new ArgumentException("Periodo inválido");
+            Inicio = inicio;
+            Fim = fim;
+        }
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Inicio;
+            yield return Fim;
+        }
     }
 }

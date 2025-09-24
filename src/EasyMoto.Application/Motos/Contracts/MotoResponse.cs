@@ -1,10 +1,15 @@
-using EasyMoto.Domain.Entities;
+using System;
 
-namespace EasyMoto.Application.Motos.Contracts;
-
-public sealed class MotoResponse
+namespace EasyMoto.Application.Motos.Contracts
 {
-    public Guid Id { get; init; }
-    public string Placa { get; init; } = string.Empty;
-    public MotoStatus Status { get; init; }
+    public sealed class MotoResponse
+    {
+        public Guid Id { get; init; }
+        public string Placa { get; init; } = null!;
+        public string Modelo { get; init; } = null!;
+        public int AnoFabricacao { get; init; }
+        public string Status { get; init; } = null!;
+        public Guid? LocacaoId { get; init; }
+        public Guid? LocalizacaoId { get; init; }
+    }
 }

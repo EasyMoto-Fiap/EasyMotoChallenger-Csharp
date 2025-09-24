@@ -1,54 +1,37 @@
-namespace EasyMoto.Domain.Entities;
+using System;
 
-public enum MotoStatus
+namespace EasyMoto.Domain.Entities
 {
-    Disponivel = 0,
-    Alugada = 1,
-    Manutencao = 2
-}
-
-public sealed class Moto
-{
-    public Guid Id { get; private set; }
-    public string Placa { get; private set; } = string.Empty;
-    public MotoStatus Status { get; private set; }
-
-    private Moto() { }
-
-    public Moto(Guid id, string placa)
+    public sealed class Moto
     {
-        Id = id == default ? Guid.NewGuid() : id;
-        SetPlaca(placa);
-        Status = MotoStatus.Disponivel;
-    }
+        public Guid Id { get; private set; }
+        public string Placa { get; private set; } = null!;
+        public string Modelo { get; private set; } = null!;
+        public int AnoFabricacao { get; private set; }
+        public string Status { get; private set; } = null!;
+        public Guid? LocacaoId { get; private set; }
+        public Guid? LocalizacaoId { get; private set; }
 
-    public void SetPlaca(string placa)
-    {
-        if (string.IsNullOrWhiteSpace(placa)) throw new ArgumentException("Placa inválida");
-        Placa = placa.Trim().ToUpperInvariant();
-    }
+        private Moto() { }
 
-    public void MarcarAlugada()
-    {
-        if (Status != MotoStatus.Disponivel) throw new InvalidOperationException("Moto indisponível");
-        Status = MotoStatus.Alugada;
-    }
+        public Moto(string placa, string modelo, int anoFabricacao, string status, Guid? locacaoId, Guid? localizacaoId)
+        {
+            Id = Guid.NewGuid();
+            Update(placa, modelo, anoFabricacao, status, locacaoId, localizacaoId);
+        }
 
-    public void MarcarDevolvida()
-    {
-        if (Status != MotoStatus.Alugada) throw new InvalidOperationException("Moto não está alugada");
-        Status = MotoStatus.Disponivel;
-    }
-
-    public void MarcarManutencao()
-    {
-        if (Status == MotoStatus.Alugada) throw new InvalidOperationException("Moto alugada");
-        Status = MotoStatus.Manutencao;
-    }
-
-    public void SairDeManutencao()
-    {
-        if (Status != MotoStatus.Manutencao) throw new InvalidOperationException("Moto não está em manutenção");
-        Status = MotoStatus.Disponivel;
+        public void Update(string placa, string modelo, int anoFabricacao, string status, Guid? locacaoId, Guid? localizacaoId)
+        {
+            if (string.IsNullOrWhiteSpace(placa)) throw new ArgumentException("Placa obrigatória");
+            if (string.IsNullOrWhiteSpace(modelo)) throw new ArgumentException("Modelo obrigatório");
+            if (anoFabricacao < 1900) throw new ArgumentException("Ano inválido");
+            if (string.IsNullOrWhiteSpace(status)) throw new ArgumentException("Status obrigatório");
+            Placa = placa.Trim().ToUpperInvariant();
+            Modelo = modelo.Trim();
+            AnoFabricacao = anoFabricacao;
+            Status = status.Trim();
+            LocacaoId = locacaoId;
+            LocalizacaoId = localizacaoId;
+        }
     }
 }

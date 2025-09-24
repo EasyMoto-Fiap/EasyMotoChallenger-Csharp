@@ -9,7 +9,7 @@ public sealed class AppDbContext : DbContext
 
     public DbSet<Cliente> Clientes => Set<Cliente>();
     public DbSet<Moto> Motos => Set<Moto>();
-    public DbSet<Locacao> Locacoes => Set<Locacao>();
+    public DbSet<ClienteLocacao> Locacoes => Set<ClienteLocacao>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

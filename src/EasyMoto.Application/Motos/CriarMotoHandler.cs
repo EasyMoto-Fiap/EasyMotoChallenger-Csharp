@@ -1,18 +1,30 @@
+using System.Threading;
+using System.Threading.Tasks;
 using EasyMoto.Application.Motos.Contracts;
 using EasyMoto.Domain.Entities;
 using EasyMoto.Domain.Repositories;
 
-namespace EasyMoto.Application.Motos;
-
-public sealed class CriarMotoHandler
+namespace EasyMoto.Application.Motos
 {
-    private readonly IMotoRepository _repo;
-    public CriarMotoHandler(IMotoRepository repo) => _repo = repo;
-
-    public async Task<MotoResponse> ExecuteAsync(CriarMotoRequest request, CancellationToken ct = default)
+    public sealed class CriarMotoHandler
     {
-        var moto = new Moto(Guid.NewGuid(), request.Placa);
-        await _repo.AddAsync(moto, ct);
-        return new MotoResponse { Id = moto.Id, Placa = moto.Placa, Status = moto.Status };
+        private readonly IMotoRepository _repo;
+        public CriarMotoHandler(IMotoRepository repo) => _repo = repo;
+
+        public async Task<MotoResponse> ExecuteAsync(CriarMotoRequest req, CancellationToken ct = default)
+        {
+            var entity = new Moto(req.Placa, req.Modelo, req.AnoFabricacao, req.Status, req.LocacaoId, req.LocalizacaoId);
+            await _repo.AddAsync(entity, ct);
+            return new MotoResponse
+            {
+                Id = entity.Id,
+                Placa = entity.Placa,
+                Modelo = entity.Modelo,
+                AnoFabricacao = entity.AnoFabricacao,
+                Status = entity.Status,
+                LocacaoId = entity.LocacaoId,
+                LocalizacaoId = entity.LocalizacaoId
+            };
+        }
     }
 }

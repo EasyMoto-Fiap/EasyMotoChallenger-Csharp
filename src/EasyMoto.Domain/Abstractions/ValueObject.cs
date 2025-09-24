@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace EasyMoto.Domain.Abstractions;
 
 public abstract class ValueObject
@@ -12,8 +16,11 @@ public abstract class ValueObject
     }
 
     public override int GetHashCode()
-    {
-        return GetEqualityComponents()
-            .Aggregate(0, (hash, component) => HashCode.Combine(hash, component?.GetHashCode() ?? 0));
-    }
+        => GetEqualityComponents()
+            .Aggregate(0, (hash, obj) => HashCode.Combine(hash, obj?.GetHashCode() ?? 0));
+
+    public static bool operator ==(ValueObject? a, ValueObject? b)
+        => a is null && b is null || a is not null && a.Equals(b);
+
+    public static bool operator !=(ValueObject? a, ValueObject? b) => !(a == b);
 }

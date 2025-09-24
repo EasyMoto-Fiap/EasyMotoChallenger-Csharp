@@ -1,19 +1,20 @@
 using EasyMoto.Application.Clientes.Contracts;
 using EasyMoto.Domain.Repositories;
+using EasyMoto.Domain.ValueObjects;
 
-namespace EasyMoto.Application.Clientes;
-
-public sealed class AtualizarClienteHandler
+namespace EasyMoto.Application.Clientes
 {
-    private readonly IClienteRepository _repo;
-    public AtualizarClienteHandler(IClienteRepository repo) => _repo = repo;
-
-    public async Task<ClienteResponse?> ExecuteAsync(Guid id, AtualizarClienteRequest request, CancellationToken ct = default)
+    public sealed class AtualizarClienteHandler
     {
-        var existente = await _repo.GetByIdAsync(id, ct);
-        if (existente is null) return null;
-        existente.UpdateNome(request.Nome);
-        await _repo.UpdateAsync(existente, ct);
-        return new ClienteResponse { Id = existente.Id, Nome = existente.Nome, Cpf = existente.Cpf.Value };
+        private readonly IClienteRepository _repo;
+        public AtualizarClienteHandler(IClienteRepository repo) => _repo = repo;
+
+        public async Task ExecuteAsync(Guid id, AtualizarClienteRequest req, CancellationToken ct = default)
+        {
+            var entity = await _repo.GetByIdAsync(id, ct);
+            if (entity is null) throw new KeyNotFoundException("Cliente não encontrado.");
+            entity.Update(req.Nome, new Cpf(req.Cpf), new Telefone(req.Telefone), new Email(req.Email));
+            await _repo.UpdateAsync(entity, ct);
+        }
     }
 }

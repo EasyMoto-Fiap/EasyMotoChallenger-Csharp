@@ -1,8 +1,8 @@
+namespace EasyMoto.Infrastructure.Persistence.Configurations;
+
 using EasyMoto.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace EasyMoto.Infrastructure.Persistence.Configurations;
 
 public sealed class ClienteConfiguration : IEntityTypeConfiguration<Cliente>
 {
@@ -10,11 +10,33 @@ public sealed class ClienteConfiguration : IEntityTypeConfiguration<Cliente>
     {
         builder.ToTable("clientes");
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Nome).HasMaxLength(120).IsRequired();
 
-        builder.OwnsOne(x => x.Cpf, cpf =>
+        builder.Property(x => x.Nome)
+            .HasMaxLength(120)
+            .IsRequired();
+
+        builder.OwnsOne(x => x.Cpf, p =>
         {
-            cpf.Property(p => p.Value).HasColumnName("cpf").HasMaxLength(14).IsRequired();
+            p.Property(v => v.Value)
+                .HasColumnName("cpf")
+                .HasMaxLength(14)
+                .IsRequired();
+        });
+
+        builder.OwnsOne(x => x.Telefone, p =>
+        {
+            p.Property(v => v.Value)
+                .HasColumnName("telefone")
+                .HasMaxLength(11)
+                .IsRequired();
+        });
+
+        builder.OwnsOne(x => x.Email, p =>
+        {
+            p.Property(v => v.Value)
+                .HasColumnName("email")
+                .HasMaxLength(160)
+                .IsRequired();
         });
     }
 }

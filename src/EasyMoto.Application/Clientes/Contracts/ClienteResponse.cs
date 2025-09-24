@@ -1,8 +1,11 @@
-namespace EasyMoto.Application.Clientes.Contracts;
-
-public sealed class ClienteResponse
+namespace EasyMoto.Application.Clientes.Contracts
 {
-    public Guid Id { get; init; }
-    public string Nome { get; init; } = string.Empty;
-    public string Cpf { get; init; } = string.Empty;
+    public sealed class ClienteResponse
+    {
+        public Guid Id { get; init; }
+        public string Nome { get; init; } = null!;
+        public string Cpf { get; init; } = null!;
+        public string Telefone { get; init; } = null!;
+        public string Email { get; init; } = null!;
+    }
 }

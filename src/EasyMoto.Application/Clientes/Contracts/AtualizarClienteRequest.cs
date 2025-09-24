@@ -1,9 +1,10 @@
-using System.ComponentModel.DataAnnotations;
-
-namespace EasyMoto.Application.Clientes.Contracts;
-
-public sealed class AtualizarClienteRequest
+namespace EasyMoto.Application.Clientes.Contracts
 {
-    [Required, StringLength(120, MinimumLength = 2)]
-    public string Nome { get; init; } = string.Empty;
+    public sealed class AtualizarClienteRequest
+    {
+        public string Nome { get; init; } = null!;
+        public string Cpf { get; init; } = null!;
+        public string Telefone { get; init; } = null!;
+        public string Email { get; init; } = null!;
+    }
 }

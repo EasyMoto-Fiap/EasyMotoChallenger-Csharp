@@ -1,61 +1,67 @@
-using EasyMoto.Api.Hypermedia;
 using EasyMoto.Application.Clientes;
 using EasyMoto.Application.Clientes.Contracts;
 using EasyMoto.Application.Shared.Pagination;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EasyMoto.Api.Controllers;
-
-[ApiController]
-[Route("api/clientes")]
-public sealed class ClientesController : ControllerBase
+namespace EasyMoto.Api.Controllers
 {
-    [HttpGet(Name = "GetClientes")]
-    public async Task<IActionResult> Get([FromServices] ListarClientesHandler handler, [FromQuery] int page = 1, [FromQuery] int size = 10, CancellationToken ct = default)
+    [ApiController]
+    [Route("api/[controller]")]
+    public sealed class ClientesController : ControllerBase
     {
-        var result = await handler.ExecuteAsync(new PageQuery(page, size), ct);
-        var items = result.Items.Select(i => HateoasBuilder.WithLinks(i, new[]
+        private readonly ListarClientesHandler _list;
+        private readonly ObterClientePorIdHandler _getById;
+        private readonly CriarClienteHandler _create;
+        private readonly AtualizarClienteHandler _update;
+        private readonly ExcluirClienteHandler _delete;
+
+        public ClientesController(
+            ListarClientesHandler list,
+            ObterClientePorIdHandler getById,
+            CriarClienteHandler create,
+            AtualizarClienteHandler update,
+            ExcluirClienteHandler delete)
         {
-            new LinkDto { Rel = "self", Href = Url.Link("GetClienteById", new { id = i.Id }) ?? string.Empty, Method = "GET" },
-            new LinkDto { Rel = "update", Href = Url.Link("UpdateCliente", new { id = i.Id }) ?? string.Empty, Method = "PUT" },
-            new LinkDto { Rel = "delete", Href = Url.Link("DeleteCliente", new { id = i.Id }) ?? string.Empty, Method = "DELETE" }
-        }));
-        var links = HateoasBuilder.PagingLinks(Url, "GetClientes", result.Page, result.Size, result.HasPrevious, result.HasNext);
-        return Ok(new { result.Page, result.Size, result.TotalCount, result.TotalPages, Items = items, _links = links });
-    }
+            _list = list;
+            _getById = getById;
+            _create = create;
+            _update = update;
+            _delete = delete;
+        }
 
-    [HttpGet("{id:guid}", Name = "GetClienteById")]
-    public async Task<IActionResult> GetById([FromServices] ObterClientePorIdHandler handler, Guid id, CancellationToken ct = default)
-    {
-        var r = await handler.ExecuteAsync(id, ct);
-        if (r is null) return NotFound();
-        var res = HateoasBuilder.WithLinks(r, new[]
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery] int page = 1, [FromQuery] int size = 20, CancellationToken ct = default)
         {
-            new LinkDto { Rel = "self", Href = Url.Link("GetClienteById", new { id = r.Id }) ?? string.Empty, Method = "GET" },
-            new LinkDto { Rel = "update", Href = Url.Link("UpdateCliente", new { id = r.Id }) ?? string.Empty, Method = "PUT" },
-            new LinkDto { Rel = "delete", Href = Url.Link("DeleteCliente", new { id = r.Id }) ?? string.Empty, Method = "DELETE" }
-        });
-        return Ok(res);
-    }
+            var result = await _list.ExecuteAsync(new PageQuery(page, size), ct);
+            return Ok(result);
+        }
 
-    [HttpPost(Name = "CreateCliente")]
-    public async Task<IActionResult> Post([FromServices] CriarClienteHandler handler, [FromBody] CriarClienteRequest request, CancellationToken ct = default)
-    {
-        var r = await handler.ExecuteAsync(request, ct);
-        return CreatedAtRoute("GetClienteById", new { id = r.Id }, r);
-    }
+        [HttpGet("{id:guid}")]
+        public async Task<IActionResult> GetById(Guid id, CancellationToken ct = default)
+        {
+            var result = await _getById.ExecuteAsync(id, ct);
+            return result is null ? NotFound() : Ok(result);
+        }
 
-    [HttpPut("{id:guid}", Name = "UpdateCliente")]
-    public async Task<IActionResult> Put([FromServices] AtualizarClienteHandler handler, Guid id, [FromBody] AtualizarClienteRequest request, CancellationToken ct = default)
-    {
-        var r = await handler.ExecuteAsync(id, request, ct);
-        return r is null ? NotFound() : Ok(r);
-    }
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] CriarClienteRequest req, CancellationToken ct = default)
+        {
+            var result = await _create.ExecuteAsync(req, ct);
+            return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
+        }
 
-    [HttpDelete("{id:guid}", Name = "DeleteCliente")]
-    public async Task<IActionResult> Delete([FromServices] ExcluirClienteHandler handler, Guid id, CancellationToken ct = default)
-    {
-        var ok = await handler.ExecuteAsync(id, ct);
-        return ok ? NoContent() : NotFound();
+        [HttpPut("{id:guid}")]
+        public async Task<IActionResult> Put(Guid id, [FromBody] AtualizarClienteRequest req, CancellationToken ct = default)
+        {
+            await _update.ExecuteAsync(id, req, ct);
+            return NoContent();
+        }
+
+        [HttpDelete("{id:guid}")]
+        public async Task<IActionResult> Delete(Guid id, CancellationToken ct = default)
+        {
+            await _delete.ExecuteAsync(id, ct);
+            return NoContent();
+        }
     }
 }

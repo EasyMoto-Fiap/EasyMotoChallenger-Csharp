@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using EasyMoto.Domain.Abstractions;
 
 namespace EasyMoto.Domain.ValueObjects;
@@ -6,30 +9,32 @@ public sealed class Cpf : ValueObject
 {
     public string Value { get; }
 
-    private Cpf(string value)
+    public Cpf(string value)
     {
-        Value = value;
+        if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("CPF inválido");
+
+        var digits = new string(value.Where(char.IsDigit).ToArray());
+        if (digits.Length != 11) throw new ArgumentException("CPF inválido");
+        if (!IsValid(digits)) throw new ArgumentException("CPF inválido");
+
+        Value = Convert.ToUInt64(digits).ToString(@"000\.000\.000\-00");
     }
 
-    public static Cpf From(string input)
+    static bool IsValid(string d)
     {
-        if (input is null) throw new ArgumentNullException(nameof(input));
-        var digits = new string(input.Where(char.IsDigit).ToArray());
-        if (digits.Length != 11) throw new ArgumentException("CPF inválido", nameof(input));
-        if (new string(digits[0], 11) == digits) throw new ArgumentException("CPF inválido", nameof(input));
-        var nums = digits.Select(c => c - '0').ToArray();
-        int CalcDigit(int[] source, int startWeight)
+        if (new string(d[0], 11) == d) return false;
+
+        int Sum(int len, int wstart)
         {
-            var sum = 0;
-            for (var i = 0; i < source.Length; i++) sum += source[i] * (startWeight - i);
-            var mod = sum % 11;
-            return mod < 2 ? 0 : 11 - mod;
+            var s = 0;
+            for (int i = 0; i < len; i++) s += (d[i] - '0') * (wstart - i);
+            return s;
         }
-        var d1 = CalcDigit(nums[..9], 10);
-        var ten = nums[..9].Concat(new[] { d1 }).ToArray();
-        var d2 = CalcDigit(ten, 11);
-        if (d1 != nums[9] || d2 != nums[10]) throw new ArgumentException("CPF inválido", nameof(input));
-        return new Cpf(digits);
+
+        var dv1 = (Sum(9, 10) * 10) % 11; if (dv1 == 10) dv1 = 0;
+        var dv2 = (Sum(10, 11) * 10) % 11; if (dv2 == 10) dv2 = 0;
+
+        return (d[9] - '0') == dv1 && (d[10] - '0') == dv2;
     }
 
     protected override IEnumerable<object?> GetEqualityComponents()
@@ -37,5 +42,6 @@ public sealed class Cpf : ValueObject
         yield return Value;
     }
 
-    public override string ToString() => Value;
+    public static implicit operator string(Cpf c) => c.Value;
+    public static implicit operator Cpf(string value) => new(value);
 }

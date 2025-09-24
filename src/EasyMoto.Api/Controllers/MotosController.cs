@@ -1,34 +1,70 @@
-using System;
-using EasyMoto.Domain.ValueObjects;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using EasyMoto.Application.Motos;
+using EasyMoto.Application.Motos.Contracts;
+using EasyMoto.Application.Shared.Pagination;
 
-namespace EasyMoto.Domain.Entities
+namespace EasyMoto.Api.Controllers
 {
-    public sealed class ClienteLocacao
+    [ApiController]
+    [Route("api/[controller]")]
+    public sealed class MotosController : ControllerBase
     {
-        public Guid Id { get; private set; }
-        public Guid ClienteId { get; private set; }
-        public Guid MotoId { get; private set; }
-        public Periodo Periodo { get; private set; } = null!;
-        public string Status { get; private set; } = null!;
+        private readonly ListarMotosHandler _list;
+        private readonly ObterMotoPorIdHandler _getById;
+        private readonly CriarMotoHandler _create;
+        private readonly AtualizarMotoHandler _update;
+        private readonly ExcluirMotoHandler _delete;
 
-        private ClienteLocacao() { }
-
-        public ClienteLocacao(Guid clienteId, Guid motoId, Periodo periodo, string status)
+        public MotosController(
+            ListarMotosHandler list,
+            ObterMotoPorIdHandler getById,
+            CriarMotoHandler create,
+            AtualizarMotoHandler update,
+            ExcluirMotoHandler delete)
         {
-            Id = Guid.NewGuid();
-            Update(clienteId, motoId, periodo, status);
+            _list = list;
+            _getById = getById;
+            _create = create;
+            _update = update;
+            _delete = delete;
         }
 
-        public void Update(Guid clienteId, Guid motoId, Periodo periodo, string status)
+        [HttpGet]
+        public async Task<ActionResult<PagedResult<MotoResponse>>> Get([FromQuery] int page = 1, [FromQuery] int size = 10, CancellationToken ct = default)
         {
-            if (clienteId == Guid.Empty) throw new ArgumentException("ClienteId obrigatório");
-            if (motoId == Guid.Empty) throw new ArgumentException("MotoId obrigatório");
-            if (periodo is null) throw new ArgumentNullException(nameof(periodo));
-            if (string.IsNullOrWhiteSpace(status)) throw new ArgumentException("Status obrigatório");
-            ClienteId = clienteId;
-            MotoId = motoId;
-            Periodo = periodo;
-            Status = status.Trim();
+            var result = await _list.ExecuteAsync(new PageQuery(page, size), ct);
+            return Ok(result);
+        }
+
+        [HttpGet("{id:guid}")]
+        public async Task<ActionResult<MotoResponse?>> GetById(Guid id, CancellationToken ct = default)
+        {
+            var result = await _getById.ExecuteAsync(id, ct);
+            if (result is null) return NotFound();
+            return Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<MotoResponse>> Post([FromBody] CriarMotoRequest req, CancellationToken ct = default)
+        {
+            var result = await _create.ExecuteAsync(req, ct);
+            return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
+        }
+
+        [HttpPut("{id:guid}")]
+        public async Task<IActionResult> Put(Guid id, [FromBody] AtualizarMotoRequest req, CancellationToken ct = default)
+        {
+            await _update.ExecuteAsync(id, req, ct);
+            return NoContent();
+        }
+
+        [HttpDelete("{id:guid}")]
+        public async Task<IActionResult> Delete(Guid id, CancellationToken ct = default)
+        {
+            await _delete.ExecuteAsync(id, ct);
+            return NoContent();
         }
     }
 }

@@ -6,7 +6,7 @@ namespace EasyMoto.Infrastructure.Persistence
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions options) : base(options) { }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Vaga> Vagas => Set<Vaga>();
         public DbSet<Cliente> Clientes => Set<Cliente>();
@@ -17,6 +17,7 @@ namespace EasyMoto.Infrastructure.Persistence
         public DbSet<Filial> Filiais => Set<Filial>();
         public DbSet<Funcionario> Funcionarios => Set<Funcionario>();
         public DbSet<Patio> Patios => Set<Patio>();
+        public DbSet<Operador> Operadores => Set<Operador>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,6 +30,7 @@ namespace EasyMoto.Infrastructure.Persistence
             modelBuilder.ApplyConfiguration(new FilialConfiguration());
             modelBuilder.ApplyConfiguration(new FuncionarioConfiguration());
             modelBuilder.ApplyConfiguration(new PatioConfiguration());
+            modelBuilder.ApplyConfiguration(new OperadorConfiguration());
         }
     }
 }

@@ -16,6 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(cs);
 });
 
+builder.Services.AddScoped<IVagaRepository, VagaRepository>();
 builder.Services.AddScoped<IPatioRepository, PatioRepository>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IMotoRepository, MotoRepository>();

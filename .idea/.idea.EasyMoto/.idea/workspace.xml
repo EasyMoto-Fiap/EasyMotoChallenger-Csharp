@@ -13,19 +13,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1620b78c-8586-4e5c-8065-b864854fcef8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/PatiosController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/AtualizarPatioHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/Contracts/AtualizarPatioRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/Contracts/CriarPatioRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/Contracts/PatioResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/CriarPatioHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/ExcluirPatioHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/ListarPatiosHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/ObterPatioPorIdHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Patio.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IPatioRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/PatioConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/PatioRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/VagasController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/AtualizarVagaHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/Contracts/AtualizarVagaRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/Contracts/CriarVagaRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/Contracts/VagaResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/CriarVagaHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/ExcluirVagaHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/ListarVagasHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/ObterVagaPorIdHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Vaga.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IVagaRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/VagaConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/VagaRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EasyMoto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EasyMoto/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EasyMoto.Tests/obj/Debug/net8.0/EasyMoto.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasyMoto.Tests/obj/Debug/net8.0/EasyMoto.Tests.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EasyMoto.Tests/obj/Debug/net8.0/EasyMoto.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/EasyMoto.Tests/obj/Debug/net8.0/EasyMoto.Tests.AssemblyInfoInputs.cache" afterDir="false" />
@@ -33,16 +33,13 @@
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/AppDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +73,7 @@
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/LocalizacoesController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/MotosController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/PatiosController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/VagasController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Extensions/ApiVersioningExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Extensions/SwaggerExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Filters/ValidationFilter.cs" root0="FORCE_HIGHLIGHTING" />
@@ -141,6 +139,14 @@
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Shared/Pagination/PageQuery.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Shared/Pagination/PagedResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Shared/Pagination/Sorting.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/AtualizarVagaHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/Contracts/AtualizarVagaRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/Contracts/CriarVagaRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/Contracts/VagaResponse.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/CriarVagaHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/ExcluirVagaHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/ListarVagasHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/ObterVagaPorIdHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Abstractions/ValueObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Cliente.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Empresa.cs" root0="FORCE_HIGHLIGHTING" />
@@ -149,6 +155,7 @@
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Localizacao.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Moto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Patio.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Vaga.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IClienteRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IEmpresaRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IFilialRepository.cs" root0="FORCE_HIGHLIGHTING" />
@@ -156,6 +163,7 @@
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/ILocalizacaoRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IMotoRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IPatioRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IVagaRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/ValueObjects/Cpf.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/ValueObjects/Email.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/ValueObjects/Periodo.cs" root0="FORCE_HIGHLIGHTING" />
@@ -165,6 +173,7 @@
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/FuncionarioConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/LocalizacaoConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/PatioConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/VagaConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/ClienteRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/EmpresaRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/FilialRepository.cs" root0="FORCE_HIGHLIGHTING" />
@@ -172,6 +181,7 @@
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/LocalizacaoRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/MotoRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/PatioRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/VagaRepository.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -314,7 +324,7 @@
       <workItem from="1758654533191" duration="14823000" />
       <workItem from="1758741971530" duration="3332000" />
       <workItem from="1758754176059" duration="12601000" />
-      <workItem from="1758817979907" duration="3144000" />
+      <workItem from="1758817979907" duration="5211000" />
     </task>
     <task id="LOCAL-00001" summary="chore(estrutura): criar solução EasyMoto e projetos base (Api, Application, Domain, Infrastructure) com referências entre camadas">
       <option name="closed" value="true" />
@@ -388,7 +398,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758766858317</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="feat(patio): criar entidade, config EF, repositório, handlers e controller; docs(swagger): expor CRUD com paginação">
+      <option name="closed" value="true" />
+      <created>1758830159929</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1758830159929</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -418,7 +436,8 @@
     <MESSAGE value="feat(localizacao): adicionar CRUD, repositório e mapeamento EF Core" />
     <MESSAGE value="feat(filial): registrar entidade no contexto/DI e criar migração Add_Filial" />
     <MESSAGE value="feat(funcionario): CRUD completo (entidade, EF config, repo, handlers, controller)" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(funcionario): CRUD completo (entidade, EF config, repo, handlers, controller)" />
+    <MESSAGE value="feat(patio): criar entidade, config EF, repositório, handlers e controller; docs(swagger): expor CRUD com paginação" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(patio): criar entidade, config EF, repositório, handlers e controller; docs(swagger): expor CRUD com paginação" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

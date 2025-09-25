@@ -1,0 +1,16 @@
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\bin\Debug\net8.0\EasyMoto.Application.deps.json
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\bin\Debug\net8.0\EasyMoto.Application.dll
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\bin\Debug\net8.0\EasyMoto.Application.pdb
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\bin\Debug\net8.0\EasyMoto.Domain.dll
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\bin\Debug\net8.0\EasyMoto.Domain.pdb
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\obj\Debug\net8.0\EasyMoto.Application.csproj.AssemblyReference.cache
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\obj\Debug\net8.0\EasyMoto.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\obj\Debug\net8.0\EasyMoto.Application.AssemblyInfoInputs.cache
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\obj\Debug\net8.0\EasyMoto.Application.AssemblyInfo.cs
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\obj\Debug\net8.0\EasyMoto.Application.csproj.CoreCompileInputs.cache
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\obj\Debug\net8.0\EasyMoto.Application.sourcelink.json
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\obj\Debug\net8.0\EasyMoto.257653F0.Up2Date
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\obj\Debug\net8.0\EasyMoto.Application.dll
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\obj\Debug\net8.0\refint\EasyMoto.Application.dll
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\obj\Debug\net8.0\EasyMoto.Application.pdb
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Application\obj\Debug\net8.0\ref\EasyMoto.Application.dll

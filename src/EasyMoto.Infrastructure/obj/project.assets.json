@@ -864,19 +864,6 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "EasyMoto.Application/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "EasyMoto.Domain": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/EasyMoto.Application.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/EasyMoto.Application.dll": {}
-        }
-      },
       "EasyMoto.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -2272,11 +2259,6 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "EasyMoto.Application/1.0.0": {
-      "type": "project",
-      "path": "../EasyMoto.Application/EasyMoto.Application.csproj",
-      "msbuildProject": "../EasyMoto.Application/EasyMoto.Application.csproj"
-    },
     "EasyMoto.Domain/1.0.0": {
       "type": "project",
       "path": "../EasyMoto.Domain/EasyMoto.Domain.csproj",
@@ -2285,7 +2267,6 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "EasyMoto.Application >= 1.0.0",
       "EasyMoto.Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.0",
@@ -2324,9 +2305,6 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\valer\\RiderProjects\\EasyMotoChallenger-Csharp\\src\\EasyMoto.Application\\EasyMoto.Application.csproj": {
-              "projectPath": "C:\\Users\\valer\\RiderProjects\\EasyMotoChallenger-Csharp\\src\\EasyMoto.Application\\EasyMoto.Application.csproj"
-            },
             "C:\\Users\\valer\\RiderProjects\\EasyMotoChallenger-Csharp\\src\\EasyMoto.Domain\\EasyMoto.Domain.csproj": {
               "projectPath": "C:\\Users\\valer\\RiderProjects\\EasyMotoChallenger-Csharp\\src\\EasyMoto.Domain\\EasyMoto.Domain.csproj"
             }

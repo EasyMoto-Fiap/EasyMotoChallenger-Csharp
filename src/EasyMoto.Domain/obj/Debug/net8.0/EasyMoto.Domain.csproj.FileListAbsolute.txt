@@ -1,0 +1,12 @@
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Domain\bin\Debug\net8.0\EasyMoto.Domain.deps.json
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Domain\bin\Debug\net8.0\EasyMoto.Domain.dll
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Domain\bin\Debug\net8.0\EasyMoto.Domain.pdb
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Domain\obj\Debug\net8.0\EasyMoto.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Domain\obj\Debug\net8.0\EasyMoto.Domain.AssemblyInfoInputs.cache
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Domain\obj\Debug\net8.0\EasyMoto.Domain.AssemblyInfo.cs
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Domain\obj\Debug\net8.0\EasyMoto.Domain.csproj.CoreCompileInputs.cache
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Domain\obj\Debug\net8.0\EasyMoto.Domain.sourcelink.json
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Domain\obj\Debug\net8.0\EasyMoto.Domain.dll
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Domain\obj\Debug\net8.0\refint\EasyMoto.Domain.dll
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Domain\obj\Debug\net8.0\EasyMoto.Domain.pdb
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Domain\obj\Debug\net8.0\ref\EasyMoto.Domain.dll

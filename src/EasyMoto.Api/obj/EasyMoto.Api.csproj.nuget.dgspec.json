@@ -260,9 +260,6 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\valer\\RiderProjects\\EasyMotoChallenger-Csharp\\src\\EasyMoto.Application\\EasyMoto.Application.csproj": {
-                "projectPath": "C:\\Users\\valer\\RiderProjects\\EasyMotoChallenger-Csharp\\src\\EasyMoto.Application\\EasyMoto.Application.csproj"
-              },
               "C:\\Users\\valer\\RiderProjects\\EasyMotoChallenger-Csharp\\src\\EasyMoto.Domain\\EasyMoto.Domain.csproj": {
                 "projectPath": "C:\\Users\\valer\\RiderProjects\\EasyMotoChallenger-Csharp\\src\\EasyMoto.Domain\\EasyMoto.Domain.csproj"
               }

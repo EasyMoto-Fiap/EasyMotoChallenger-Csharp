@@ -1,5 +1,3 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EasyMoto.Application.Localizacoes;
 using EasyMoto.Application.Localizacoes.Contracts;

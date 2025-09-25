@@ -14,6 +14,7 @@ namespace EasyMoto.Infrastructure.Persistence
         public DbSet<Localizacao> Localizacoes => Set<Localizacao>();
         public DbSet<Empresa> Empresas => Set<Empresa>();
         public DbSet<Filial> Filiais => Set<Filial>();
+        public DbSet<Funcionario> Funcionarios => Set<Funcionario>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,6 +24,7 @@ namespace EasyMoto.Infrastructure.Persistence
             modelBuilder.ApplyConfiguration(new LocalizacaoConfiguration());
             modelBuilder.ApplyConfiguration(new EmpresaConfiguration());
             modelBuilder.ApplyConfiguration(new FilialConfiguration());
+            modelBuilder.ApplyConfiguration(new FuncionarioConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

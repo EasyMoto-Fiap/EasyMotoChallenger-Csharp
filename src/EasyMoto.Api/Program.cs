@@ -8,6 +8,7 @@ using EasyMoto.Application.ClienteLocacoes;
 using EasyMoto.Application.Localizacoes;
 using EasyMoto.Domain.Repositories;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -22,10 +23,12 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "EasyMoto API", Version = "v1" });
 });
 
+builder.Services.AddScoped<EasyMoto.Domain.Repositories.IFilialRepository, EasyMoto.Infrastructure.Repositories.FilialRepository>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IMotoRepository, MotoRepository>();
 builder.Services.AddScoped<IClienteLocacaoRepository, ClienteLocacaoRepository>();
 builder.Services.AddScoped<ILocalizacaoRepository, LocalizacaoRepository>();
+builder.Services.AddScoped<IEmpresaRepository, EmpresaRepository>();
 
 builder.Services.AddScoped<ListarClientesHandler>();
 builder.Services.AddScoped<ObterClientePorIdHandler>();

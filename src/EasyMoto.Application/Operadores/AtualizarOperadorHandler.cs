@@ -1,5 +1,3 @@
-using System.Threading;
-using System.Threading.Tasks;
 using EasyMoto.Application.Operadores.Contracts;
 using EasyMoto.Domain.Repositories;
 

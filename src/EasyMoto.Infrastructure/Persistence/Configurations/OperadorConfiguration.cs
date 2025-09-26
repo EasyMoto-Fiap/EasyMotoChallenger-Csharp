@@ -6,18 +6,46 @@ namespace EasyMoto.Infrastructure.Persistence.Configurations
 {
     public class OperadorConfiguration : IEntityTypeConfiguration<Operador>
     {
-        public void Configure(EntityTypeBuilder<Operador> builder)
+        public void Configure(EntityTypeBuilder<Operador> b)
         {
-            builder.ToTable("operador");
-            builder.HasKey(x => x.IdOperador);
-            builder.Property(x => x.IdOperador).HasColumnName("id_operador");
-            builder.Property(x => x.NomeOperador).HasColumnName("nome_opr").HasMaxLength(100).IsRequired();
-            builder.Property(x => x.Cpf).HasColumnName("cpf_opr").HasMaxLength(11).IsRequired();
-            builder.HasIndex(x => x.Cpf).IsUnique();
-            builder.Property(x => x.Telefone).HasColumnName("telefone_opr").HasMaxLength(14).IsRequired();
-            builder.Property(x => x.Email).HasColumnName("email_opr").HasMaxLength(100).IsRequired();
-            builder.Property(x => x.FilialId).HasColumnName("filial_id").IsRequired();
-            builder.HasOne(x => x.Filial).WithMany().HasForeignKey(x => x.FilialId).OnDelete(DeleteBehavior.Restrict);
+            b.ToTable("operador");
+
+            b.HasKey(x => x.Id);
+
+            b.Property(x => x.Id)
+                .HasColumnName("id_operador")
+                .ValueGeneratedOnAdd();
+
+            b.Property(x => x.NomeOperador)
+                .HasColumnName("nome_opr")
+                .HasMaxLength(100)
+                .IsRequired();
+
+            b.Property(x => x.Cpf)
+                .HasColumnName("cpf_opr")
+                .HasMaxLength(11)
+                .IsRequired();
+
+            b.Property(x => x.Telefone)
+                .HasColumnName("telefone_opr")
+                .HasMaxLength(14)
+                .IsRequired();
+
+            b.Property(x => x.Email)
+                .HasColumnName("email_opr")
+                .HasMaxLength(100)
+                .IsRequired();
+
+            b.Property(x => x.FilialId)
+                .HasColumnName("filial_id")
+                .IsRequired();
+
+            b.HasIndex(x => x.Cpf).IsUnique();
+
+            b.HasOne<Filial>()
+                .WithMany()
+                .HasForeignKey(x => x.FilialId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

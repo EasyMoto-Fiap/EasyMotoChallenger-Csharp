@@ -4,16 +4,25 @@ using EasyMoto.Domain.ValueObjects;
 
 namespace EasyMoto.Application.Clientes
 {
-    public sealed class AtualizarClienteHandler
+    public class AtualizarClienteHandler
     {
         private readonly IClienteRepository _repo;
-        public AtualizarClienteHandler(IClienteRepository repo) => _repo = repo;
 
-        public async Task ExecuteAsync(Guid id, AtualizarClienteRequest req, CancellationToken ct = default)
+        public AtualizarClienteHandler(IClienteRepository repo)
+        {
+            _repo = repo;
+        }
+
+        public async Task ExecuteAsync(Guid id, AtualizarClienteRequest req, CancellationToken ct)
         {
             var entity = await _repo.GetByIdAsync(id, ct);
-            if (entity is null) throw new KeyNotFoundException("Cliente não encontrado.");
-            entity.Update(req.Nome, new Cpf(req.Cpf), new Telefone(req.Telefone), new Email(req.Email));
+            if (entity is null) return;
+
+            var cpf = Cpf.Create(req.Cpf);
+            var telefone = new Telefone(req.Telefone);
+            var email = new Email(req.Email);
+
+            entity.Update(req.Nome, cpf, telefone, email);
             await _repo.UpdateAsync(entity, ct);
         }
     }

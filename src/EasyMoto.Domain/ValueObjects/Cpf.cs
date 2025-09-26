@@ -1,47 +1,64 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using EasyMoto.Domain.Abstractions;
-
 namespace EasyMoto.Domain.ValueObjects;
 
-public sealed class Cpf : ValueObject
+public sealed class Cpf : IEquatable<Cpf>
 {
     public string Value { get; }
+    private Cpf(string value) { Value = value; }
 
-    public Cpf(string value)
+    public static Cpf Create(string input)
     {
-        if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("CPF inválido");
-
-        var digits = new string(value.Where(char.IsDigit).ToArray());
-        if (digits.Length != 11) throw new ArgumentException("CPF inválido");
-        if (!IsValid(digits)) throw new ArgumentException("CPF inválido");
-
-        Value = Convert.ToUInt64(digits).ToString(@"000\.000\.000\-00");
+        var digits = OnlyDigits(input);
+        if (!IsValidInternal(digits)) throw new ArgumentException("CPF inválido");
+        return new Cpf(digits);
     }
 
-    static bool IsValid(string d)
+    public static bool TryCreate(string input, out Cpf? cpf)
     {
-        if (new string(d[0], 11) == d) return false;
-
-        int Sum(int len, int wstart)
+        try
         {
-            var s = 0;
-            for (int i = 0; i < len; i++) s += (d[i] - '0') * (wstart - i);
-            return s;
+            cpf = Create(input);
+            return true;
         }
-
-        var dv1 = (Sum(9, 10) * 10) % 11; if (dv1 == 10) dv1 = 0;
-        var dv2 = (Sum(10, 11) * 10) % 11; if (dv2 == 10) dv2 = 0;
-
-        return (d[9] - '0') == dv1 && (d[10] - '0') == dv2;
+        catch
+        {
+            cpf = null;
+            return false;
+        }
     }
 
-    protected override IEnumerable<object?> GetEqualityComponents()
+    public override string ToString() => Value;
+
+    public bool Equals(Cpf? other) => other is not null && Value == other.Value;
+    public override bool Equals(object? obj) => obj is Cpf other && Equals(other);
+    public override int GetHashCode() => Value.GetHashCode();
+
+    static string OnlyDigits(string input)
     {
-        yield return Value;
+        if (string.IsNullOrWhiteSpace(input)) return string.Empty;
+        var buffer = new char[input.Length];
+        var n = 0;
+        foreach (var ch in input)
+            if (char.IsDigit(ch)) buffer[n++] = ch;
+        return new string(buffer, 0, n);
     }
 
-    public static implicit operator string(Cpf c) => c.Value;
-    public static implicit operator Cpf(string value) => new(value);
+    static bool IsValidInternal(string digits)
+    {
+        if (digits.Length != 11) return false;
+        var allEqual = true;
+        for (var i = 1; i < 11 && allEqual; i++) if (digits[i] != digits[0]) allEqual = false;
+        if (allEqual) return false;
+
+        var sum = 0;
+        for (var i = 0; i < 9; i++) sum += (digits[i] - '0') * (10 - i);
+        var r = sum % 11;
+        var dv1 = r < 2 ? 0 : 11 - r;
+        if ((digits[9] - '0') != dv1) return false;
+
+        sum = 0;
+        for (var i = 0; i < 10; i++) sum += (digits[i] - '0') * (11 - i);
+        r = sum % 11;
+        var dv2 = r < 2 ? 0 : 11 - r;
+        return (digits[10] - '0') == dv2;
+    }
 }

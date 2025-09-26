@@ -5,14 +5,22 @@ using EasyMoto.Domain.ValueObjects;
 
 namespace EasyMoto.Application.Clientes
 {
-    public sealed class CriarClienteHandler
+    public class CriarClienteHandler
     {
         private readonly IClienteRepository _repo;
-        public CriarClienteHandler(IClienteRepository repo) => _repo = repo;
 
-        public async Task<ClienteResponse> ExecuteAsync(CriarClienteRequest req, CancellationToken ct = default)
+        public CriarClienteHandler(IClienteRepository repo)
         {
-            var entity = new Cliente(req.Nome, new Cpf(req.Cpf), new Telefone(req.Telefone), new Email(req.Email));
+            _repo = repo;
+        }
+
+        public async Task<ClienteResponse> ExecuteAsync(CriarClienteRequest req, CancellationToken ct)
+        {
+            var cpf = Cpf.Create(req.Cpf);
+            var telefone = new Telefone(req.Telefone);
+            var email = new Email(req.Email);
+
+            var entity = new Cliente(req.Nome, cpf, telefone, email);
             await _repo.AddAsync(entity, ct);
 
             return new ClienteResponse

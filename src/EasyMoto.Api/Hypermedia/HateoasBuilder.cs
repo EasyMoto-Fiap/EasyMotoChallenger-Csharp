@@ -1,24 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
+using EasyMoto.Application.Shared.Hateoas;
 
 namespace EasyMoto.Api.Hypermedia;
 
 public static class HateoasBuilder
 {
-    public static ResourceDto<T> WithLinks<T>(T data, IEnumerable<LinkDto> links)
+    public static IEnumerable<Link> PagingLinksByCount(IUrlHelper url, string routeName, int page, int pageSize, int itemsCount)
     {
-        var r = new ResourceDto<T>(data);
-        r.Links.AddRange(links);
-        return r;
-    }
-
-    public static IEnumerable<LinkDto> PagingLinks(IUrlHelper url, string routeName, int page, int size, bool hasPrev, bool hasNext)
-    {
-        var list = new List<LinkDto>
+        var links = new List<Link>
         {
-            new() { Rel = "self", Href = url.Link(routeName, new { page, size }) ?? string.Empty, Method = "GET" }
+            new("self", url.Link(routeName, new { page, pageSize })!, "GET")
         };
-        if (hasPrev) list.Add(new LinkDto { Rel = "prev", Href = url.Link(routeName, new { page = page - 1, size }) ?? string.Empty, Method = "GET" });
-        if (hasNext) list.Add(new LinkDto { Rel = "next", Href = url.Link(routeName, new { page = page + 1, size }) ?? string.Empty, Method = "GET" });
-        return list;
+        if (page > 1)
+            links.Add(new("prev", url.Link(routeName, new { page = page - 1, pageSize })!, "GET"));
+        if (itemsCount >= pageSize)
+            links.Add(new("next", url.Link(routeName, new { page = page + 1, pageSize })!, "GET"));
+        return links;
     }
 }

@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using EasyMoto.Domain.Entities;
 using EasyMoto.Domain.Repositories;
 using EasyMoto.Infrastructure.Persistence;
@@ -11,53 +7,56 @@ namespace EasyMoto.Infrastructure.Repositories
 {
     public class OperadorRepository : IOperadorRepository
     {
-        private readonly AppDbContext _db;
+        private readonly AppDbContext _context;
 
-        public OperadorRepository(AppDbContext db)
+        public OperadorRepository(AppDbContext context)
         {
-            _db = db;
+            _context = context;
         }
 
-        public async Task AddAsync(Operador entity, CancellationToken ct = default)
+        public async Task AddAsync(Operador entity, CancellationToken ct)
         {
-            await _db.Operadores.AddAsync(entity, ct);
-            await _db.SaveChangesAsync(ct);
+            await _context.Set<Operador>().AddAsync(entity, ct);
+            await _context.SaveChangesAsync(ct);
         }
 
-        public async Task UpdateAsync(Operador entity, CancellationToken ct = default)
+        public async Task<Operador?> GetByIdAsync(int id, CancellationToken ct)
         {
-            _db.Operadores.Update(entity);
-            await _db.SaveChangesAsync(ct);
+            return await _context.Set<Operador>()
+                .FirstOrDefaultAsync(x => x.Id == id, ct);
         }
 
-        public async Task DeleteAsync(int id, CancellationToken ct = default)
+        public async Task<IReadOnlyList<Operador>> ListAsync(int page, int size, CancellationToken ct)
         {
-            var entity = await _db.Operadores.FirstOrDefaultAsync(o => o.Id == id, ct);
-            if (entity == null) return;
-            _db.Operadores.Remove(entity);
-            await _db.SaveChangesAsync(ct);
-        }
-
-        public async Task<Operador?> GetByIdAsync(int id, CancellationToken ct = default)
-        {
-            return await _db.Operadores.AsNoTracking().FirstOrDefaultAsync(o => o.Id == id, ct);
-        }
-
-        public async Task<IReadOnlyList<Operador>> ListAsync(int page, int size, CancellationToken ct = default)
-        {
-            if (page < 1) page = 1;
-            if (size < 1) size = 10;
-            return await _db.Operadores
+            return await _context.Set<Operador>()
                 .AsNoTracking()
-                .OrderBy(o => o.IdOperador)
+                .OrderBy(x => x.Id)
                 .Skip((page - 1) * size)
                 .Take(size)
                 .ToListAsync(ct);
         }
 
-        public async Task<int> CountAsync(CancellationToken ct = default)
+        public async Task<int> CountAsync(CancellationToken ct)
         {
-            return await _db.Operadores.AsNoTracking().CountAsync(ct);
+            return await _context.Set<Operador>().CountAsync(ct);
+        }
+
+        public async Task UpdateAsync(Operador entity, CancellationToken ct)
+        {
+            _context.Set<Operador>().Update(entity);
+            await _context.SaveChangesAsync(ct);
+        }
+
+        public async Task DeleteAsync(int id, CancellationToken ct)
+        {
+            var entity = await _context.Set<Operador>()
+                .FirstOrDefaultAsync(x => x.Id == id, ct);
+
+            if (entity != null)
+            {
+                _context.Set<Operador>().Remove(entity);
+                await _context.SaveChangesAsync(ct);
+            }
         }
     }
 }

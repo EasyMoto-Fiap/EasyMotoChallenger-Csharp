@@ -9,52 +9,52 @@ namespace EasyMoto.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class OperadoresController : ControllerBase
+    public sealed class OperadoresController : ControllerBase
     {
-        private readonly CriarOperadorHandler _criar;
-        private readonly AtualizarOperadorHandler _atualizar;
-        private readonly ObterOperadorPorIdHandler _obter;
-        private readonly ListarOperadoresHandler _listar;
-        private readonly ExcluirOperadorHandler _excluir;
+        private readonly ListarOperadoresHandler _list;
+        private readonly ObterOperadorPorIdHandler _getById;
+        private readonly CriarOperadorHandler _create;
+        private readonly AtualizarOperadorHandler _update;
+        private readonly ExcluirOperadorHandler _delete;
 
         public OperadoresController(
-            CriarOperadorHandler criar,
-            AtualizarOperadorHandler atualizar,
-            ObterOperadorPorIdHandler obter,
-            ListarOperadoresHandler listar,
-            ExcluirOperadorHandler excluir)
+            ListarOperadoresHandler list,
+            ObterOperadorPorIdHandler getById,
+            CriarOperadorHandler create,
+            AtualizarOperadorHandler update,
+            ExcluirOperadorHandler delete)
         {
-            _criar = criar;
-            _atualizar = atualizar;
-            _obter = obter;
-            _listar = listar;
-            _excluir = excluir;
+            _list = list;
+            _getById = getById;
+            _create = create;
+            _update = update;
+            _delete = delete;
         }
 
         [HttpGet(Name = "GetOperadores")]
         [ProducesResponseType(typeof(PagedResource<OperadorResponse>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<PagedResource<OperadorResponse>>> Get([FromQuery] PageQuery query, CancellationToken ct)
+        public async Task<ActionResult<PagedResource<OperadorResponse>>> Get([FromQuery] int page = 1, [FromQuery] int size = 20, CancellationToken ct = default)
         {
-            var result = await _listar.ExecuteAsync(query, ct);
+            var result = await _list.ExecuteAsync(new PageQuery(page, size), ct);
             var itemsCount = result.Items.Count();
-            var links = HateoasBuilder.PagingLinksByCount(Url, "GetOperadores", query.Page, query.Size, itemsCount);
-            var payload = new PagedResource<OperadorResponse>(result.Items, query.Page, query.Size, itemsCount, links);
+            var links = HateoasBuilder.PagingLinksByCount(Url, "GetOperadores", page, size, itemsCount);
+            var payload = new PagedResource<OperadorResponse>(result.Items, page, size, itemsCount, links);
             return Ok(payload);
         }
 
         [HttpGet("{id:int}", Name = "GetOperadorById")]
         [ProducesResponseType(typeof(Resource<OperadorResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Resource<OperadorResponse>>> GetById(int id, CancellationToken ct)
+        public async Task<ActionResult<Resource<OperadorResponse>>> GetById(int id, CancellationToken ct = default)
         {
-            var item = await _obter.ExecuteAsync(id, ct);
+            var item = await _getById.ExecuteAsync(id, ct);
             if (item is null) return NotFound();
             var links = new[]
             {
                 new Link("self", Url.Link("GetOperadorById", new { id })!, "GET"),
                 new Link("update", Url.Link("UpdateOperador", new { id })!, "PUT"),
                 new Link("delete", Url.Link("DeleteOperador", new { id })!, "DELETE"),
-                new Link("collection", Url.Link("GetOperadores", new { page = 1, pageSize = 10 })!, "GET")
+                new Link("collection", Url.Link("GetOperadores", new { page = 1, pageSize = 20 })!, "GET")
             };
             return Ok(new Resource<OperadorResponse>(item, links));
         }
@@ -62,37 +62,42 @@ namespace EasyMoto.Api.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(Resource<OperadorResponse>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Resource<OperadorResponse>>> Post([FromBody] CriarOperadorRequest request, CancellationToken ct)
+        public async Task<ActionResult<Resource<OperadorResponse>>> Post([FromBody] CriarOperadorRequest req, CancellationToken ct = default)
         {
-            var created = await _criar.ExecuteAsync(request, ct);
+            var created = await _create.ExecuteAsync(req, ct);
             var links = new[]
             {
                 new Link("self", Url.Link("GetOperadorById", new { id = created.Id })!, "GET"),
                 new Link("update", Url.Link("UpdateOperador", new { id = created.Id })!, "PUT"),
                 new Link("delete", Url.Link("DeleteOperador", new { id = created.Id })!, "DELETE"),
-                new Link("collection", Url.Link("GetOperadores", new { page = 1, pageSize = 10 })!, "GET")
+                new Link("collection", Url.Link("GetOperadores", new { page = 1, pageSize = 20 })!, "GET")
             };
             return CreatedAtAction(nameof(GetById), new { id = created.Id }, new Resource<OperadorResponse>(created, links));
         }
 
         [HttpPut("{id:int}", Name = "UpdateOperador")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Put(int id, [FromBody] AtualizarOperadorRequest request, CancellationToken ct)
+        public async Task<IActionResult> Put(int id, [FromBody] AtualizarOperadorRequest req, CancellationToken ct = default)
         {
-            if (id != request.Id) return BadRequest();
-            var ok = await _atualizar.ExecuteAsync(request, ct);
-            if (!ok) return NotFound();
+            var cmd = new AtualizarOperadorRequest(
+                id,
+                req.NomeOperador,
+                req.Cpf,
+                req.Telefone,
+                req.Email,
+                req.FilialId
+            );
+
+            await _update.ExecuteAsync(cmd, ct);
+            return NoContent();
+        }
+        [HttpDelete("{id:int}", Name = "DeleteOperador")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> Delete(int id, CancellationToken ct = default)
+        {
+            await _delete.ExecuteAsync(id, ct);
             return NoContent();
         }
 
-        [HttpDelete("{id:int}", Name = "DeleteOperador")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> Delete(int id, CancellationToken ct)
-        {
-            await _excluir.ExecuteAsync(id, ct);
-            return NoContent();
-        }
     }
 }

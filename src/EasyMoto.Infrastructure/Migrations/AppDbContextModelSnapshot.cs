@@ -28,12 +28,34 @@ namespace EasyMoto.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("Cpf")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("character varying(11)")
+                        .HasColumnName("cpf_cliente");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("email_cliente");
+
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(120)
-                        .HasColumnType("character varying(120)");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("nome_cliente");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("character varying(15)")
+                        .HasColumnName("telefone_cliente");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Cpf")
+                        .IsUnique();
 
                     b.ToTable("clientes", (string)null);
                 });
@@ -244,12 +266,12 @@ namespace EasyMoto.Infrastructure.Migrations
 
             modelBuilder.Entity("EasyMoto.Domain.Entities.Operador", b =>
                 {
-                    b.Property<int>("IdOperador")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasColumnName("id_operador");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdOperador"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Cpf")
                         .IsRequired()
@@ -279,7 +301,7 @@ namespace EasyMoto.Infrastructure.Migrations
                         .HasColumnType("character varying(14)")
                         .HasColumnName("telefone_opr");
 
-                    b.HasKey("IdOperador");
+                    b.HasKey("Id");
 
                     b.HasIndex("Cpf")
                         .IsUnique();
@@ -362,75 +384,6 @@ namespace EasyMoto.Infrastructure.Migrations
                     b.ToTable("vagas", (string)null);
                 });
 
-            modelBuilder.Entity("EasyMoto.Domain.Entities.Cliente", b =>
-                {
-                    b.OwnsOne("EasyMoto.Domain.ValueObjects.Cpf", "Cpf", b1 =>
-                        {
-                            b1.Property<Guid>("ClienteId")
-                                .HasColumnType("uuid");
-
-                            b1.Property<string>("Value")
-                                .IsRequired()
-                                .HasMaxLength(14)
-                                .HasColumnType("character varying(14)")
-                                .HasColumnName("cpf");
-
-                            b1.HasKey("ClienteId");
-
-                            b1.ToTable("clientes");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ClienteId");
-                        });
-
-                    b.OwnsOne("EasyMoto.Domain.ValueObjects.Email", "Email", b1 =>
-                        {
-                            b1.Property<Guid>("ClienteId")
-                                .HasColumnType("uuid");
-
-                            b1.Property<string>("Value")
-                                .IsRequired()
-                                .HasMaxLength(160)
-                                .HasColumnType("character varying(160)")
-                                .HasColumnName("email");
-
-                            b1.HasKey("ClienteId");
-
-                            b1.ToTable("clientes");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ClienteId");
-                        });
-
-                    b.OwnsOne("EasyMoto.Domain.ValueObjects.Telefone", "Telefone", b1 =>
-                        {
-                            b1.Property<Guid>("ClienteId")
-                                .HasColumnType("uuid");
-
-                            b1.Property<string>("Value")
-                                .IsRequired()
-                                .HasMaxLength(11)
-                                .HasColumnType("character varying(11)")
-                                .HasColumnName("telefone");
-
-                            b1.HasKey("ClienteId");
-
-                            b1.ToTable("clientes");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ClienteId");
-                        });
-
-                    b.Navigation("Cpf")
-                        .IsRequired();
-
-                    b.Navigation("Email")
-                        .IsRequired();
-
-                    b.Navigation("Telefone")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("EasyMoto.Domain.Entities.ClienteLocacao", b =>
                 {
                     b.OwnsOne("EasyMoto.Domain.ValueObjects.Periodo", "Periodo", b1 =>
@@ -482,13 +435,11 @@ namespace EasyMoto.Infrastructure.Migrations
 
             modelBuilder.Entity("EasyMoto.Domain.Entities.Operador", b =>
                 {
-                    b.HasOne("EasyMoto.Domain.Entities.Filial", "Filial")
+                    b.HasOne("EasyMoto.Domain.Entities.Filial", null)
                         .WithMany()
                         .HasForeignKey("FilialId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("Filial");
                 });
 
             modelBuilder.Entity("EasyMoto.Domain.Entities.Vaga", b =>

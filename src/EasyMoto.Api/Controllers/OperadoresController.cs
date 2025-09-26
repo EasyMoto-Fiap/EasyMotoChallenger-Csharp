@@ -32,6 +32,7 @@ namespace EasyMoto.Api.Controllers
         }
 
         [HttpGet(Name = "GetOperadores")]
+        [ProducesResponseType(typeof(PagedResource<OperadorResponse>), StatusCodes.Status200OK)]
         public async Task<ActionResult<PagedResource<OperadorResponse>>> Get([FromQuery] PageQuery query, CancellationToken ct)
         {
             var result = await _listar.ExecuteAsync(query, ct);
@@ -42,6 +43,8 @@ namespace EasyMoto.Api.Controllers
         }
 
         [HttpGet("{id:int}", Name = "GetOperadorById")]
+        [ProducesResponseType(typeof(Resource<OperadorResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Resource<OperadorResponse>>> GetById(int id, CancellationToken ct)
         {
             var item = await _obter.ExecuteAsync(id, ct);
@@ -57,6 +60,8 @@ namespace EasyMoto.Api.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(Resource<OperadorResponse>), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Resource<OperadorResponse>>> Post([FromBody] CriarOperadorRequest request, CancellationToken ct)
         {
             var created = await _criar.ExecuteAsync(request, ct);
@@ -71,6 +76,9 @@ namespace EasyMoto.Api.Controllers
         }
 
         [HttpPut("{id:int}", Name = "UpdateOperador")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Put(int id, [FromBody] AtualizarOperadorRequest request, CancellationToken ct)
         {
             if (id != request.Id) return BadRequest();
@@ -80,6 +88,7 @@ namespace EasyMoto.Api.Controllers
         }
 
         [HttpDelete("{id:int}", Name = "DeleteOperador")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Delete(int id, CancellationToken ct)
         {
             await _excluir.ExecuteAsync(id, ct);

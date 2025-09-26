@@ -111,3 +111,6 @@ C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Api\obj\Debu
 C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Api\obj\Debug\net8.0\EasyMoto.Api.pdb
 C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Api\obj\Debug\net8.0\EasyMoto.Api.genruntimeconfig.cache
 C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Api\obj\Debug\net8.0\ref\EasyMoto.Api.dll
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Api\bin\Debug\net8.0\Scrutor.dll
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll

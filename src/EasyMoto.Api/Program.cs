@@ -43,11 +43,7 @@ builder.Services.AddScoped<ExcluirClienteHandler>();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwaggerDocumentation();
-}
-
+app.UseSwaggerDocumentation();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

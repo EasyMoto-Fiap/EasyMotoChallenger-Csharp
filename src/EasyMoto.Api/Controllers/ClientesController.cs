@@ -1,9 +1,11 @@
 using EasyMoto.Api.Hypermedia;
+using EasyMoto.Api.Swagger.Examples.Clientes;
 using EasyMoto.Application.Clientes;
 using EasyMoto.Application.Clientes.Contracts;
 using EasyMoto.Application.Shared.Hateoas;
 using EasyMoto.Application.Shared.Pagination;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace EasyMoto.Api.Controllers
 {
@@ -45,6 +47,7 @@ namespace EasyMoto.Api.Controllers
         [HttpGet("{id:guid}", Name = "GetClienteById")]
         [ProducesResponseType(typeof(Resource<ClienteResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [SwaggerResponseExample(StatusCodes.Status200OK, typeof(ResourceClienteResponseExample))]
         public async Task<ActionResult<Resource<ClienteResponse>>> GetById(Guid id, CancellationToken ct = default)
         {
             var item = await _getById.ExecuteAsync(id, ct);
@@ -62,6 +65,8 @@ namespace EasyMoto.Api.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(Resource<ClienteResponse>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [SwaggerRequestExample(typeof(CriarClienteRequest), typeof(CriarClienteRequestExample))]
+        [SwaggerResponseExample(StatusCodes.Status201Created, typeof(ResourceClienteResponseExample))]
         public async Task<ActionResult<Resource<ClienteResponse>>> Post([FromBody] CriarClienteRequest req, CancellationToken ct = default)
         {
             var created = await _create.ExecuteAsync(req, ct);

@@ -8,15 +8,16 @@ namespace EasyMoto.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Operador> builder)
         {
-            builder.ToTable("operadores");
-            builder.HasKey(o => o.Id);
-            builder.Property(o => o.Id).HasColumnName("Id").IsRequired();
-            builder.Property(o => o.NomeOperador).HasColumnName("NomeOperador").HasMaxLength(120).IsRequired();
-            builder.Property(o => o.Cpf).HasColumnName("cpf").HasMaxLength(14).IsRequired();
-            builder.Property(o => o.Telefone).HasColumnName("telefone").HasMaxLength(11).IsRequired();
-            builder.Property(o => o.Email).HasColumnName("email").HasMaxLength(160).IsRequired();
-            builder.Property(o => o.FilialId).HasColumnName("FilialId").IsRequired();
-            builder.HasOne(o => o.Filial).WithMany().HasForeignKey(o => o.FilialId);
+            builder.ToTable("operador");
+            builder.HasKey(x => x.IdOperador);
+            builder.Property(x => x.IdOperador).HasColumnName("id_operador");
+            builder.Property(x => x.NomeOperador).HasColumnName("nome_opr").HasMaxLength(100).IsRequired();
+            builder.Property(x => x.Cpf).HasColumnName("cpf_opr").HasMaxLength(11).IsRequired();
+            builder.HasIndex(x => x.Cpf).IsUnique();
+            builder.Property(x => x.Telefone).HasColumnName("telefone_opr").HasMaxLength(14).IsRequired();
+            builder.Property(x => x.Email).HasColumnName("email_opr").HasMaxLength(100).IsRequired();
+            builder.Property(x => x.FilialId).HasColumnName("filial_id").IsRequired();
+            builder.HasOne(x => x.Filial).WithMany().HasForeignKey(x => x.FilialId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

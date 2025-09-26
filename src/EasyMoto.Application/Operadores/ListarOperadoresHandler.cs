@@ -16,7 +16,7 @@ namespace EasyMoto.Application.Operadores
         public async Task<PagedResult<OperadorResponse>> ExecuteAsync(PageQuery query, CancellationToken ct)
         {
             var items = await _repo.ListAsync(query.Page, query.Size, ct);
-            var total = items.Count;
+            var total = await _repo.CountAsync(ct);
             var data = items.Select(o => new OperadorResponse(o.Id, o.NomeOperador, o.Cpf, o.Telefone, o.Email, o.FilialId));
             return new PagedResult<OperadorResponse>(data, query.Page, query.Size, total);
         }

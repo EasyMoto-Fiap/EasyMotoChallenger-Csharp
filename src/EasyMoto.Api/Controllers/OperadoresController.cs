@@ -1,7 +1,6 @@
 using EasyMoto.Application.Operadores;
 using EasyMoto.Application.Operadores.Contracts;
 using EasyMoto.Application.Shared.Pagination;
-using EasyMoto.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EasyMoto.Api.Controllers
@@ -10,56 +9,61 @@ namespace EasyMoto.Api.Controllers
     [Route("api/[controller]")]
     public class OperadoresController : ControllerBase
     {
-        private readonly CriarOperadorHandler _create;
-        private readonly AtualizarOperadorHandler _update;
-        private readonly ExcluirOperadorHandler _delete;
-        private readonly ObterOperadorPorIdHandler _getById;
-        private readonly ListarOperadoresHandler _list;
+        private readonly CriarOperadorHandler _criar;
+        private readonly AtualizarOperadorHandler _atualizar;
+        private readonly ObterOperadorPorIdHandler _obter;
+        private readonly ListarOperadoresHandler _listar;
+        private readonly ExcluirOperadorHandler _excluir;
 
-        public OperadoresController(IOperadorRepository repo)
+        public OperadoresController(
+            CriarOperadorHandler criar,
+            AtualizarOperadorHandler atualizar,
+            ObterOperadorPorIdHandler obter,
+            ListarOperadoresHandler listar,
+            ExcluirOperadorHandler excluir)
         {
-            _create = new CriarOperadorHandler(repo);
-            _update = new AtualizarOperadorHandler(repo);
-            _delete = new ExcluirOperadorHandler(repo);
-            _getById = new ObterOperadorPorIdHandler(repo);
-            _list = new ListarOperadoresHandler(repo);
+            _criar = criar;
+            _atualizar = atualizar;
+            _obter = obter;
+            _listar = listar;
+            _excluir = excluir;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] int page = 1, [FromQuery] int size = 10, CancellationToken ct = default)
+        public async Task<ActionResult<PagedResult<OperadorResponse>>> Get([FromQuery] PageQuery query, CancellationToken ct)
         {
-            var result = await _list.ExecuteAsync(new PageQuery(page, size), ct);
+            var result = await _listar.ExecuteAsync(query, ct);
             return Ok(result);
         }
 
-        [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetById(Guid id, CancellationToken ct)
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<OperadorResponse>> GetById(int id, CancellationToken ct)
         {
-            var result = await _getById.ExecuteAsync(id, ct);
-            if (result == null) return NotFound();
+            var result = await _obter.ExecuteAsync(id, ct);
+            if (result is null) return NotFound();
             return Ok(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CriarOperadorRequest req, CancellationToken ct)
+        public async Task<ActionResult<OperadorResponse>> Post([FromBody] CriarOperadorRequest request, CancellationToken ct)
         {
-            var result = await _create.ExecuteAsync(req, ct);
-            return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
+            var created = await _criar.ExecuteAsync(request, ct);
+            return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
         }
 
-        [HttpPut("{id:guid}")]
-        public async Task<IActionResult> Put(Guid id, [FromBody] AtualizarOperadorRequest req, CancellationToken ct)
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Put(int id, [FromBody] AtualizarOperadorRequest request, CancellationToken ct)
         {
-            if (id != req.Id) return BadRequest();
-            var ok = await _update.ExecuteAsync(req, ct);
+            if (id != request.Id) return BadRequest();
+            var ok = await _atualizar.ExecuteAsync(request, ct);
             if (!ok) return NotFound();
             return NoContent();
         }
 
-        [HttpDelete("{id:guid}")]
-        public async Task<IActionResult> Delete(Guid id, CancellationToken ct)
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id, CancellationToken ct)
         {
-            await _delete.ExecuteAsync(id, ct);
+            await _excluir.ExecuteAsync(id, ct);
             return NoContent();
         }
     }

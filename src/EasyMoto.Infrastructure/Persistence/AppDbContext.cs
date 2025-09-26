@@ -31,6 +31,12 @@ namespace EasyMoto.Infrastructure.Persistence
             modelBuilder.ApplyConfiguration(new FuncionarioConfiguration());
             modelBuilder.ApplyConfiguration(new PatioConfiguration());
             modelBuilder.ApplyConfiguration(new OperadorConfiguration());
+
+            modelBuilder.Entity<Empresa>()
+                .HasMany(e => e.Filiais)
+                .WithOne(f => f.Empresa)
+                .HasForeignKey(f => f.EmpresaId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

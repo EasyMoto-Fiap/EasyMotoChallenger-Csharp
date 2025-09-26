@@ -12,7 +12,7 @@ namespace EasyMoto.Application.Operadores
             _repo = repo;
         }
 
-        public async Task<OperadorResponse?> ExecuteAsync(Guid id, CancellationToken ct)
+        public async Task<OperadorResponse?> ExecuteAsync(int id, CancellationToken ct)
         {
             var entity = await _repo.GetByIdAsync(id, ct);
             if (entity == null) return null;

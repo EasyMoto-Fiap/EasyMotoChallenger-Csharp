@@ -11,9 +11,9 @@ namespace EasyMoto.Application.Operadores
             _repo = repo;
         }
 
-        public async Task ExecuteAsync(Guid id, CancellationToken ct)
+        public async Task ExecuteAsync(int id, CancellationToken ct)
         {
             await _repo.DeleteAsync(id, ct);
         }
     }
-} 
+}

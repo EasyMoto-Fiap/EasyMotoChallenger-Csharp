@@ -10,7 +10,7 @@ public sealed class ListarVagasHandler
 
     public ListarVagasHandler(IVagaRepository repo) => _repo = repo;
 
-    public async Task<PagedResult<VagaResponse>> ExecuteAsync(PageQuery query, CancellationToken ct)
+    public async Task<PagedResult<VagaResponse>> ExecuteAsync(PageQuery query, CancellationToken ct = default)
     {
         var total = await _repo.CountAsync(ct);
         var items = await _repo.ListAsync(query.Page, query.Size, ct);

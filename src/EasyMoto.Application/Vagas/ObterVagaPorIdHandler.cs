@@ -9,7 +9,7 @@ public sealed class ObterVagaPorIdHandler
 
     public ObterVagaPorIdHandler(IVagaRepository repo) => _repo = repo;
 
-    public async Task<VagaResponse?> ExecuteAsync(int id, CancellationToken ct)
+    public async Task<VagaResponse?> ExecuteAsync(int id, CancellationToken ct = default)
     {
         var e = await _repo.GetByIdAsync(id, ct);
         if (e is null) return null;

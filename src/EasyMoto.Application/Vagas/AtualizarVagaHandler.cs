@@ -14,11 +14,10 @@ public sealed class AtualizarVagaHandler
         var entity = await _repo.GetByIdAsync(id, ct);
         if (entity is null) return false;
 
-        var duplicada = await _repo.ExistsNumeroAsync(entity.PatioId, req.NumeroVaga, id, ct);
+        var duplicada = await _repo.ExistsNumeroAsync(req.PatioId, req.NumeroVaga, id, ct);
         if (duplicada) throw new InvalidOperationException("Já existe uma vaga com esse número neste pátio.");
 
-        entity.Update(entity.PatioId, req.NumeroVaga, req.Ocupada, req.MotoId);
-
+        entity.Update(req.PatioId, req.NumeroVaga, req.Ocupada, req.MotoId);
         await _repo.UpdateAsync(entity, ct);
         return true;
     }

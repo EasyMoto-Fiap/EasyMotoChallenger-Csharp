@@ -16,7 +16,6 @@ public sealed class CriarVagaHandler
         if (exists) throw new InvalidOperationException("Já existe uma vaga com esse número neste pátio.");
 
         var entity = new Vaga(req.PatioId, req.NumeroVaga, req.Ocupada, req.MotoId);
-
         await _repo.AddAsync(entity, ct);
 
         return new VagaResponse

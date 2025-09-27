@@ -1,60 +1,48 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using EasyMoto.Domain.Entities;
 using EasyMoto.Domain.Repositories;
 using EasyMoto.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace EasyMoto.Infrastructure.Repositories
+namespace EasyMoto.Infrastructure.Repositories;
+
+public sealed class LocalizacaoRepository : ILocalizacaoRepository
 {
-    public class LocalizacaoRepository : ILocalizacaoRepository
+    private readonly AppDbContext _db;
+
+    public LocalizacaoRepository(AppDbContext db) => _db = db;
+
+    public Task<int> CountAsync(CancellationToken ct) =>
+        _db.Localizacoes.AsNoTracking().CountAsync(ct);
+
+    public async Task<IReadOnlyList<Localizacao>> ListAsync(int page, int size, CancellationToken ct)
     {
-        private readonly AppDbContext _db;
+        var skip = page <= 1 ? 0 : (page - 1) * size;
 
-        public LocalizacaoRepository(AppDbContext db)
-        {
-            _db = db;
-        }
+        return await _db.Localizacoes
+            .AsNoTracking()
+            .OrderBy(l => l.Id)
+            .Skip(skip)
+            .Take(size)
+            .ToListAsync(ct);
+    }
 
-        public async Task<Localizacao?> GetByIdAsync(Guid id, CancellationToken ct)
-        {
-            return await _db.Set<Localizacao>().AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, ct);
-        }
+    public Task<Localizacao?> GetByIdAsync(int id, CancellationToken ct) =>
+        _db.Localizacoes.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, ct);
 
-        public async Task<List<Localizacao>> ListAsync(int page, int size, CancellationToken ct)
-        {
-            return await _db.Set<Localizacao>()
-                .AsNoTracking()
-                .OrderBy(x => x.DataHora)
-                .Skip((page - 1) * size)
-                .Take(size)
-                .ToListAsync(ct);
-        }
+    public async Task AddAsync(Localizacao entity, CancellationToken ct)
+    {
+        _db.Localizacoes.Add(entity);
+        await _db.SaveChangesAsync(ct);
+    }
 
-        public async Task<int> CountAsync(CancellationToken ct)
-        {
-            return await _db.Set<Localizacao>().CountAsync(ct);
-        }
+    public async Task UpdateAsync(Localizacao entity, CancellationToken ct)
+    {
+        _db.Localizacoes.Update(entity);
+        await _db.SaveChangesAsync(ct);
+    }
 
-        public async Task AddAsync(Localizacao entity, CancellationToken ct)
-        {
-            await _db.Set<Localizacao>().AddAsync(entity, ct);
-            await _db.SaveChangesAsync(ct);
-        }
-
-        public async Task UpdateAsync(Localizacao entity, CancellationToken ct)
-        {
-            _db.Set<Localizacao>().Update(entity);
-            await _db.SaveChangesAsync(ct);
-        }
-
-        public async Task DeleteAsync(Localizacao entity, CancellationToken ct)
-        {
-            _db.Set<Localizacao>().Remove(entity);
-            await _db.SaveChangesAsync(ct);
-        }
+    public async Task DeleteAsync(int id, CancellationToken ct)
+    {
+        await _db.Localizacoes.Where(x => x.Id == id).ExecuteDeleteAsync(ct);
     }
 }

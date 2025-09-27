@@ -8,17 +8,18 @@ namespace EasyMoto.Application.Clientes
         private readonly IClienteRepository _repo;
         public ObterClientePorIdHandler(IClienteRepository repo) => _repo = repo;
 
-        public async Task<ClienteResponse?> ExecuteAsync(Guid id, CancellationToken ct = default)
+        public async Task<ClienteResponse?> ExecuteAsync(int id, CancellationToken ct = default)
         {
-            var c = await _repo.GetByIdAsync(id, ct);
-            if (c is null) return null;
+            var e = await _repo.GetByIdAsync(id, ct);
+            if (e is null) return null;
+
             return new ClienteResponse
             {
-                Id = c.Id,
-                Nome = c.Nome,
-                Cpf = c.Cpf.Value,
-                Telefone = c.Telefone.Value,
-                Email = c.Email.Value
+                Id = e.Id,
+                Nome = e.NomeCliente,
+                Cpf = e.CpfCliente,
+                Telefone = e.TelefoneCliente,
+                Email = e.EmailCliente
             };
         }
     }

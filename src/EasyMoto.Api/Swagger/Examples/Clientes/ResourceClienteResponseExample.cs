@@ -1,31 +1,33 @@
 using EasyMoto.Application.Clientes.Contracts;
-using EasyMoto.Application.Shared.Hateoas;
+using EasyMoto.Application.Shared.Pagination;
 using Swashbuckle.AspNetCore.Filters;
 
-namespace EasyMoto.Api.Swagger.Examples.Clientes
+namespace EasyMoto.Api.Swagger.Examples.Clientes;
+
+public sealed class ResourceClienteResponseExample : IExamplesProvider<PagedResult<ClienteResponse>>
 {
-    public class ResourceClienteResponseExample : IExamplesProvider<Resource<ClienteResponse>>
+    public PagedResult<ClienteResponse> GetExamples()
     {
-        public Resource<ClienteResponse> GetExamples()
+        var items = new List<ClienteResponse>
         {
-            var data = new ClienteResponse
+            new ClienteResponse
             {
-                Id = Guid.Parse("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
-                Nome = "Ana Souza",
+                Id = 1,
+                Nome = "João Silva",
                 Cpf = "12345678901",
                 Telefone = "11988887777",
-                Email = "ana.souza@example.com"
-            };
-
-            var links = new[]
+                Email = "joao.silva@example.com"
+            },
+            new ClienteResponse
             {
-                new Link("self", "/api/Clientes/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee", "GET"),
-                new Link("update", "/api/Clientes/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee", "PUT"),
-                new Link("delete", "/api/Clientes/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee", "DELETE"),
-                new Link("collection", "/api/Clientes?page=1&pageSize=20", "GET")
-            };
+                Id = 2,
+                Nome = "Maria Souza",
+                Cpf = "98765432100",
+                Telefone = "21999996666",
+                Email = "maria.souza@example.com"
+            }
+        };
 
-            return new Resource<ClienteResponse>(data, links);
-        }
+        return new PagedResult<ClienteResponse>(items, 1, 10, 2);
     }
 }

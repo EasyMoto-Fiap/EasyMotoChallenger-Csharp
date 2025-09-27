@@ -1,46 +1,60 @@
-using Microsoft.AspNetCore.Mvc;
+using EasyMoto.Application.Shared.Pagination;
 using EasyMoto.Application.Localizacoes;
 using EasyMoto.Application.Localizacoes.Contracts;
-using EasyMoto.Application.Shared.Pagination;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EasyMoto.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class LocalizacoesController : ControllerBase
+public sealed class LocalizacoesController : ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> Get([FromServices] ListarLocalizacoesHandler handler, [FromQuery] int page = 1, [FromQuery] int size = 10, CancellationToken ct = default)
-    {
-        var result = await handler.ExecuteAsync(new PageQuery(page, size), ct);
-        return Ok(result);
-    }
+    public async Task<PagedResult<LocalizacaoResponse>> Get(
+        ListarLocalizacoesHandler handler,
+        [FromQuery] PageQuery query,
+        CancellationToken ct)
+        => await handler.ExecuteAsync(query, ct);
 
-    [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetById([FromServices] ObterLocalizacaoPorIdHandler handler, Guid id, CancellationToken ct = default)
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<LocalizacaoResponse>> GetById(
+        ObterLocalizacaoPorIdHandler handler,
+        [FromRoute] int id,
+        CancellationToken ct)
     {
-        var item = await handler.ExecuteAsync(id, ct);
-        if (item is null) return NotFound();
-        return Ok(item);
+        var result = await handler.ExecuteAsync(id, ct);
+        if (result is null) return NotFound();
+        return result;
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromServices] CriarLocalizacaoHandler handler, [FromBody] CriarLocalizacaoRequest req, CancellationToken ct = default)
+    public async Task<ActionResult<LocalizacaoResponse>> Post(
+        CriarLocalizacaoHandler handler,
+        [FromBody] CriarLocalizacaoRequest req,
+        CancellationToken ct)
     {
         var created = await handler.ExecuteAsync(req, ct);
         return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
     }
 
-    [HttpPut("{id:guid}")]
-    public async Task<IActionResult> Put([FromServices] AtualizarLocalizacaoHandler handler, Guid id, [FromBody] AtualizarLocalizacaoRequest req, CancellationToken ct = default)
+    [HttpPut("{id:int}")]
+    public async Task<IActionResult> Put(
+        AtualizarLocalizacaoHandler handler,
+        [FromRoute] int id,
+        [FromBody] AtualizarLocalizacaoRequest req,
+        CancellationToken ct)
     {
-        var ok = await handler.ExecuteAsync(id, req, ct);
+        req.Id = id;
+        var ok = await handler.ExecuteAsync(req, ct);
         if (!ok) return NotFound();
         return NoContent();
     }
 
-    [HttpDelete("{id:guid}")]
-    public async Task<IActionResult> Delete([FromServices] ExcluirLocalizacaoHandler handler, Guid id, CancellationToken ct = default)
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Delete(
+        ExcluirLocalizacaoHandler handler,
+        [FromRoute] int id,
+        CancellationToken ct)
     {
         var ok = await handler.ExecuteAsync(id, ct);
         if (!ok) return NotFound();

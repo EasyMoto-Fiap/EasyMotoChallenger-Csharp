@@ -4,10 +4,11 @@ namespace EasyMoto.Domain.Repositories;
 
 public interface IClienteRepository
 {
-    Task<Cliente?> GetByIdAsync(Guid id, CancellationToken ct = default);
-    Task AddAsync(Cliente entity, CancellationToken ct = default);
-    Task UpdateAsync(Cliente entity, CancellationToken ct = default);
-    Task DeleteAsync(Cliente entity, CancellationToken ct = default);
-    Task<List<Cliente>> ListAsync(int page, int size, CancellationToken ct = default);
-    Task<long> CountAsync(CancellationToken ct = default);
+    Task<int> CountAsync(CancellationToken ct);
+    Task<IReadOnlyList<Cliente>> ListAsync(int page, int size, CancellationToken ct);
+    Task<Cliente?> GetByIdAsync(int id, CancellationToken ct);
+    Task AddAsync(Cliente entity, CancellationToken ct);
+    Task UpdateAsync(Cliente entity, CancellationToken ct);
+    Task DeleteAsync(int id, CancellationToken ct);
+    Task<bool> ExistsCpfAsync(string cpf, int? ignoreId, CancellationToken ct);
 }

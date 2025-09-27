@@ -1,38 +1,44 @@
 using EasyMoto.Domain.Entities;
-using EasyMoto.Infrastructure.Persistence.Converters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EasyMoto.Infrastructure.Persistence.Configurations
+
 {
-    public class ClienteConfiguration : IEntityTypeConfiguration<Cliente>
+    public sealed class ClienteConfiguration : IEntityTypeConfiguration<Cliente>
     {
-        public void Configure(EntityTypeBuilder<Cliente> b)
+        public void Configure(EntityTypeBuilder<Cliente> builder)
         {
-            b.ToTable("clientes");
-            b.HasKey(x => x.Id);
+            builder.ToTable("clientes");
 
-            b.Property(x => x.Nome)
+            builder.HasKey(x => x.Id).HasName("pk_clientes");
+            builder.Property(x => x.Id)
+                .HasColumnName("id")
+                .UseIdentityByDefaultColumn();
+
+            builder.Property(x => x.NomeCliente)
                 .HasColumnName("nome_cliente")
-                .HasMaxLength(100);
+                .HasMaxLength(100)
+                .IsRequired();
 
-            b.Property(x => x.Cpf)
-                .HasConversion(ValueObjectConverters.CpfConverter)
+            builder.Property(x => x.CpfCliente)
                 .HasColumnName("cpf_cliente")
                 .HasMaxLength(11)
                 .IsRequired();
 
-            b.Property(x => x.Telefone)
-                .HasConversion(ValueObjectConverters.TelefoneConverter)
+            builder.HasIndex(x => x.CpfCliente)
+                .IsUnique()
+                .HasDatabaseName("ix_clientes_cpf_cliente");
+
+            builder.Property(x => x.TelefoneCliente)
                 .HasColumnName("telefone_cliente")
-                .HasMaxLength(15);
+                .HasMaxLength(15)
+                .IsRequired();
 
-            b.Property(x => x.Email)
-                .HasConversion(ValueObjectConverters.EmailConverter)
+            builder.Property(x => x.EmailCliente)
                 .HasColumnName("email_cliente")
-                .HasMaxLength(100);
-
-            b.HasIndex(x => x.Cpf).IsUnique();
+                .HasMaxLength(100)
+                .IsRequired();
         }
     }
 }

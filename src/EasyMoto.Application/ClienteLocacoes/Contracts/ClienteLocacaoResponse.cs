@@ -1,14 +1,11 @@
-using System;
+namespace EasyMoto.Application.ClienteLocacoes.Contracts;
 
-namespace EasyMoto.Application.ClienteLocacoes.Contracts
+public sealed class ClienteLocacaoResponse
 {
-    public sealed class ClienteLocacaoResponse
-    {
-        public Guid Id { get; init; }
-        public Guid ClienteId { get; init; }
-        public Guid MotoId { get; init; }
-        public DateTime DataInicio { get; init; }
-        public DateTime DataFim { get; init; }
-        public string StatusLocacao { get; init; } = "";
-    }
+    public int Id { get; set; }
+    public int ClienteId { get; set; }
+    public int MotoId { get; set; }
+    public DateTime DataInicio { get; set; }
+    public DateTime? DataFim { get; set; }
+    public string StatusLocacao { get; set; } = string.Empty;
 }

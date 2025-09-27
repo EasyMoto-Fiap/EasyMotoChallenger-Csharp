@@ -1,70 +1,65 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using EasyMoto.Application.ClienteLocacoes;
 using EasyMoto.Application.ClienteLocacoes.Contracts;
 using EasyMoto.Application.Shared.Pagination;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EasyMoto.Api.Controllers
+namespace EasyMoto.Api.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public sealed class ClienteLocacoesController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public sealed class ClienteLocacoesController : ControllerBase
+    [HttpPost]
+    public async Task<ActionResult<ClienteLocacaoResponse>> Post(
+        [FromServices] CriarClienteLocacaoHandler handler,
+        [FromBody] CriarClienteLocacaoRequest request,
+        CancellationToken ct)
     {
-        private readonly ListarClienteLocacoesHandler _list;
-        private readonly ObterClienteLocacaoPorIdHandler _getById;
-        private readonly CriarClienteLocacaoHandler _create;
-        private readonly AtualizarClienteLocacaoHandler _update;
-        private readonly ExcluirClienteLocacaoHandler _delete;
+        var result = await handler.ExecuteAsync(request, ct);
+        return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
+    }
 
-        public ClienteLocacoesController(
-            ListarClienteLocacoesHandler list,
-            ObterClienteLocacaoPorIdHandler getById,
-            CriarClienteLocacaoHandler create,
-            AtualizarClienteLocacaoHandler update,
-            ExcluirClienteLocacaoHandler delete)
-        {
-            _list = list;
-            _getById = getById;
-            _create = create;
-            _update = update;
-            _delete = delete;
-        }
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<ClienteLocacaoResponse>> GetById(
+        [FromServices] ObterClienteLocacaoPorIdHandler handler,
+        [FromRoute] int id,
+        CancellationToken ct)
+    {
+        var result = await handler.ExecuteAsync(id, ct);
+        if (result is null) return NotFound();
+        return Ok(result);
+    }
 
-        [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] int page = 1, [FromQuery] int size = 20, CancellationToken ct = default)
-        {
-            var result = await _list.ExecuteAsync(new PageQuery(page, size), ct);
-            return Ok(result);
-        }
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult> Put(
+        [FromServices] AtualizarClienteLocacaoHandler handler,
+        [FromRoute] int id,
+        [FromBody] AtualizarClienteLocacaoRequest request,
+        CancellationToken ct)
+    {
+        var ok = await handler.ExecuteAsync(id, request, ct);
+        if (!ok) return NotFound();
+        return NoContent();
+    }
 
-        [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetById(Guid id, CancellationToken ct = default)
-        {
-            var result = await _getById.ExecuteAsync(id, ct);
-            return result is null ? NotFound() : Ok(result);
-        }
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult> Delete(
+        [FromServices] ExcluirClienteLocacaoHandler handler,
+        [FromRoute] int id,
+        CancellationToken ct)
+    {
+        var ok = await handler.ExecuteAsync(id, ct);
+        if (!ok) return NotFound();
+        return NoContent();
+    }
 
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CriarClienteLocacaoRequest req, CancellationToken ct = default)
-        {
-            var result = await _create.ExecuteAsync(req, ct);
-            return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
-        }
-
-        [HttpPut("{id:guid}")]
-        public async Task<IActionResult> Put(Guid id, [FromBody] AtualizarClienteLocacaoRequest req, CancellationToken ct = default)
-        {
-            await _update.ExecuteAsync(id, req, ct);
-            return NoContent();
-        }
-
-        [HttpDelete("{id:guid}")]
-        public async Task<IActionResult> Delete(Guid id, CancellationToken ct = default)
-        {
-            await _delete.ExecuteAsync(id, ct);
-            return NoContent();
-        }
+    [HttpGet]
+    public async Task<ActionResult<PagedResult<ClienteLocacaoResponse>>> Get(
+        [FromServices] ListarClienteLocacoesHandler handler,
+        [FromQuery] PageQuery query,
+        CancellationToken ct)
+    {
+        var result = await handler.ExecuteAsync(query, ct);
+        return Ok(result);
     }
 }

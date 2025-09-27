@@ -1,29 +1,24 @@
 using EasyMoto.Application.Clientes.Contracts;
 using EasyMoto.Domain.Repositories;
-using EasyMoto.Domain.ValueObjects;
 
 namespace EasyMoto.Application.Clientes
 {
-    public class AtualizarClienteHandler
+    public sealed class AtualizarClienteHandler
     {
         private readonly IClienteRepository _repo;
+        public AtualizarClienteHandler(IClienteRepository repo) => _repo = repo;
 
-        public AtualizarClienteHandler(IClienteRepository repo)
-        {
-            _repo = repo;
-        }
-
-        public async Task ExecuteAsync(Guid id, AtualizarClienteRequest req, CancellationToken ct)
+        public async Task<bool> ExecuteAsync(int id, AtualizarClienteRequest req, CancellationToken ct = default)
         {
             var entity = await _repo.GetByIdAsync(id, ct);
-            if (entity is null) return;
+            if (entity is null) return false;
 
-            var cpf = Cpf.Create(req.Cpf);
-            var telefone = new Telefone(req.Telefone);
-            var email = new Email(req.Email);
+            var duplicated = await _repo.ExistsCpfAsync(req.Cpf, id, ct);
+            if (duplicated) throw new InvalidOperationException("Já existe cliente com este CPF.");
 
-            entity.Update(req.Nome, cpf, telefone, email);
+            entity.Update(req.Nome, req.Cpf, req.Telefone, req.Email);
             await _repo.UpdateAsync(entity, ct);
+            return true;
         }
     }
 }

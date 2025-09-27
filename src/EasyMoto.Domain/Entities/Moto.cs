@@ -9,6 +9,9 @@ public sealed class Moto
     public string Cor { get; private set; } = string.Empty;
     public int AnoFabricacao { get; private set; }
     public string Status { get; private set; } = "Disponivel";
+    
+    public ICollection<ClienteLocacao> Locacoes { get; private set; } = new List<ClienteLocacao>();
+
 
     public int? LocacaoId { get; private set; }
     public int LocalizacaoId { get; private set; }

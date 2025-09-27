@@ -1,30 +1,34 @@
 using System;
-using EasyMoto.Domain.ValueObjects;
 
-namespace EasyMoto.Domain.Entities
+namespace EasyMoto.Domain.Entities;
+
+public sealed class ClienteLocacao
 {
-    public sealed class ClienteLocacao
+    public int Id { get; private set; }
+    public int ClienteId { get; private set; }
+    public int MotoId { get; private set; }
+    public DateTime DataInicio { get; private set; }
+    public DateTime? DataFim { get; private set; }
+    public string StatusLocacao { get; private set; } = string.Empty;
+
+    public Cliente? Cliente { get; private set; }
+    public Moto? Moto { get; private set; }
+
+    public ClienteLocacao(int clienteId, int motoId, DateTime dataInicio, DateTime? dataFim, string statusLocacao)
     {
-        public Guid Id { get; private set; }
-        public Guid ClienteId { get; private set; }
-        public Guid MotoId { get; private set; }
-        public Periodo Periodo { get; private set; } = default!;
-        public string StatusLocacao { get; private set; } = "Ativa";
+        ClienteId = clienteId;
+        MotoId = motoId;
+        DataInicio = dataInicio;
+        DataFim = dataFim;
+        StatusLocacao = statusLocacao;
+    }
 
-        private ClienteLocacao() { }
-
-        public ClienteLocacao(Guid clienteId, Guid motoId, Periodo periodo, string statusLocacao)
-        {
-            Id = Guid.NewGuid();
-            Update(clienteId, motoId, periodo, statusLocacao);
-        }
-
-        public void Update(Guid clienteId, Guid motoId, Periodo periodo, string statusLocacao)
-        {
-            ClienteId = clienteId;
-            MotoId = motoId;
-            Periodo = periodo ?? throw new ArgumentNullException(nameof(periodo));
-            StatusLocacao = string.IsNullOrWhiteSpace(statusLocacao) ? "Ativa" : statusLocacao.Trim();
-        }
+    public void Atualizar(int clienteId, int motoId, DateTime dataInicio, DateTime? dataFim, string statusLocacao)
+    {
+        ClienteId = clienteId;
+        MotoId = motoId;
+        DataInicio = dataInicio;
+        DataFim = dataFim;
+        StatusLocacao = statusLocacao;
     }
 }

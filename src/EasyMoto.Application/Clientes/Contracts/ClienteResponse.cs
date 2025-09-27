@@ -2,10 +2,10 @@ namespace EasyMoto.Application.Clientes.Contracts
 {
     public sealed class ClienteResponse
     {
-        public Guid Id { get; init; }
-        public string Nome { get; init; } = null!;
-        public string Cpf { get; init; } = null!;
-        public string Telefone { get; init; } = null!;
-        public string Email { get; init; } = null!;
+        public int Id { get; set; }
+        public string Nome { get; set; } = string.Empty;
+        public string Cpf { get; set; } = string.Empty;
+        public string Telefone { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
     }
 }

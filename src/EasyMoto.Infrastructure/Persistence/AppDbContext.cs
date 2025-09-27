@@ -1,42 +1,35 @@
 using EasyMoto.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
 using EasyMoto.Infrastructure.Persistence.Configurations;
+using Microsoft.EntityFrameworkCore;
 
-namespace EasyMoto.Infrastructure.Persistence
+namespace EasyMoto.Infrastructure.Persistence;
+
+public class AppDbContext : DbContext
 {
-    public class AppDbContext : DbContext
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
+    public DbSet<Vaga> Vagas => Set<Vaga>();
+    public DbSet<Cliente> Clientes => Set<Cliente>();
+    public DbSet<Moto> Motos => Set<Moto>();
+    public DbSet<ClienteLocacao> Locacoes => Set<ClienteLocacao>();
+    public DbSet<Localizacao> Localizacoes => Set<Localizacao>();
+    public DbSet<Empresa> Empresas => Set<Empresa>();
+    public DbSet<Filial> Filiais => Set<Filial>();
+    public DbSet<Funcionario> Funcionarios => Set<Funcionario>();
+    public DbSet<Patio> Patios => Set<Patio>();
+    public DbSet<Operador> Operadores => Set<Operador>();
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
-        public DbSet<Vaga> Vagas => Set<Vaga>();
-        public DbSet<Cliente> Clientes => Set<Cliente>();
-        public DbSet<Moto> Motos => Set<Moto>();
-        public DbSet<ClienteLocacao> Locacoes => Set<ClienteLocacao>();
-        public DbSet<Localizacao> Localizacoes => Set<Localizacao>();
-        public DbSet<Empresa> Empresas => Set<Empresa>();
-        public DbSet<Filial> Filiais => Set<Filial>();
-        public DbSet<Funcionario> Funcionarios => Set<Funcionario>();
-        public DbSet<Patio> Patios => Set<Patio>();
-        public DbSet<Operador> Operadores => Set<Operador>();
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfiguration(new VagaConfiguration());
-            modelBuilder.ApplyConfiguration(new ClienteConfiguration());
-            modelBuilder.ApplyConfiguration(new MotoConfiguration());
-            modelBuilder.ApplyConfiguration(new ClienteLocacaoConfiguration());
-            modelBuilder.ApplyConfiguration(new LocalizacaoConfiguration());
-            modelBuilder.ApplyConfiguration(new EmpresaConfiguration());
-            modelBuilder.ApplyConfiguration(new FilialConfiguration());
-            modelBuilder.ApplyConfiguration(new FuncionarioConfiguration());
-            modelBuilder.ApplyConfiguration(new PatioConfiguration());
-            modelBuilder.ApplyConfiguration(new OperadorConfiguration());
-
-            modelBuilder.Entity<Empresa>()
-                .HasMany(e => e.Filiais)
-                .WithOne(f => f.Empresa)
-                .HasForeignKey(f => f.EmpresaId)
-                .OnDelete(DeleteBehavior.Cascade);
-        }
+        modelBuilder.ApplyConfiguration(new VagaConfiguration());
+        modelBuilder.ApplyConfiguration(new ClienteConfiguration());
+        modelBuilder.ApplyConfiguration(new MotoConfiguration());
+        modelBuilder.ApplyConfiguration(new ClienteLocacaoConfiguration());
+        modelBuilder.ApplyConfiguration(new LocalizacaoConfiguration());
+        modelBuilder.ApplyConfiguration(new EmpresaConfiguration());
+        modelBuilder.ApplyConfiguration(new FilialConfiguration());
+        modelBuilder.ApplyConfiguration(new FuncionarioConfiguration());
+        modelBuilder.ApplyConfiguration(new PatioConfiguration());
+        modelBuilder.ApplyConfiguration(new OperadorConfiguration());
     }
 }

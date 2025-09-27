@@ -1,11 +1,11 @@
 namespace EasyMoto.Application.Patios.Contracts
 {
-    public class PatioResponse
+    public sealed class PatioResponse
     {
-        public Guid Id { get; set; }
-        public string? NomePatio { get; set; }
-        public string TamanhoPatio { get; set; } = string.Empty;
-        public string? Andar { get; set; }
-        public Guid FilialId { get; set; }
+        public int Id { get; init; }
+        public string NomePatio { get; init; } = string.Empty;
+        public string TamanhoPatio { get; init; } = string.Empty;
+        public string Andar { get; init; } = string.Empty;
+        public int FilialId { get; init; }
     }
 }

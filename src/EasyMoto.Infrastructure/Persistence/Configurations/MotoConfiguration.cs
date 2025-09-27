@@ -2,34 +2,33 @@ using EasyMoto.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EasyMoto.Infrastructure.Persistence.Configurations
+namespace EasyMoto.Infrastructure.Persistence.Configurations;
+
+public sealed class MotoConfiguration : IEntityTypeConfiguration<Moto>
 {
-    public sealed class MotoConfiguration : IEntityTypeConfiguration<Moto>
+    public void Configure(EntityTypeBuilder<Moto> b)
     {
-        public void Configure(EntityTypeBuilder<Moto> builder)
-        {
-            builder.ToTable("motos");
-            builder.HasKey(x => x.Id);
+        b.ToTable("motos");
 
-            builder.Property(x => x.Placa)
-                .HasMaxLength(10)
-                .IsRequired();
+        b.HasKey(m => m.Id).HasName("pk_motos");
+        b.Property(m => m.Id)
+            .HasColumnName("Id")
+            .ValueGeneratedOnAdd();
 
-            builder.Property(x => x.Modelo)
-                .HasMaxLength(120)
-                .IsRequired();
+        b.Property(m => m.Placa)
+            .HasColumnName("Placa")
+            .HasMaxLength(10)
+            .IsRequired();
 
-            builder.Property(x => x.AnoFabricacao)
-                .IsRequired();
+        b.Property(m => m.Marca).HasColumnName("Marca").HasMaxLength(80).IsRequired();
+        b.Property(m => m.Modelo).HasColumnName("Modelo").HasMaxLength(120).IsRequired();
+        b.Property(m => m.Cor).HasColumnName("Cor").HasMaxLength(40).IsRequired();
+        b.Property(m => m.AnoFabricacao).HasColumnName("AnoFabricacao").IsRequired();
+        b.Property(m => m.Status).HasColumnName("Status").HasMaxLength(40).IsRequired();
 
-            builder.Property(x => x.Status)
-                .HasMaxLength(20)
-                .IsRequired();
+        b.Property(m => m.LocacaoId).HasColumnName("LocacaoId");
+        b.Property(m => m.LocalizacaoId).HasColumnName("LocalizacaoId").IsRequired();
 
-            builder.Property(x => x.LocacaoId);
-            builder.Property(x => x.LocalizacaoId);
-
-            builder.HasIndex(x => x.Placa).IsUnique();
-        }
+        b.HasIndex(m => m.Placa).IsUnique().HasDatabaseName("IX_motos_Placa");
     }
 }

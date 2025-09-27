@@ -1,15 +1,19 @@
 using EasyMoto.Api.Extensions;
 using EasyMoto.Api.Filters;
+using EasyMoto.Application.ClienteLocacoes;
 using EasyMoto.Application.Clientes;
+using EasyMoto.Application.Empresas;
+using EasyMoto.Application.Filiais;
+using EasyMoto.Application.Funcionarios;
+using EasyMoto.Application.Localizacoes;
+using EasyMoto.Application.Motos;
 using EasyMoto.Application.Operadores;
-using EasyMoto.Domain.Exceptions;
+using EasyMoto.Application.Patios;
+using EasyMoto.Application.Vagas;
 using EasyMoto.Domain.Repositories;
 using EasyMoto.Infrastructure.Persistence;
 using EasyMoto.Infrastructure.Repositories;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,8 +27,9 @@ var cs =
     builder.Configuration["ConnectionStrings:DefaultConnection"];
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(cs).AddInterceptors()
-);
+{
+    options.UseNpgsql(cs).UseSnakeCaseNamingConvention();
+});
 
 builder.Services.AddScoped<IOperadorRepository, OperadorRepository>();
 builder.Services.AddScoped<IVagaRepository, VagaRepository>();
@@ -43,30 +48,75 @@ builder.Services.AddScoped<ObterOperadorPorIdHandler>();
 builder.Services.AddScoped<ListarOperadoresHandler>();
 builder.Services.AddScoped<ExcluirOperadorHandler>();
 
-builder.Services.AddScoped<ListarClientesHandler>();
-builder.Services.AddScoped<ObterClientePorIdHandler>();
 builder.Services.AddScoped<CriarClienteHandler>();
 builder.Services.AddScoped<AtualizarClienteHandler>();
+builder.Services.AddScoped<ObterClientePorIdHandler>();
+builder.Services.AddScoped<ListarClientesHandler>();
 builder.Services.AddScoped<ExcluirClienteHandler>();
 
-var app = builder.Build();
+builder.Services.AddScoped<CriarEmpresaHandler>();
+builder.Services.AddScoped<AtualizarEmpresaHandler>();
+builder.Services.AddScoped<ObterEmpresaPorIdHandler>();
+builder.Services.AddScoped<ListarEmpresasHandler>();
+builder.Services.AddScoped<ExcluirEmpresaHandler>();
 
-app.UseExceptionHandler(b =>
-{
-    b.Run(async ctx =>
-    {
-        var ex = ctx.Features.Get<IExceptionHandlerFeature>()?.Error;
-        var isValidation = ex is DomainValidationException || ex is ArgumentException;
-        ctx.Response.StatusCode = isValidation ? StatusCodes.Status400BadRequest : StatusCodes.Status500InternalServerError;
-        ctx.Response.ContentType = "application/problem+json";
-        await ctx.Response.WriteAsJsonAsync(new ProblemDetails { Title = isValidation ? "Erro de validação" : "Erro interno", Detail = ex?.Message, Status = ctx.Response.StatusCode });
-    });
-});
+builder.Services.AddScoped<CriarFilialHandler>();
+builder.Services.AddScoped<AtualizarFilialHandler>();
+builder.Services.AddScoped<ObterFilialPorIdHandler>();
+builder.Services.AddScoped<ListarFiliaisHandler>();
+builder.Services.AddScoped<ExcluirFilialHandler>();
+
+builder.Services.AddScoped<CriarFuncionarioHandler>();
+builder.Services.AddScoped<AtualizarFuncionarioHandler>();
+builder.Services.AddScoped<ObterFuncionarioPorIdHandler>();
+builder.Services.AddScoped<ListarFuncionariosHandler>();
+builder.Services.AddScoped<ExcluirFuncionarioHandler>();
+
+builder.Services.AddScoped<CriarLocalizacaoHandler>();
+builder.Services.AddScoped<AtualizarLocalizacaoHandler>();
+builder.Services.AddScoped<ObterLocalizacaoPorIdHandler>();
+builder.Services.AddScoped<ListarLocalizacoesHandler>();
+builder.Services.AddScoped<ExcluirLocalizacaoHandler>();
+
+builder.Services.AddScoped<CriarMotoHandler>();
+builder.Services.AddScoped<AtualizarMotoHandler>();
+builder.Services.AddScoped<ObterMotoPorIdHandler>();
+builder.Services.AddScoped<ListarMotosHandler>();
+builder.Services.AddScoped<ExcluirMotoHandler>();
+
+builder.Services.AddScoped<CriarClienteLocacaoHandler>();
+builder.Services.AddScoped<AtualizarClienteLocacaoHandler>();
+builder.Services.AddScoped<ObterClienteLocacaoPorIdHandler>();
+builder.Services.AddScoped<ListarClienteLocacoesHandler>();
+builder.Services.AddScoped<ExcluirClienteLocacaoHandler>();
+
+builder.Services.AddScoped<CriarPatioHandler>();
+builder.Services.AddScoped<AtualizarPatioHandler>();
+builder.Services.AddScoped<ObterPatioPorIdHandler>();
+builder.Services.AddScoped<ListarPatiosHandler>();
+builder.Services.AddScoped<ExcluirPatioHandler>();
+
+builder.Services.AddScoped<CriarVagaHandler>();
+builder.Services.AddScoped<AtualizarVagaHandler>();
+builder.Services.AddScoped<ObterVagaPorIdHandler>();
+builder.Services.AddScoped<ListarVagasHandler>();
+builder.Services.AddScoped<ExcluirVagaHandler>();
+
+var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    await db.Database.MigrateAsync();
+    try
+    {
+        db.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogCritical(ex, "Falha ao aplicar migrations");
+        throw;
+    }
 }
 
 app.UseSwaggerDocumentation();

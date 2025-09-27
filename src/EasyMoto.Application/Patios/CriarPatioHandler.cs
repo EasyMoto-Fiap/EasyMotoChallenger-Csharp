@@ -2,29 +2,32 @@ using EasyMoto.Application.Patios.Contracts;
 using EasyMoto.Domain.Entities;
 using EasyMoto.Domain.Repositories;
 
-namespace EasyMoto.Application.Patios
+namespace EasyMoto.Application.Patios;
+
+public sealed class CriarPatioHandler
 {
-    public class CriarPatioHandler
+    private readonly IFilialRepository _filiais;
+    private readonly IPatioRepository _patios;
+
+    public CriarPatioHandler(IFilialRepository filiais, IPatioRepository patios)
     {
-        private readonly IPatioRepository _repo;
+        _filiais = filiais;
+        _patios = patios;
+    }
 
-        public CriarPatioHandler(IPatioRepository repo)
-        {
-            _repo = repo;
-        }
+    public async Task<Patio> ExecuteAsync(CriarPatioRequest req, CancellationToken ct = default)
+    {
+        var filial = await _filiais.GetByIdAsync(req.FilialId, ct);
+        if (filial is null) throw new ArgumentException("Filial não encontrada", nameof(req.FilialId));
 
-        public async Task<PatioResponse> ExecuteAsync(CriarPatioRequest req, CancellationToken ct)
-        {
-            var entity = new Patio(Guid.NewGuid(), req.NomePatio, req.TamanhoPatio, req.Andar, req.FilialId);
-            await _repo.AddAsync(entity, ct);
-            return new PatioResponse
-            {
-                Id = entity.Id,
-                NomePatio = entity.NomePatio,
-                TamanhoPatio = entity.TamanhoPatio,
-                Andar = entity.Andar,
-                FilialId = entity.FilialId
-            };
-        }
+        var patio = new Patio(
+            req.NomePatio.Trim(),
+            req.TamanhoPatio.Trim(),
+            req.Andar.Trim(),
+            req.FilialId
+        );
+
+        await _patios.AddAsync(patio, ct);
+        return patio;
     }
 }

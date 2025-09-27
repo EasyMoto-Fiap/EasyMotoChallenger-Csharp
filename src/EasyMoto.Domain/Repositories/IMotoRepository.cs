@@ -4,10 +4,13 @@ namespace EasyMoto.Domain.Repositories;
 
 public interface IMotoRepository
 {
-    Task<Moto?> GetByIdAsync(Guid id, CancellationToken ct = default);
-    Task AddAsync(Moto entity, CancellationToken ct = default);
-    Task UpdateAsync(Moto entity, CancellationToken ct = default);
-    Task DeleteAsync(Moto entity, CancellationToken ct = default);
-    Task<List<Moto>> ListAsync(int page, int size, CancellationToken ct = default);
-    Task<long> CountAsync(CancellationToken ct = default);
+    Task AddAsync(Moto moto, CancellationToken ct);
+    Task UpdateAsync(Moto moto, CancellationToken ct);
+    Task DeleteAsync(int id, CancellationToken ct);
+
+    Task<Moto?> GetByIdAsync(int id, CancellationToken ct);
+    Task<IReadOnlyList<Moto>> ListAsync(int page, int size, CancellationToken ct);
+    Task<int> CountAsync(CancellationToken ct);
+
+    Task<bool> ExistsPlacaAsync(string placa, CancellationToken ct);
 }

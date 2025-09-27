@@ -2,29 +2,30 @@ using EasyMoto.Application.Vagas.Contracts;
 using EasyMoto.Domain.Entities;
 using EasyMoto.Domain.Repositories;
 
-namespace EasyMoto.Application.Vagas
+namespace EasyMoto.Application.Vagas;
+
+public sealed class CriarVagaHandler
 {
-    public class CriarVagaHandler
+    private readonly IVagaRepository _repo;
+
+    public CriarVagaHandler(IVagaRepository repo) => _repo = repo;
+
+    public async Task<VagaResponse> ExecuteAsync(CriarVagaRequest req, CancellationToken ct = default)
     {
-        private readonly IVagaRepository _repo;
+        var exists = await _repo.ExistsNumeroAsync(req.PatioId, req.NumeroVaga, null, ct);
+        if (exists) throw new InvalidOperationException("Já existe uma vaga com esse número neste pátio.");
 
-        public CriarVagaHandler(IVagaRepository repo)
-        {
-            _repo = repo;
-        }
+        var entity = new Vaga(req.PatioId, req.NumeroVaga, req.Ocupada, req.MotoId);
 
-        public async Task<VagaResponse> ExecuteAsync(CriarVagaRequest req, CancellationToken ct)
+        await _repo.AddAsync(entity, ct);
+
+        return new VagaResponse
         {
-            var entity = new Vaga(Guid.NewGuid(), req.NumeroVaga, req.StatusVaga, req.MotoId, req.PatioId);
-            await _repo.AddAsync(entity, ct);
-            return new VagaResponse
-            {
-                Id = entity.Id,
-                NumeroVaga = entity.NumeroVaga,
-                StatusVaga = entity.StatusVaga,
-                MotoId = entity.MotoId,
-                PatioId = entity.PatioId
-            };
-        }
+            Id = entity.Id,
+            PatioId = entity.PatioId,
+            NumeroVaga = entity.NumeroVaga,
+            Ocupada = entity.Ocupada,
+            MotoId = entity.MotoId
+        };
     }
 }

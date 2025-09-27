@@ -2,30 +2,28 @@ using EasyMoto.Application.Patios.Contracts;
 using EasyMoto.Application.Shared.Pagination;
 using EasyMoto.Domain.Repositories;
 
-namespace EasyMoto.Application.Patios
+namespace EasyMoto.Application.Patios;
+
+public sealed class ListarPatiosHandler
 {
-    public class ListarPatiosHandler
+    private readonly IPatioRepository _repo;
+
+    public ListarPatiosHandler(IPatioRepository repo) => _repo = repo;
+
+    public async Task<PagedResult<PatioResponse>> ExecuteAsync(PageQuery query, CancellationToken ct)
     {
-        private readonly IPatioRepository _repo;
+        var total = await _repo.CountAsync(ct);
+        var items = await _repo.ListAsync(query.Page, query.Size, ct);
 
-        public ListarPatiosHandler(IPatioRepository repo)
+        var mapped = items.Select(e => new PatioResponse
         {
-            _repo = repo;
-        }
+            Id = e.IdPatio,
+            NomePatio = e.NomePatio,
+            TamanhoPatio = e.TamanhoPatio,
+            Andar = e.Andar,
+            FilialId = e.FilialId
+        }).ToList();
 
-        public async Task<PagedResult<PatioResponse>> ExecuteAsync(PageQuery query, CancellationToken ct)
-        {
-            var total = await _repo.CountAsync(ct);
-            var items = await _repo.ListAsync(query.Page, query.Size, ct);
-            var mapped = items.Select(e => new PatioResponse
-            {
-                Id = e.Id,
-                NomePatio = e.NomePatio,
-                TamanhoPatio = e.TamanhoPatio,
-                Andar = e.Andar,
-                FilialId = e.FilialId
-            });
-            return new PagedResult<PatioResponse>(mapped, query.Page, query.Size, total);
-        }
+        return new PagedResult<PatioResponse>(mapped, query.Page, query.Size, total);
     }
 }

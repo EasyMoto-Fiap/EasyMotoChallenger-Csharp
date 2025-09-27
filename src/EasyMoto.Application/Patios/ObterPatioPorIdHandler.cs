@@ -3,22 +3,19 @@ using EasyMoto.Domain.Repositories;
 
 namespace EasyMoto.Application.Patios
 {
-    public class ObterPatioPorIdHandler
+    public sealed class ObterPatioPorIdHandler
     {
         private readonly IPatioRepository _repo;
 
-        public ObterPatioPorIdHandler(IPatioRepository repo)
-        {
-            _repo = repo;
-        }
+        public ObterPatioPorIdHandler(IPatioRepository repo) => _repo = repo;
 
-        public async Task<PatioResponse?> ExecuteAsync(Guid id, CancellationToken ct)
+        public async Task<PatioResponse?> ExecuteAsync(int id, CancellationToken ct)
         {
             var e = await _repo.GetByIdAsync(id, ct);
-            if (e == null) return null;
+            if (e is null) return null;
             return new PatioResponse
             {
-                Id = e.Id,
+                Id = e.IdPatio,
                 NomePatio = e.NomePatio,
                 TamanhoPatio = e.TamanhoPatio,
                 Andar = e.Andar,

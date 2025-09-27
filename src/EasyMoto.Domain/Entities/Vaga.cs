@@ -1,28 +1,30 @@
-namespace EasyMoto.Domain.Entities
+namespace EasyMoto.Domain.Entities;
+
+public sealed class Vaga
 {
-    public class Vaga
+    public int Id { get; private set; }
+    public int PatioId { get; private set; }
+    public Patio Patio { get; private set; } = null!;
+    public int NumeroVaga { get; private set; }
+    public bool Ocupada { get; private set; }
+    public int? MotoId { get; private set; }
+    public Moto? Moto { get; private set; }
+
+    public Vaga() { }
+
+    public Vaga(int patioId, int numeroVaga, bool ocupada, int? motoId)
     {
-        public Guid Id { get; private set; }
-        public string NumeroVaga { get; private set; } = string.Empty;
-        public string StatusVaga { get; private set; } = string.Empty;
-        public Guid? MotoId { get; private set; }
-        public Guid PatioId { get; private set; }
+        PatioId = patioId;
+        NumeroVaga = numeroVaga;
+        Ocupada = ocupada;
+        MotoId = motoId;
+    }
 
-        public Vaga(Guid id, string numeroVaga, string statusVaga, Guid? motoId, Guid patioId)
-        {
-            Id = id;
-            NumeroVaga = numeroVaga ?? string.Empty;
-            StatusVaga = statusVaga ?? string.Empty;
-            MotoId = motoId;
-            PatioId = patioId;
-        }
-
-        public void Update(string numeroVaga, string statusVaga, Guid? motoId, Guid patioId)
-        {
-            NumeroVaga = numeroVaga ?? string.Empty;
-            StatusVaga = statusVaga ?? string.Empty;
-            MotoId = motoId;
-            PatioId = patioId;
-        }
+    public void Update(int patioId, int numeroVaga, bool ocupada, int? motoId)
+    {
+        PatioId = patioId;
+        NumeroVaga = numeroVaga;
+        Ocupada = ocupada;
+        MotoId = motoId;
     }
 }

@@ -1,14 +1,16 @@
 using EasyMoto.Domain.Entities;
 
-namespace EasyMoto.Domain.Repositories
+namespace EasyMoto.Domain.Repositories;
+
+public interface IVagaRepository
 {
-    public interface IVagaRepository
-    {
-        Task AddAsync(Vaga entity, CancellationToken ct);
-        Task UpdateAsync(Vaga entity, CancellationToken ct);
-        Task DeleteAsync(Guid id, CancellationToken ct);
-        Task<Vaga?> GetByIdAsync(Guid id, CancellationToken ct);
-        Task<List<Vaga>> ListAsync(int page, int size, CancellationToken ct);
-        Task<long> CountAsync(CancellationToken ct);
-    }
+    Task AddAsync(Vaga entity, CancellationToken ct);
+    Task<Vaga?> GetByIdAsync(int id, CancellationToken ct);
+    Task UpdateAsync(Vaga entity, CancellationToken ct);
+    Task DeleteAsync(int id, CancellationToken ct);
+
+    Task<IReadOnlyList<Vaga>> ListAsync(int page, int size, CancellationToken ct);
+    Task<int> CountAsync(CancellationToken ct);
+
+    Task<bool> ExistsNumeroAsync(int patioId, int numeroVaga, int? ignoreId, CancellationToken ct);
 }

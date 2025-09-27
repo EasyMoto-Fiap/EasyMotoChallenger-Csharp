@@ -1,30 +1,32 @@
-using System;
+namespace EasyMoto.Domain.Entities;
 
-namespace EasyMoto.Domain.Entities
+public sealed class Patio
 {
-    public class Patio
+    public int IdPatio { get; private set; }
+    public string NomePatio { get; private set; } = string.Empty;
+    public string TamanhoPatio { get; private set; } = string.Empty;
+    public string Andar { get; private set; } = string.Empty;
+
+    public int FilialId { get; private set; }
+    public Filial? Filial { get; private set; }
+
+    public ICollection<Vaga> Vagas { get; } = new List<Vaga>();
+
+    public Patio() { }
+
+    public Patio(string nomePatio, string tamanhoPatio, string andar, int filialId)
     {
-        public Guid Id { get; private set; }
-        public string? NomePatio { get; private set; }
-        public string TamanhoPatio { get; private set; } = string.Empty;
-        public string? Andar { get; private set; }
-        public Guid FilialId { get; private set; }
+        NomePatio = nomePatio;
+        TamanhoPatio = tamanhoPatio;
+        Andar = andar;
+        FilialId = filialId;
+    }
 
-        public Patio(Guid id, string? nomePatio, string tamanhoPatio, string? andar, Guid filialId)
-        {
-            Id = id;
-            NomePatio = nomePatio;
-            TamanhoPatio = tamanhoPatio ?? string.Empty;
-            Andar = andar;
-            FilialId = filialId;
-        }
-
-        public void Update(string? nomePatio, string tamanhoPatio, string? andar, Guid filialId)
-        {
-            NomePatio = nomePatio;
-            TamanhoPatio = tamanhoPatio ?? string.Empty;
-            Andar = andar;
-            FilialId = filialId;
-        }
+    public void Update(string nomePatio, string tamanhoPatio, string andar, int filialId)
+    {
+        NomePatio = nomePatio;
+        TamanhoPatio = tamanhoPatio;
+        Andar = andar;
+        FilialId = filialId;
     }
 }

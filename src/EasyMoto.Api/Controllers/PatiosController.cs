@@ -1,6 +1,3 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using EasyMoto.Application.Patios;
 using EasyMoto.Application.Patios.Contracts;
 using EasyMoto.Application.Shared.Pagination;
@@ -10,43 +7,48 @@ namespace EasyMoto.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PatiosController : ControllerBase
+    public sealed class PatiosController : ControllerBase
     {
-        [HttpGet]
-        public async Task<IActionResult> Get([FromServices] ListarPatiosHandler handler, [FromQuery] int page = 1, [FromQuery] int size = 10, CancellationToken ct = default)
-        {
-            var result = await handler.ExecuteAsync(new PageQuery(page, size), ct);
-            return Ok(result);
-        }
-
-        [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetById([FromServices] ObterPatioPorIdHandler handler, Guid id, CancellationToken ct = default)
-        {
-            var r = await handler.ExecuteAsync(id, ct);
-            if (r == null) return NotFound();
-            return Ok(r);
-        }
-
         [HttpPost]
-        public async Task<IActionResult> Post([FromServices] CriarPatioHandler handler, [FromBody] CriarPatioRequest req, CancellationToken ct = default)
+        public async Task<IActionResult> Post([FromBody] CriarPatioRequest req, [FromServices] CriarPatioHandler handler, CancellationToken ct)
         {
-            var r = await handler.ExecuteAsync(req, ct);
-            return CreatedAtAction(nameof(GetById), new { id = r.Id }, r);
+            if (!ModelState.IsValid) return ValidationProblem(ModelState);
+            var patio = await handler.ExecuteAsync(req, ct);
+            return CreatedAtAction(nameof(GetById), new { id = patio.IdPatio }, new
+            {
+                patio.IdPatio,
+                patio.NomePatio,
+                patio.TamanhoPatio,
+                patio.Andar,
+                patio.FilialId
+            });
         }
 
-        [HttpPut("{id:guid}")]
-        public async Task<IActionResult> Put([FromServices] AtualizarPatioHandler handler, Guid id, [FromBody] AtualizarPatioRequest req, CancellationToken ct = default)
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id, [FromServices] ObterPatioPorIdHandler handler, CancellationToken ct)
         {
+            var patio = await handler.ExecuteAsync(id, ct);
+            if (patio is null) return NotFound();
+            return Ok(patio);
+        }
+
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Put(int id, [FromBody] AtualizarPatioRequest req, [FromServices] AtualizarPatioHandler handler, CancellationToken ct)
+        {
+            if (!ModelState.IsValid) return ValidationProblem(ModelState);
             var ok = await handler.ExecuteAsync(id, req, ct);
-            if (!ok) return NotFound();
-            return NoContent();
+            return ok ? NoContent() : NotFound();
         }
 
-        [HttpDelete("{id:guid}")]
-        public async Task<IActionResult> Delete([FromServices] ExcluirPatioHandler handler, Guid id, CancellationToken ct = default)
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id, [FromServices] ExcluirPatioHandler handler, CancellationToken ct)
         {
             await handler.ExecuteAsync(id, ct);
             return NoContent();
         }
+
+        [HttpGet]
+        public Task<PagedResult<PatioResponse>> List([FromQuery] PageQuery query, [FromServices] ListarPatiosHandler handler, CancellationToken ct) =>
+            handler.ExecuteAsync(query, ct);
     }
 }

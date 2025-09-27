@@ -2,49 +2,36 @@ using EasyMoto.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EasyMoto.Infrastructure.Persistence.Configurations
+namespace EasyMoto.Infrastructure.Persistence.Configurations;
+
+public sealed class VagaConfiguration : IEntityTypeConfiguration<Vaga>
 {
-    public class VagaConfiguration : IEntityTypeConfiguration<Vaga>
+    public void Configure(EntityTypeBuilder<Vaga> b)
     {
-        public void Configure(EntityTypeBuilder<Vaga> builder)
-        {
-            builder.ToTable("vagas");
+        b.ToTable("vagas");
 
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).HasColumnName("Id");
+        b.HasKey(v => v.Id).HasName("pk_vagas");
+        b.Property(v => v.Id).HasColumnName("Id").ValueGeneratedOnAdd();
 
-            builder.Property(x => x.NumeroVaga)
-                .HasColumnName("NumeroVaga")
-                .HasMaxLength(20)
-                .IsRequired();
+        b.Property(v => v.PatioId).HasColumnName("PatioId").IsRequired();
+        b.Property(v => v.NumeroVaga).HasColumnName("NumeroVaga").IsRequired();
+        b.Property(v => v.Ocupada).HasColumnName("Ocupada").IsRequired();
+        b.Property(v => v.MotoId).HasColumnName("MotoId");
 
-            builder.Property(x => x.StatusVaga)
-                .HasColumnName("StatusVaga")
-                .HasMaxLength(20)
-                .IsRequired();
+        b.HasIndex(v => new { v.PatioId, v.NumeroVaga })
+            .IsUnique()
+            .HasDatabaseName("IX_vagas_PatioId_NumeroVaga");
 
-            builder.Property(x => x.MotoId)
-                .HasColumnName("MotoId");
+        b.HasOne(v => v.Patio)
+            .WithMany(p => p.Vagas)
+            .HasForeignKey(v => v.PatioId)
+            .HasConstraintName("fk_vagas_patios_patio_id")
+            .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Property(x => x.PatioId)
-                .HasColumnName("PatioId")
-                .IsRequired();
-
-            builder.HasIndex(x => x.PatioId);
-            builder.HasIndex(x => x.MotoId);
-
-            builder.HasIndex(x => new { x.PatioId, x.NumeroVaga })
-                .IsUnique();
-
-            builder.HasOne<Moto>()
-                .WithMany()
-                .HasForeignKey(x => x.MotoId)
-                .OnDelete(DeleteBehavior.SetNull);
-
-            builder.HasOne<Patio>()
-                .WithMany()
-                .HasForeignKey(x => x.PatioId)
-                .OnDelete(DeleteBehavior.Cascade);
-        }
+        b.HasOne(v => v.Moto)
+            .WithMany()
+            .HasForeignKey(v => v.MotoId)
+            .HasConstraintName("fk_vagas_motos_moto_id")
+            .OnDelete(DeleteBehavior.SetNull);
     }
 }

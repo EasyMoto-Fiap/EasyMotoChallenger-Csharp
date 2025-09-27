@@ -1,10 +1,9 @@
-namespace EasyMoto.Application.Vagas.Contracts
+namespace EasyMoto.Application.Vagas.Contracts;
+
+public sealed class CriarVagaRequest
 {
-    public class CriarVagaRequest
-    {
-        public string NumeroVaga { get; set; } = string.Empty;
-        public string StatusVaga { get; set; } = string.Empty;
-        public Guid? MotoId { get; set; }
-        public Guid PatioId { get; set; }
-    }
+    public int PatioId { get; init; }
+    public int NumeroVaga { get; init; }
+    public bool Ocupada { get; init; }
+    public int? MotoId { get; init; }
 }

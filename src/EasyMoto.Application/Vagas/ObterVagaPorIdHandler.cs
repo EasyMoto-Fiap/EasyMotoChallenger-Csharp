@@ -1,29 +1,26 @@
 using EasyMoto.Application.Vagas.Contracts;
 using EasyMoto.Domain.Repositories;
 
-namespace EasyMoto.Application.Vagas
+namespace EasyMoto.Application.Vagas;
+
+public sealed class ObterVagaPorIdHandler
 {
-    public class ObterVagaPorIdHandler
+    private readonly IVagaRepository _repo;
+
+    public ObterVagaPorIdHandler(IVagaRepository repo) => _repo = repo;
+
+    public async Task<VagaResponse?> ExecuteAsync(int id, CancellationToken ct)
     {
-        private readonly IVagaRepository _repo;
+        var e = await _repo.GetByIdAsync(id, ct);
+        if (e is null) return null;
 
-        public ObterVagaPorIdHandler(IVagaRepository repo)
+        return new VagaResponse
         {
-            _repo = repo;
-        }
-
-        public async Task<VagaResponse?> ExecuteAsync(Guid id, CancellationToken ct)
-        {
-            var e = await _repo.GetByIdAsync(id, ct);
-            if (e == null) return null;
-            return new VagaResponse
-            {
-                Id = e.Id,
-                NumeroVaga = e.NumeroVaga,
-                StatusVaga = e.StatusVaga,
-                MotoId = e.MotoId,
-                PatioId = e.PatioId
-            };
-        }
+            Id = e.Id,
+            PatioId = e.PatioId,
+            NumeroVaga = e.NumeroVaga,
+            Ocupada = e.Ocupada,
+            MotoId = e.MotoId
+        };
     }
 }

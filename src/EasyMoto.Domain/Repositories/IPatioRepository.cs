@@ -4,11 +4,12 @@ namespace EasyMoto.Domain.Repositories
 {
     public interface IPatioRepository
     {
-        Task AddAsync(Patio entity, CancellationToken ct);
-        Task UpdateAsync(Patio entity, CancellationToken ct);
-        Task DeleteAsync(Guid id, CancellationToken ct);
-        Task<Patio?> GetByIdAsync(Guid id, CancellationToken ct);
-        Task<List<Patio>> ListAsync(int page, int size, CancellationToken ct);
-        Task<long> CountAsync(CancellationToken ct);
+        Task AddAsync(Patio patio, CancellationToken ct = default);
+        Task<Patio?> GetByIdAsync(int id, CancellationToken ct = default);
+        Task<bool> UpdateAsync(Patio patio, CancellationToken ct = default);
+        Task DeleteAsync(int id, CancellationToken ct = default);
+        Task<int> CountAsync(CancellationToken ct = default);
+        Task<IReadOnlyList<Patio>> ListAsync(int page, int size, CancellationToken ct = default);
+        Task<IReadOnlyList<Patio>> ListByFilialAsync(int filialId, CancellationToken ct = default);
     }
 }

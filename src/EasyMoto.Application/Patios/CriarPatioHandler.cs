@@ -6,28 +6,20 @@ namespace EasyMoto.Application.Patios;
 
 public sealed class CriarPatioHandler
 {
-    private readonly IFilialRepository _filiais;
-    private readonly IPatioRepository _patios;
+    private readonly IPatioRepository _repo;
+    public CriarPatioHandler(IPatioRepository repo) => _repo = repo;
 
-    public CriarPatioHandler(IFilialRepository filiais, IPatioRepository patios)
+    public async Task<PatioResponse> ExecuteAsync(CriarPatioRequest req, CancellationToken ct = default)
     {
-        _filiais = filiais;
-        _patios = patios;
-    }
-
-    public async Task<Patio> ExecuteAsync(CriarPatioRequest req, CancellationToken ct = default)
-    {
-        var filial = await _filiais.GetByIdAsync(req.FilialId, ct);
-        if (filial is null) throw new ArgumentException("Filial não encontrada", nameof(req.FilialId));
-
-        var patio = new Patio(
-            req.NomePatio.Trim(),
-            req.TamanhoPatio.Trim(),
-            req.Andar.Trim(),
-            req.FilialId
-        );
-
-        await _patios.AddAsync(patio, ct);
-        return patio;
+        var entity = new Patio(req.NomePatio, req.TamanhoPatio, req.Andar, req.FilialId);
+        await _repo.AddAsync(entity, ct);
+        return new PatioResponse
+        {
+            Id = entity.Id,
+            NomePatio = entity.NomePatio,
+            TamanhoPatio = entity.TamanhoPatio,
+            Andar = entity.Andar,
+            FilialId = entity.FilialId
+        };
     }
 }

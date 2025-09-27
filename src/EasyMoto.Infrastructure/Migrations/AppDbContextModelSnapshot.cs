@@ -355,47 +355,38 @@ namespace EasyMoto.Infrastructure.Migrations
 
             modelBuilder.Entity("EasyMoto.Domain.Entities.Patio", b =>
                 {
-                    b.Property<int>("IdPatio")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasColumnName("IdPatio");
+                        .HasColumnName("Id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdPatio"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Andar")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("character varying(40)")
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)")
                         .HasColumnName("Andar");
 
                     b.Property<int>("FilialId")
                         .HasColumnType("integer")
                         .HasColumnName("FilialId");
 
-                    b.Property<int?>("FilialIdFilial")
-                        .HasColumnType("integer")
-                        .HasColumnName("filial_id_filial");
-
                     b.Property<string>("NomePatio")
-                        .IsRequired()
-                        .HasMaxLength(160)
-                        .HasColumnType("character varying(160)")
+                        .HasMaxLength(120)
+                        .HasColumnType("character varying(120)")
                         .HasColumnName("NomePatio");
 
                     b.Property<string>("TamanhoPatio")
                         .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("character varying(80)")
+                        .HasMaxLength(60)
+                        .HasColumnType("character varying(60)")
                         .HasColumnName("TamanhoPatio");
 
-                    b.HasKey("IdPatio")
+                    b.HasKey("Id")
                         .HasName("pk_patios");
 
                     b.HasIndex("FilialId")
                         .HasDatabaseName("IX_patios_FilialId");
-
-                    b.HasIndex("FilialIdFilial")
-                        .HasDatabaseName("ix_patios_filial_id_filial");
 
                     b.ToTable("patios", (string)null);
                 });
@@ -507,13 +498,6 @@ namespace EasyMoto.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_patios_filiais_filial_id");
-
-                    b.HasOne("EasyMoto.Domain.Entities.Filial", "Filial")
-                        .WithMany()
-                        .HasForeignKey("FilialIdFilial")
-                        .HasConstraintName("fk_patios_filiais_filial_id_filial");
-
-                    b.Navigation("Filial");
                 });
 
             modelBuilder.Entity("EasyMoto.Domain.Entities.Vaga", b =>

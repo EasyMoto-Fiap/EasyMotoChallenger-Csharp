@@ -14,10 +14,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1620b78c-8586-4e5c-8065-b864854fcef8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EasyMoto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EasyMoto/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyMoto.Tests/obj/Debug/net8.0/EasyMoto.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasyMoto.Tests/obj/Debug/net8.0/EasyMoto.Tests.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyMoto.Tests/obj/Debug/net8.0/EasyMoto.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/EasyMoto.Tests/obj/Debug/net8.0/EasyMoto.Tests.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyMoto.Tests/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/EasyMoto.Tests/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/PatiosController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/PatiosController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/FuncionariosController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/FuncionariosController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Api.exe" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Api.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Api.pdb" afterDir="false" />
@@ -38,15 +35,14 @@
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/refint/EasyMoto.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/refint/EasyMoto.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/rjsmcshtml.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/rjsmcshtml.dswa.cache.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/rjsmrazor.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/rjsmrazor.dswa.cache.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/GlobalUsings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/AtualizarPatioHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/AtualizarPatioHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/Contracts/AtualizarPatioRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/Contracts/AtualizarPatioRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/Contracts/CriarPatioRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/Contracts/CriarPatioRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/Contracts/PatioResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/Contracts/PatioResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/CriarPatioHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/CriarPatioHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/ListarPatiosHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/ListarPatiosHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/ObterPatioPorIdHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/ObterPatioPorIdHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/AtualizarFuncionarioHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/AtualizarFuncionarioHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/Contracts/AtualizarFuncionarioRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/Contracts/AtualizarFuncionarioRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/Contracts/CriarFuncionarioRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/Contracts/CriarFuncionarioRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/Contracts/FuncionarioResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/Contracts/FuncionarioResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/CriarFuncionarioHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/CriarFuncionarioHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/ExcluirFuncionarioHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/ExcluirFuncionarioHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/ListarFuncionariosHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/ListarFuncionariosHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/ObterFuncionarioPorIdHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/ObterFuncionarioPorIdHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Application.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Application.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Domain.dll" afterDir="false" />
@@ -54,15 +50,13 @@
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/ref/EasyMoto.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/ref/EasyMoto.Application.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/refint/EasyMoto.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/refint/EasyMoto.Application.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Patio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Patio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IPatioRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IPatioRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Funcionario.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Funcionario.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IFuncionarioRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IFuncionarioRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/bin/Debug/net8.0/EasyMoto.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/bin/Debug/net8.0/EasyMoto.Domain.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/bin/Debug/net8.0/EasyMoto.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/bin/Debug/net8.0/EasyMoto.Domain.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.AssemblyInfo.cs" afterDir="false" />
@@ -72,10 +66,13 @@
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/ref/EasyMoto.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/ref/EasyMoto.Domain.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/refint/EasyMoto.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/refint/EasyMoto.Domain.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Migrations/20250927020034_Initial_Int.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Migrations/20250927020034_Initial_Int.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Migrations/20250927031858_Ajustes_Finais_Vagas.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Migrations/20250927031858_Ajustes_Finais_Vagas.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/PatioConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/PatioConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/PatioRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/PatioRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/FuncionarioConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/FuncionarioConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/FuncionarioRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/FuncionarioRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Domain.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Domain.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Infrastructure.dll" afterDir="false" />
@@ -89,7 +86,6 @@
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/ref/EasyMoto.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/ref/EasyMoto.Infrastructure.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/refint/EasyMoto.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/refint/EasyMoto.Infrastructure.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -406,7 +402,7 @@
       <workItem from="1758754176059" duration="12601000" />
       <workItem from="1758817979907" duration="24681000" />
       <workItem from="1758907800802" duration="32759000" />
-      <workItem from="1758990766351" duration="4277000" />
+      <workItem from="1758990766351" duration="7679000" />
     </task>
     <task id="LOCAL-00001" summary="chore(estrutura): criar solução EasyMoto e projetos base (Api, Application, Domain, Infrastructure) com referências entre camadas">
       <option name="closed" value="true" />
@@ -576,7 +572,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758943709972</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="feat(patio): trocar PK para int e alinhar FK em vagas">
+      <option name="closed" value="true" />
+      <created>1758995309223</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1758995309223</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -618,7 +622,8 @@
     <MESSAGE value="feat(clientes): persistir cadastro no Postgres com validação de telefone e snake_case" />
     <MESSAGE value="refactor!: padroniza IDs como int e torna NumeroVaga textual; corrige paginação e migrações" />
     <MESSAGE value="feat(vagas): numeroVaga vira string; snake_case + repos/handlers ajustados; migração Ajustes_Finais_Vagas (BREAKING CHANGE)" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(vagas): numeroVaga vira string; snake_case + repos/handlers ajustados; migração Ajustes_Finais_Vagas (BREAKING CHANGE)" />
+    <MESSAGE value="feat(patio): trocar PK para int e alinhar FK em vagas" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(patio): trocar PK para int e alinhar FK em vagas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

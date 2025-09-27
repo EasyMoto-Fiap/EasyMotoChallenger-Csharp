@@ -1,27 +1,24 @@
-using System.Threading;
-using System.Threading.Tasks;
 using EasyMoto.Application.Funcionarios.Contracts;
 using EasyMoto.Domain.Repositories;
 
-namespace EasyMoto.Application.Funcionarios
+namespace EasyMoto.Application.Funcionarios;
+
+public sealed class ObterFuncionarioPorIdHandler
 {
-    public sealed class ObterFuncionarioPorIdHandler
+    private readonly IFuncionarioRepository _repo;
+
+    public ObterFuncionarioPorIdHandler(IFuncionarioRepository repo) => _repo = repo;
+
+    public async Task<FuncionarioResponse?> ExecuteAsync(int id, CancellationToken ct = default)
     {
-        private readonly IFuncionarioRepository _repo;
-        public ObterFuncionarioPorIdHandler(IFuncionarioRepository repo) => _repo = repo;
-
-        public async Task<FuncionarioResponse?> ExecuteAsync(System.Guid id, CancellationToken ct = default)
+        var e = await _repo.GetByIdAsync(id, ct);
+        if (e is null) return null;
+        return new FuncionarioResponse
         {
-            var e = await _repo.GetByIdAsync(id, ct);
-            if (e is null) return null;
-
-            return new FuncionarioResponse
-            {
-                IdFuncionario = e.Id,
-                NomeFuncionario = e.NomeFuncionario,
-                Cpf = e.Cpf,
-                FilialId = e.FilialId
-            };
-        }
+            Id = e.Id,
+            NomeFuncionario = e.NomeFuncionario,
+            Cpf = e.Cpf,
+            FilialId = e.FilialId
+        };
     }
 }

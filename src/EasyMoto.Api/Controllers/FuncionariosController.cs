@@ -3,48 +3,48 @@ using EasyMoto.Application.Funcionarios.Contracts;
 using EasyMoto.Application.Shared.Pagination;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EasyMoto.Api.Controllers
+namespace EasyMoto.Api.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public sealed class FuncionariosController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public sealed class FuncionariosController : ControllerBase
+    [HttpPost]
+    public async Task<IActionResult> Post([FromServices] CriarFuncionarioHandler handler, [FromBody] CriarFuncionarioRequest req, CancellationToken ct)
     {
-        [HttpGet]
-        public async Task<IActionResult> Get([FromServices] ListarFuncionariosHandler handler, [FromQuery] int page = 1, [FromQuery] int size = 10, CancellationToken ct = default)
-        {
-            var result = await handler.ExecuteAsync(new PageQuery(page, size), ct);
-            return Ok(result);
-        }
+        var result = await handler.ExecuteAsync(req, ct);
+        return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
+    }
 
-        [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetById([FromServices] ObterFuncionarioPorIdHandler handler, Guid id, CancellationToken ct = default)
-        {
-            var item = await handler.ExecuteAsync(id, ct);
-            if (item is null) return NotFound();
-            return Ok(item);
-        }
+    [HttpPut("{id:int}")]
+    public async Task<IActionResult> Put(int id, [FromServices] AtualizarFuncionarioHandler handler, [FromBody] AtualizarFuncionarioRequest req, CancellationToken ct)
+    {
+        req.Id = id;
+        var ok = await handler.ExecuteAsync(req, ct);
+        if (!ok) return NotFound();
+        return NoContent();
+    }
 
-        [HttpPost]
-        public async Task<IActionResult> Post([FromServices] CriarFuncionarioHandler handler, [FromBody] CriarFuncionarioRequest req, CancellationToken ct = default)
-        {
-            var created = await handler.ExecuteAsync(req, ct);
-            return CreatedAtAction(nameof(GetById), new { id = created.IdFuncionario }, created);
-        }
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Delete(int id, [FromServices] ExcluirFuncionarioHandler handler, CancellationToken ct)
+    {
+        var ok = await handler.ExecuteAsync(id, ct);
+        if (!ok) return NotFound();
+        return NoContent();
+    }
 
-        [HttpPut("{id:guid}")]
-        public async Task<IActionResult> Put([FromServices] AtualizarFuncionarioHandler handler, Guid id, [FromBody] AtualizarFuncionarioRequest req, CancellationToken ct = default)
-        {
-            var updated = await handler.ExecuteAsync(id, req, ct);
-            if (updated is null) return NotFound();
-            return Ok(updated);
-        }
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetById(int id, [FromServices] ObterFuncionarioPorIdHandler handler, CancellationToken ct)
+    {
+        var result = await handler.ExecuteAsync(id, ct);
+        if (result is null) return NotFound();
+        return Ok(result);
+    }
 
-        [HttpDelete("{id:guid}")]
-        public async Task<IActionResult> Delete([FromServices] ExcluirFuncionarioHandler handler, Guid id, CancellationToken ct = default)
-        {
-            var ok = await handler.ExecuteAsync(id, ct);
-            if (!ok) return NotFound();
-            return NoContent();
-        }
+    [HttpGet]
+    public async Task<IActionResult> GetAll([FromServices] ListarFuncionariosHandler handler, [FromQuery] int page = 1, [FromQuery] int size = 10, CancellationToken ct = default)
+    {
+        var result = await handler.ExecuteAsync(new PageQuery(page, size), ct);
+        return Ok(result);
     }
 }

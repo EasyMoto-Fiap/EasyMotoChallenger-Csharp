@@ -1,14 +1,13 @@
 using EasyMoto.Domain.Entities;
 
-namespace EasyMoto.Domain.Repositories
+namespace EasyMoto.Domain.Repositories;
+
+public interface IFuncionarioRepository
 {
-    public interface IFuncionarioRepository
-    {
-        Task<Funcionario?> GetByIdAsync(Guid id, CancellationToken ct);
-        Task<IReadOnlyList<Funcionario>> ListAsync(int page, int size, CancellationToken ct);
-        Task<long> CountAsync(CancellationToken ct);
-        Task<Funcionario> AddAsync(Funcionario entity, CancellationToken ct);
-        Task<Funcionario?> UpdateAsync(Funcionario entity, CancellationToken ct);
-        Task<bool> DeleteAsync(Guid id, CancellationToken ct);
-    }
+    Task<Funcionario?> GetByIdAsync(int id, CancellationToken ct = default);
+    Task<List<Funcionario>> ListAsync(int page, int size, CancellationToken ct = default);
+    Task<int> CountAsync(CancellationToken ct = default);
+    Task AddAsync(Funcionario entity, CancellationToken ct = default);
+    Task UpdateAsync(Funcionario entity, CancellationToken ct = default);
+    Task DeleteAsync(Funcionario entity, CancellationToken ct = default);
 }

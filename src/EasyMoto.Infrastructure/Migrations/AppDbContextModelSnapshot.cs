@@ -177,26 +177,28 @@ namespace EasyMoto.Infrastructure.Migrations
 
             modelBuilder.Entity("EasyMoto.Domain.Entities.Funcionario", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Cpf")
                         .IsRequired()
                         .HasMaxLength(14)
                         .HasColumnType("character varying(14)")
-                        .HasColumnName("Cpf");
+                        .HasColumnName("cpf");
 
                     b.Property<int>("FilialId")
                         .HasColumnType("integer")
-                        .HasColumnName("FilialId");
+                        .HasColumnName("filial_id");
 
                     b.Property<string>("NomeFuncionario")
                         .IsRequired()
                         .HasMaxLength(120)
                         .HasColumnType("character varying(120)")
-                        .HasColumnName("NomeFuncionario");
+                        .HasColumnName("nome_funcionario");
 
                     b.HasKey("Id")
                         .HasName("pk_funcionarios");

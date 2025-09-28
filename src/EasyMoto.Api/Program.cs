@@ -1,6 +1,7 @@
 using EasyMoto.Application.DependencyInjection;
 using EasyMoto.Infrastructure.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "EasyMoto.Api", Version = "v1" });
+    c.ExampleFilters();
 });
+builder.Services.AddSwaggerExamplesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);

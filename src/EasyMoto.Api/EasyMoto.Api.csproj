@@ -27,9 +27,6 @@
     <ItemGroup>
       <Folder Include="Configuration\" />
       <Folder Include="Controllers\Auth\" />
-      <Folder Include="Controllers\Legendas\" />
-      <Folder Include="Controllers\Motos\" />
-      <Folder Include="Controllers\Notificacoes\" />
       <Folder Include="Dtos\Requests\Auth\" />
       <Folder Include="Dtos\Requests\Filiais\" />
       <Folder Include="Dtos\Requests\Legendas\" />

@@ -18,6 +18,7 @@ namespace EasyMoto.Infrastructure.DependencyInjection
 
             services.AddScoped<IFilialRepository, FilialRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IMotoRepository, MotoRepository>();
 
             return services;
         }

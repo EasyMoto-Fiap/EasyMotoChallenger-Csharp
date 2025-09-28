@@ -9,6 +9,7 @@ public class AppDbContext : DbContext
 
     public DbSet<Filial> Filiais => Set<Filial>();
     public DbSet<Usuario> Usuarios => Set<Usuario>();
+    public DbSet<Moto> Motos => Set<Moto>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -22,9 +22,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Options\" />
       <Folder Include="Persistence\Migrations\" />
-      <Folder Include="Security\" />
-      <Folder Include="Seed\" />
     </ItemGroup>
 </Project>

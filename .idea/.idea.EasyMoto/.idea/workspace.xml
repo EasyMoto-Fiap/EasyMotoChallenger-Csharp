@@ -13,25 +13,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1620b78c-8586-4e5c-8065-b864854fcef8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/LegendasStatusController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Legendas/CreateLegendaStatusRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Legendas/LegendaStatusResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Legendas/UpdateLegendaStatusRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Mapping/LegendaStatusMapper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Legendas/Implementations/CreateLegendaStatusUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Legendas/Implementations/DeleteLegendaStatusUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Legendas/Implementations/GetLegendaStatusUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Legendas/Implementations/ListLegendasStatusUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Legendas/Implementations/UpdateLegendaStatusUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Legendas/Interfaces/ICreateLegendaStatusUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Legendas/Interfaces/IDeleteLegendaStatusUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Legendas/Interfaces/IGetLegendaStatusUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Legendas/Interfaces/IListLegendasStatusUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Legendas/Interfaces/IUpdateLegendaStatusUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/LegendaStatus.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/ILegendaStatusRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/LegendaStatusConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Repositories/LegendaStatusRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/NotificacoesController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Notificacoes/CreateNotificacaoRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Notificacoes/MarkAsLidaRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Notificacoes/NotificacaoResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Mapping/NotificacaoMapper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Implementations/CreateNotificacaoUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Implementations/DeleteNotificacaoUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Implementations/GetNotificacaoUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Implementations/ListNotificacoesUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Implementations/MarkNotificacaoLidaUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Interfaces/ICreateNotificacaoUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Interfaces/IDeleteNotificacaoUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Interfaces/IGetNotificacaoUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Interfaces/IListNotificacoesUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Interfaces/IMarkNotificacaoLidaUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Notificacao.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/INotificacaoRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/NotificacaoConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/NotificacaoLeituraConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Repositories/NotificacaoRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EasyMoto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EasyMoto/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EasyMoto.Tests/bin/Debug/net8.0/EasyMoto.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EasyMoto.Tests/bin/Debug/net8.0/EasyMoto.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EasyMoto.Tests/bin/Debug/net8.0/EasyMoto.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/EasyMoto.Tests/bin/Debug/net8.0/EasyMoto.Tests.pdb" afterDir="false" />
@@ -133,6 +134,7 @@
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/FiliaisController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/LegendasStatusController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/MotosController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/NotificacoesController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/UsuariosController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Infra/Hateoas/LinkBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Infra/Pagination/PaginationHeaders.cs" root0="FORCE_HIGHLIGHTING" />
@@ -147,6 +149,9 @@
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Motos/CreateMotoRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Motos/MotoResponse.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Motos/UpdateMotoRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Notificacoes/CreateNotificacaoRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Notificacoes/MarkAsLidaRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Notificacoes/NotificacaoResponse.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Usuarios/CreateUsuarioRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Usuarios/UpdateUsuarioRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Usuarios/UsuarioResponse.cs" root0="FORCE_HIGHLIGHTING" />
@@ -154,6 +159,7 @@
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Mapping/FilialMapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Mapping/LegendaStatusMapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Mapping/MotoMapper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Mapping/NotificacaoMapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Filiais/CreateFilialUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Filiais/DeleteFilialUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Filiais/GetFilialUseCase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -179,6 +185,16 @@
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Motos/Interfaces/IGetMotoUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Motos/Interfaces/IListMotosUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Motos/Interfaces/IUpdateMotoUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Implementations/CreateNotificacaoUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Implementations/DeleteNotificacaoUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Implementations/GetNotificacaoUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Implementations/ListNotificacoesUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Implementations/MarkNotificacaoLidaUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Interfaces/ICreateNotificacaoUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Interfaces/IDeleteNotificacaoUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Interfaces/IGetNotificacaoUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Interfaces/IListNotificacoesUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Notificacoes/Interfaces/IMarkNotificacaoLidaUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Usuarios/Implementations/CreateUsuarioUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Usuarios/Implementations/DeleteUsuarioUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Usuarios/Implementations/GetUsuarioUseCase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -193,10 +209,12 @@
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Filial.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/LegendaStatus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Moto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Notificacao.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Usuario.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IFilialRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/ILegendaStatusRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IMotoRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/INotificacaoRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IRepositoryBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IUsuarioRepository.cs" root0="FORCE_HIGHLIGHTING" />
@@ -205,9 +223,12 @@
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/FilialConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/LegendaStatusConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/MotoConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/NotificacaoConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/NotificacaoLeituraConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/UsuarioConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Repositories/LegendaStatusRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Repositories/MotoRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Repositories/NotificacaoRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Repositories/UsuarioRepository.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -360,7 +381,7 @@
       <workItem from="1758817979907" duration="24681000" />
       <workItem from="1758907800802" duration="32759000" />
       <workItem from="1758990766351" duration="38713000" />
-      <workItem from="1759070061799" duration="9987000" />
+      <workItem from="1759070061799" duration="11241000" />
     </task>
     <task id="LOCAL-00001" summary="chore(estrutura): criar solução EasyMoto e projetos base (Api, Application, Domain, Infrastructure) com referências entre camadas">
       <option name="closed" value="true" />
@@ -594,7 +615,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759078040586</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="feat(legendas): adiciona entidade LegendaStatus, CRUD e mapeamento EF Core">
+      <option name="closed" value="true" />
+      <created>1759080663706</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1759080663706</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -615,7 +644,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(db): aplicar migration no PostgreSQL (porta 5433) e validar API no Swagger" />
     <MESSAGE value="feat(locacao): incluir StatusLocacao e mapping EF; chore(db): migration Update_ClienteLocacao" />
     <MESSAGE value="feat(localizacao): adicionar CRUD, repositório e mapeamento EF Core" />
     <MESSAGE value="feat(filial): registrar entidade no contexto/DI e criar migração Add_Filial" />
@@ -640,7 +668,8 @@
     <MESSAGE value="fix(usuarios-dto): eliminar warnings CS8618 no CreateUsuarioRequest" />
     <MESSAGE value="chore(structure): organizar pastas e namespaces do projeto" />
     <MESSAGE value="feat(motos): adiciona entidade Moto, CRUD e mapeamento EF Core" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(motos): adiciona entidade Moto, CRUD e mapeamento EF Core" />
+    <MESSAGE value="feat(legendas): adiciona entidade LegendaStatus, CRUD e mapeamento EF Core" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(legendas): adiciona entidade LegendaStatus, CRUD e mapeamento EF Core" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -20,6 +20,7 @@ namespace EasyMoto.Infrastructure.DependencyInjection
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IMotoRepository, MotoRepository>();
             services.AddScoped<ILegendaStatusRepository, LegendaStatusRepository>();
+            services.AddScoped<INotificacaoRepository, NotificacaoRepository>();
 
             return services;
         }

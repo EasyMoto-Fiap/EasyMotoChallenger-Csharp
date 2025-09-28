@@ -13,9 +13,7 @@
     <ItemGroup>
       <Folder Include="Abstractions\Security\" />
       <Folder Include="DTOs\Auth\" />
-      <Folder Include="DTOs\Notificacoes\" />
       <Folder Include="UseCases\Auth\" />
-      <Folder Include="UseCases\Notificacoes\" />
       <Folder Include="Validation\" />
     </ItemGroup>
 

@@ -1,6 +1,0 @@
-@EasyMoto_HostAddress = http://localhost:5063
-
-GET {{EasyMoto_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

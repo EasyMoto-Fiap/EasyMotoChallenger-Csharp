@@ -4,6 +4,8 @@ using EasyMoto.Application.UseCases.Usuarios.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using EasyMoto.Application.UseCases.Motos.Implementations;
 using EasyMoto.Application.UseCases.Motos.Interfaces;
+using EasyMoto.Application.UseCases.Legendas.Interfaces;
+using EasyMoto.Application.UseCases.Legendas.Implementations;
 
 namespace EasyMoto.Application.DependencyInjection;
 
@@ -29,6 +31,11 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IUpdateMotoUseCase, UpdateMotoUseCase>();
         services.AddScoped<IDeleteMotoUseCase, DeleteMotoUseCase>();
 
+        services.AddScoped<ICreateLegendaStatusUseCase, CreateLegendaStatusUseCase>();
+        services.AddScoped<IGetLegendaStatusUseCase, GetLegendaStatusUseCase>();
+        services.AddScoped<IListLegendasStatusUseCase, ListLegendasStatusUseCase>();
+        services.AddScoped<IUpdateLegendaStatusUseCase, UpdateLegendaStatusUseCase>();
+        services.AddScoped<IDeleteLegendaStatusUseCase, DeleteLegendaStatusUseCase>();
         return services;
     }
 }

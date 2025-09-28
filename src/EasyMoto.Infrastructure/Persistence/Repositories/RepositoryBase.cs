@@ -1,55 +1,50 @@
 using EasyMoto.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace EasyMoto.Infrastructure.Persistence.Repositories
+namespace EasyMoto.Infrastructure.Persistence.Repositories;
+
+public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
 {
-    public class RepositoryBase<T> : IRepository<T> where T : class
+    protected readonly AppDbContext Ctx;
+    protected readonly DbSet<TEntity> Set;
+
+    public RepositoryBase(AppDbContext ctx)
     {
-        private readonly DbContext _context;
-        private readonly DbSet<T> _set;
+        Ctx = ctx;
+        Set = ctx.Set<TEntity>();
+    }
 
-        public RepositoryBase(DbContext context)
-        {
-            _context = context;
-            _set = _context.Set<T>();
-        }
+    public virtual async Task<TEntity> AddAsync(TEntity entity)
+    {
+        await Set.AddAsync(entity);
+        await Ctx.SaveChangesAsync();
+        return entity;
+    }
 
-        public async Task<T?> GetByIdAsync(int id)
-        {
-            return await _set.FindAsync(id);
-        }
+    public virtual async Task<TEntity?> GetByIdAsync(int id)
+    {
+        return await Set.FindAsync(id);
+    }
 
-        public async Task<IReadOnlyList<T>> ListAsync(int page, int pageSize)
-        {
-            return await _set.AsNoTracking().Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
-        }
+    public virtual async Task UpdateAsync(TEntity entity)
+    {
+        Set.Update(entity);
+        await Ctx.SaveChangesAsync();
+    }
 
-        public async Task<int> CountAsync()
-        {
-            return await _set.CountAsync();
-        }
+    public virtual async Task DeleteAsync(TEntity entity)
+    {
+        Set.Remove(entity);
+        await Ctx.SaveChangesAsync();
+    }
 
-        public async Task AddAsync(T entity)
-        {
-            await _set.AddAsync(entity);
-            await _context.SaveChangesAsync();
-        }
+    public IQueryable<TEntity> Query()
+    {
+        return Set.AsQueryable();
+    }
 
-        public async Task UpdateAsync(T entity)
-        {
-            _set.Update(entity);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task DeleteAsync(T entity)
-        {
-            _set.Remove(entity);
-            await _context.SaveChangesAsync();
-        }
-
-        public IQueryable<T> Query()
-        {
-            return _set.AsQueryable();
-        }
+    public Task<int> SaveChangesAsync()
+    {
+        return Ctx.SaveChangesAsync();
     }
 }

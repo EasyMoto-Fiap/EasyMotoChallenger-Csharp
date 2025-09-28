@@ -30,7 +30,6 @@
       <Folder Include="Controllers\Legendas\" />
       <Folder Include="Controllers\Motos\" />
       <Folder Include="Controllers\Notificacoes\" />
-      <Folder Include="Controllers\Usuarios\" />
       <Folder Include="Dtos\Requests\Auth\" />
       <Folder Include="Dtos\Requests\Filiais\" />
       <Folder Include="Dtos\Requests\Legendas\" />

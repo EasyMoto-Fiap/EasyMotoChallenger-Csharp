@@ -1,9 +1,9 @@
-using EasyMoto.Domain.Repositories;
-using EasyMoto.Infrastructure.Persistence;
-using EasyMoto.Infrastructure.Persistence.Repositories;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using EasyMoto.Infrastructure.Persistence;
+using EasyMoto.Domain.Repositories;
+using EasyMoto.Infrastructure.Persistence.Repositories;
 
 namespace EasyMoto.Infrastructure.DependencyInjection
 {
@@ -17,6 +17,7 @@ namespace EasyMoto.Infrastructure.DependencyInjection
             });
 
             services.AddScoped<IFilialRepository, FilialRepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             return services;
         }

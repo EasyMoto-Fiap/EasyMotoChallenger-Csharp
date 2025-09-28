@@ -6,6 +6,7 @@ C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Api\bin\Debu
 C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Api\bin\Debug\net8.0\EasyMoto.Api.runtimeconfig.json
 C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Api\bin\Debug\net8.0\EasyMoto.Api.dll
 C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Api\bin\Debug\net8.0\EasyMoto.Api.pdb
+C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Api\bin\Debug\net8.0\BCrypt.Net-Next.dll
 C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Api\bin\Debug\net8.0\EFCore.NamingConventions.dll
 C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Api\bin\Debug\net8.0\Humanizer.dll
 C:\Users\valer\RiderProjects\EasyMotoChallenger-Csharp\src\EasyMoto.Api\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll

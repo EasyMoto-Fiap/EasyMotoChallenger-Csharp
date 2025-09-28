@@ -1,18 +1,17 @@
-namespace EasyMoto.Application.DTOs.Common
-{
-    public class PagedResponse<T>
-    {
-        public IReadOnlyList<T> Items { get; set; }
-        public int Page { get; set; }
-        public int PageSize { get; set; }
-        public int Total { get; set; }
+namespace EasyMoto.Application.DTOs.Common;
 
-        public PagedResponse(IReadOnlyList<T> items, int page, int pageSize, int total)
-        {
-            Items = items;
-            Page = page;
-            PageSize = pageSize;
-            Total = total;
-        }
+public class PagedResponse<T>
+{
+    public IReadOnlyList<T> Items { get; }
+    public int TotalCount { get; }
+    public int Page { get; }
+    public int PageSize { get; }
+
+    public PagedResponse(IReadOnlyList<T> items, int totalCount, int page, int pageSize)
+    {
+        Items = items;
+        TotalCount = totalCount;
+        Page = page;
+        PageSize = pageSize;
     }
 }

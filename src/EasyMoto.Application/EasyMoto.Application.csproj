@@ -16,16 +16,15 @@
       <Folder Include="DTOs\Legendas\" />
       <Folder Include="DTOs\Motos\" />
       <Folder Include="DTOs\Notificacoes\" />
-      <Folder Include="DTOs\Usuarios\" />
       <Folder Include="UseCases\Auth\" />
       <Folder Include="UseCases\Legendas\" />
       <Folder Include="UseCases\Motos\" />
       <Folder Include="UseCases\Notificacoes\" />
-      <Folder Include="UseCases\Usuarios\" />
       <Folder Include="Validation\" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.9" />
     </ItemGroup>
 

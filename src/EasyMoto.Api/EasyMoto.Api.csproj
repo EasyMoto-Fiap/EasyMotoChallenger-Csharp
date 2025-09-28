@@ -9,7 +9,7 @@
     <ItemGroup>
         <PackageReference Include="EFCore.NamingConventions" Version="9.0.0" />
         <PackageReference Include="Npgsql" Version="9.0.3" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.4" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.9">
             <PrivateAssets>all</PrivateAssets>
@@ -22,5 +22,29 @@
         <ProjectReference Include="..\EasyMoto.Application\EasyMoto.Application.csproj" />
         <ProjectReference Include="..\EasyMoto.Domain\EasyMoto.Domain.csproj" />
         <ProjectReference Include="..\EasyMoto.Infrastructure\EasyMoto.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Configuration\" />
+      <Folder Include="Controllers\Auth\" />
+      <Folder Include="Controllers\Legendas\" />
+      <Folder Include="Controllers\Motos\" />
+      <Folder Include="Controllers\Notificacoes\" />
+      <Folder Include="Controllers\Usuarios\" />
+      <Folder Include="Dtos\Requests\Auth\" />
+      <Folder Include="Dtos\Requests\Filiais\" />
+      <Folder Include="Dtos\Requests\Legendas\" />
+      <Folder Include="Dtos\Requests\Motos\" />
+      <Folder Include="Dtos\Requests\Notificacoes\" />
+      <Folder Include="Dtos\Requests\Usuarios\" />
+      <Folder Include="Dtos\Responses\Common\" />
+      <Folder Include="Dtos\Responses\Filiais\" />
+      <Folder Include="Dtos\Responses\Legendas\" />
+      <Folder Include="Dtos\Responses\Motos\" />
+      <Folder Include="Dtos\Responses\Notificacoes\" />
+      <Folder Include="Dtos\Responses\Usuarios\" />
+      <Folder Include="Infra\Errors\" />
+      <Folder Include="Infra\Security\" />
+      <Folder Include="Infra\Swagger\" />
     </ItemGroup>
 </Project>

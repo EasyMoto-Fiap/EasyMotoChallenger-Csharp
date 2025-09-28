@@ -1,40 +1,27 @@
-using System;
-
 namespace EasyMoto.Domain.Entities
 {
-    public sealed class Filial
+    public class Filial
     {
-        public int IdFilial { get; private set; }
-        public string NomeFilial { get; private set; } = null!;
-        public string Cidade { get; private set; } = null!;
-        public string Estado { get; private set; } = null!;
-        public string Pais { get; private set; } = null!;
-        public string Endereco { get; private set; } = null!;
-        public int EmpresaId { get; private set; }
-        public Empresa Empresa { get; private set; } = null!;
+        public int Id { get; private set; }
+        public string Nome { get; private set; }
+        public string Cep { get; private set; }
+        public string Cidade { get; private set; }
+        public string Uf { get; private set; }
 
-        private Filial() { }
-
-        public Filial(string nomeFilial, string cidade, string estado, string pais, string endereco, int empresaId)
+        public Filial(string nome, string cep, string cidade, string uf)
         {
-            if (string.IsNullOrWhiteSpace(nomeFilial)) throw new ArgumentException(nameof(nomeFilial));
-            NomeFilial = nomeFilial.Trim();
-            Cidade = cidade?.Trim() ?? "";
-            Estado = estado?.Trim() ?? "";
-            Pais = pais?.Trim() ?? "";
-            Endereco = endereco?.Trim() ?? "";
-            EmpresaId = empresaId;
+            Nome = nome;
+            Cep = cep;
+            Cidade = cidade;
+            Uf = uf;
         }
 
-        public void Update(string nomeFilial, string cidade, string estado, string pais, string endereco, int empresaId)
+        public void Atualizar(string nome, string cep, string cidade, string uf)
         {
-            if (string.IsNullOrWhiteSpace(nomeFilial)) throw new ArgumentException(nameof(nomeFilial));
-            NomeFilial = nomeFilial.Trim();
-            Cidade = cidade?.Trim() ?? "";
-            Estado = estado?.Trim() ?? "";
-            Pais = pais?.Trim() ?? "";
-            Endereco = endereco?.Trim() ?? "";
-            EmpresaId = empresaId;
+            Nome = nome;
+            Cep = cep;
+            Cidade = cidade;
+            Uf = uf;
         }
     }
 }

@@ -13,6 +13,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1620b78c-8586-4e5c-8065-b864854fcef8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/Filiais/FiliaisController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Api/Infra/Hateoas/LinkBuilder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Api/Infra/Pagination/PaginationHeaders.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Common/PagedResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Common/PaginationRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Filiais/CreateFilialRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Filiais/FilialResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Filiais/UpdateFilialRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/DependencyInjection/ServiceCollectionExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Mapping/FilialMapper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Filiais/CreateFilialUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Filiais/DeleteFilialUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Filiais/GetFilialUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Filiais/ListFiliaisUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Filiais/UpdateFilialUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/DependencyInjection/ServiceCollectionExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Repositories/FilialRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Repositories/RepositoryBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EasyMoto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EasyMoto/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EasyMoto.Tests/bin/Debug/net8.0/EasyMoto.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EasyMoto.Tests/bin/Debug/net8.0/EasyMoto.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EasyMoto.Tests/bin/Debug/net8.0/EasyMoto.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/EasyMoto.Tests/bin/Debug/net8.0/EasyMoto.Tests.pdb" afterDir="false" />
@@ -23,11 +42,29 @@
       <change beforePath="$PROJECT_DIR$/EasyMoto.Tests/obj/Debug/net8.0/EasyMoto.Tests.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/EasyMoto.Tests/obj/Debug/net8.0/EasyMoto.Tests.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EasyMoto.Tests/obj/Debug/net8.0/ref/EasyMoto.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EasyMoto.Tests/obj/Debug/net8.0/ref/EasyMoto.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EasyMoto.Tests/obj/Debug/net8.0/refint/EasyMoto.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EasyMoto.Tests/obj/Debug/net8.0/refint/EasyMoto.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/ClienteLocacoesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/ClienteLocacoesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/ClientesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/ClientesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/LocalizacoesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/LocalizacoesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Swagger/Examples/Clientes/ClienteResponseExample.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/Swagger/Examples/Clientes/ClienteResponseExample.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Swagger/Examples/Clientes/ResourceClienteResponseExample.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/Swagger/Examples/Clientes/ResourceClienteResponseExample.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EasyMoto.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/EasyMoto.Tests/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/ClienteLocacoesController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/ClientesController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/EmpresasController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/FiliaisController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/FuncionariosController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/LocalizacoesController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/MotosController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/OperadoresController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/PatiosController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Controllers/VagasController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/EasyMoto.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/EasyMoto.Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Extensions/ApiVersioningExtensions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Extensions/SwaggerExtensions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Filters/ValidationFilter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Hypermedia/HateoasBuilder.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Hypermedia/LinkDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Hypermedia/ResourceDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Swagger/Examples/Clientes/ClienteResponseExample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Swagger/Examples/Clientes/CriarClienteRequestExample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/Swagger/Examples/Clientes/ResourceClienteResponseExample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Api.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Api.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Api.exe" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Api.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Api.pdb" afterDir="false" />
@@ -37,9 +74,16 @@
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Domain.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Infrastructure.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/EasyMoto.Infrastructure.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/Microsoft.OpenApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/Microsoft.OpenApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/EasyMoto.Api.sourcelink.json" afterDir="false" />
@@ -48,72 +92,197 @@
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/refint/EasyMoto.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/refint/EasyMoto.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/rjsmcshtml.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/rjsmcshtml.dswa.cache.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/rjsmrazor.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/Debug/net8.0/rjsmrazor.dswa.cache.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/AtualizarClienteLocacaoHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/AtualizarClienteLocacaoHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/Contracts/AtualizarClienteLocacaoRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/Contracts/AtualizarClienteLocacaoRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/Contracts/ClienteLocacaoResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/Contracts/ClienteLocacaoResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/Contracts/CriarClienteLocacaoRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/Contracts/CriarClienteLocacaoRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/CriarClienteLocacaoHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/CriarClienteLocacaoHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/ExcluirClienteLocacaoHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/ExcluirClienteLocacaoHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/ListarClienteLocacoesHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/ListarClienteLocacoesHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/ObterClienteLocacaoPorIdHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/ObterClienteLocacaoPorIdHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/AtualizarClienteHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/AtualizarClienteHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/Contracts/AtualizarClienteRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/Contracts/AtualizarClienteRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/Contracts/ClienteResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/Contracts/ClienteResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/Contracts/CriarClienteRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/Contracts/CriarClienteRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/CriarClienteHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/CriarClienteHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/ExcluirClienteHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/ExcluirClienteHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/ListarClientesHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/ListarClientesHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/ObterClientePorIdHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/ObterClientePorIdHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/AtualizarLocalizacaoHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/AtualizarLocalizacaoHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/Contracts/AtualizarLocalizacaoRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/Contracts/AtualizarLocalizacaoRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/Contracts/CriarLocalizacaoRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/Contracts/CriarLocalizacaoRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/Contracts/LocalizacaoResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/Contracts/LocalizacaoResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/CriarLocalizacaoHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/CriarLocalizacaoHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/ExcluirLocalizacaoHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/ExcluirLocalizacaoHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/ListarLocalizacoesHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/ListarLocalizacoesHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/ObterLocalizacaoPorIdHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/ObterLocalizacaoPorIdHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Shared/Pagination/PageQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/Shared/Pagination/PageQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/EasyMoto.Api.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/EasyMoto.Api.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/EasyMoto.Api.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/EasyMoto.Api.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/EasyMoto.Api.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/EasyMoto.Api.csproj.nuget.g.targets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Api/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/src/EasyMoto.Infrastructure/obj/EasyMoto.Infrastructure.csproj.EntityFrameworkCore.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Api/src/obj/EasyMoto.Infrastructure.EntityFrameworkCore.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/AtualizarClienteLocacaoHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/Contracts/AtualizarClienteLocacaoRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/Contracts/ClienteLocacaoResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/Contracts/CriarClienteLocacaoRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/CriarClienteLocacaoHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/ExcluirClienteLocacaoHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/ListarClienteLocacoesHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/ClienteLocacoes/ObterClienteLocacaoPorIdHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/AtualizarClienteHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/Contracts/AtualizarClienteRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/Contracts/ClienteResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/Contracts/CriarClienteRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/CriarClienteHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/ExcluirClienteHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/ListarClientesHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Clientes/ObterClientePorIdHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/EasyMoto.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/EasyMoto.Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Empresas/AtualizarEmpresaHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Empresas/Contracts/AtualizarEmpresaRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Empresas/Contracts/CriarEmpresaRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Empresas/Contracts/EmpresaResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Empresas/CriarEmpresaHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Empresas/ExcluirEmpresaHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Empresas/ListarEmpresasHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Empresas/ObterEmpresaPorIdHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Filiais/AtualizarFilialHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Filiais/Contracts/AtualizarFilialRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Filiais/Contracts/CriarFilialRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Filiais/Contracts/FilialResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Filiais/CriarFilialHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Filiais/ExcluirFilialHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Filiais/ListarFiliaisHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Filiais/ObterFilialPorIdHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/AtualizarFuncionarioHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/Contracts/AtualizarFuncionarioRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/Contracts/CriarFuncionarioRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/Contracts/FuncionarioResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/CriarFuncionarioHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/ExcluirFuncionarioHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/ListarFuncionariosHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/ObterFuncionarioPorIdHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/AtualizarLocalizacaoHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/Contracts/AtualizarLocalizacaoRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/Contracts/CriarLocalizacaoRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/Contracts/LocalizacaoResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/CriarLocalizacaoHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/ExcluirLocalizacaoHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/ListarLocalizacoesHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/ObterLocalizacaoPorIdHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Motos/AtualizarMotoHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Motos/Contracts/AtualizarMotoRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Motos/Contracts/CriarMotoRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Motos/Contracts/MotoResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Motos/CriarMotoHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Motos/ExcluirMotoHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Motos/ListarMotosHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Motos/ObterMotoPorIdHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Operadores/AtualizarOperadorHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Operadores/Contracts/AtualizarOperadorRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Operadores/Contracts/CriarOperadorRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Operadores/Contracts/OperadorResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Operadores/CriarOperadorHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Operadores/ExcluirOperadorHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Operadores/ListarOperadoresHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Operadores/ObterOperadorPorIdHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/AtualizarPatioHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/Contracts/AtualizarPatioRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/Contracts/CriarPatioRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/Contracts/PatioResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/CriarPatioHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/ExcluirPatioHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/ListarPatiosHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Patios/ObterPatioPorIdHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Shared/Hateoas/Link.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Shared/Hateoas/PagedResource.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Shared/Hateoas/Resource.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Shared/Pagination/PageQuery.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Shared/Pagination/PagedResult.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Shared/Pagination/Sorting.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/AtualizarVagaHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/Contracts/AtualizarVagaRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/Contracts/CriarVagaRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/Contracts/VagaResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/CriarVagaHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/ExcluirVagaHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/ListarVagasHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/Vagas/ObterVagaPorIdHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Application.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Application.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Application.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Application.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Domain.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/bin/Debug/net8.0/EasyMoto.Domain.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/EasyMoto.Application.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/ref/EasyMoto.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/ref/EasyMoto.Application.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/refint/EasyMoto.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/Debug/net8.0/refint/EasyMoto.Application.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Cliente.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Cliente.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/ClienteLocacao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/ClienteLocacao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Localizacao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Localizacao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IClienteLocacaoRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IClienteLocacaoRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IClienteRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IClienteRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/ILocalizacaoRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/ILocalizacaoRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/EasyMoto.Application.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/EasyMoto.Application.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Application/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Application/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Abstractions/ValueObject.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/EasyMoto.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/EasyMoto.Domain.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Cliente.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/ClienteLocacao.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Empresa.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Filial.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Filial.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Funcionario.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Localizacao.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Moto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Operador.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Patio.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Vaga.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Exceptions/DomainValidationException.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IClienteLocacaoRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IClienteRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IEmpresaRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IFilialRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IFilialRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IFuncionarioRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/ILocalizacaoRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IMotoRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IOperadorRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IPatioRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IVagaRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/ValueObjects/Cnpj.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/ValueObjects/Cpf.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/ValueObjects/Email.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/ValueObjects/Periodo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/ValueObjects/Telefone.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/bin/Debug/net8.0/EasyMoto.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/bin/Debug/net8.0/EasyMoto.Domain.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/bin/Debug/net8.0/EasyMoto.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/bin/Debug/net8.0/EasyMoto.Domain.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/EasyMoto.Domain.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/ref/EasyMoto.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/ref/EasyMoto.Domain.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/refint/EasyMoto.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/Debug/net8.0/refint/EasyMoto.Domain.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Domain/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/EasyMoto.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/EasyMoto.Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Migrations/20250927223445_Initial_All_Int_v2.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Migrations/20250927223445_Initial_All_Int_v2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/AppDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/ClienteConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/ClienteConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/ClienteLocacaoConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/ClienteLocacaoConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/LocalizacaoConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/LocalizacaoConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/ClienteLocacaoRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/ClienteLocacaoRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/ClienteRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/ClienteRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/LocalizacaoRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/LocalizacaoRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/ClienteConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/ClienteLocacaoConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/EmpresaConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/FilialConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/FilialConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/FuncionarioConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/LocalizacaoConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/MotoConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/OperadorConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/PatioConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/VagaConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Converters/ValueObjectConverters.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/ClienteLocacaoRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/ClienteRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/EmpresaRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/FilialRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/FuncionarioRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/LocalizacaoRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/MotoRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/OperadorRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/PatioRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/VagaRepository.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Domain.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Domain.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Infrastructure.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Infrastructure.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Infrastructure.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/bin/Debug/net8.0/EasyMoto.Infrastructure.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.dll" afterDir="false" />
@@ -121,6 +290,12 @@
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/EasyMoto.Infrastructure.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/ref/EasyMoto.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/ref/EasyMoto.Infrastructure.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/refint/EasyMoto.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/Debug/net8.0/refint/EasyMoto.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/EasyMoto.Infrastructure.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/EasyMoto.Infrastructure.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/EasyMoto.Infrastructure/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,145 +323,30 @@
     <setting file="file://$PROJECT_DIR$/EasyMoto.Tests/Domain/MotoStatusTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EasyMoto.Tests/Domain/PeriodoTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EasyMoto.Tests/UnitTest1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/ClientesController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/EmpresasController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/FiliaisController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/FuncionariosController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/LocalizacoesController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/MotosController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/OperadoresController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/PatiosController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/VagasController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Extensions/ApiVersioningExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Extensions/DomainValidationException.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Extensions/SwaggerExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Filters/ValidationFilter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Hypermedia/HateoasBuilder.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Hypermedia/LinkDto.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Hypermedia/ResourceDto.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Swagger/Examples/Clientes/ClienteResponseExample.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Swagger/Examples/Clientes/CriarClienteRequestExample.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Swagger/Examples/Clientes/ResourceClienteResponseExample.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Clientes/AtualizarClienteHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Clientes/Contracts/AtualizarClienteRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Clientes/Contracts/ClienteResponse.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Clientes/Contracts/CriarClienteRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Clientes/CriarClienteHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Clientes/ExcluirClienteHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Clientes/ListarClientesHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Clientes/ObterClientePorIdHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Empresas/AtualizarEmpresaHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Empresas/Contracts/AtualizarEmpresaRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Empresas/Contracts/CriarEmpresaRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Empresas/Contracts/EmpresaResponse.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Empresas/CriarEmpresaHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Empresas/ExcluirEmpresaHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Empresas/ListarEmpresasHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Empresas/ObterEmpresaPorIdHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Filiais/AtualizarFilialHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Filiais/Contracts/AtualizarFilialRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Filiais/Contracts/CriarFilialRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Filiais/Contracts/FilialResponse.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Filiais/CriarFilialHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Filiais/ExcluirFilialHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Filiais/ListarFiliaisHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Filiais/ObterFilialPorIdHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/AtualizarFuncionarioHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/Contracts/AtualizarFuncionarioRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/Contracts/CriarFuncionarioRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/Contracts/FuncionarioResponse.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/CriarFuncionarioHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/ExcluirFuncionarioHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/ListarFuncionariosHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Funcionarios/ObterFuncionarioPorIdHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/GlobalUsings.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/AtualizarLocalizacaoHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/Contracts/AtualizarLocalizacaoRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/Contracts/CriarLocalizacaoRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/Contracts/LocalizacaoResponse.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/CriarLocalizacaoHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/ExcluirLocalizacaoHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/ListarLocalizacoesHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Localizacoes/ObterLocalizacaoPorIdHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Motos/AtualizarMotoHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Motos/Contracts/AtualizarMotoRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Motos/Contracts/CriarMotoRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Motos/Contracts/MotoResponse.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Motos/CriarMotoHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Motos/ExcluirMotoHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Motos/ListarMotosHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Motos/ObterMotoPorIdHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Operadores/AtualizarOperadorHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Operadores/Contracts/AtualizarOperadorRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Operadores/Contracts/CriarOperadorRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Operadores/Contracts/OperadorResponse.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Operadores/CriarOperadorHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Operadores/ExcluirOperadorHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Operadores/ListarOperadoresHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Operadores/ObterOperadorPorIdHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Patios/AtualizarPatioHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Patios/Contracts/AtualizarPatioRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Patios/Contracts/CriarPatioRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Patios/Contracts/PatioResponse.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Patios/CriarPatioHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Patios/ExcluirPatioHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Patios/ListarPatiosHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Patios/ObterPatioPorIdHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Shared/Hateoas/Link.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Shared/Hateoas/PagedResource.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Shared/Hateoas/Resource.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Shared/Pagination/PageQuery.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Shared/Pagination/PagedResult.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Shared/Pagination/Sorting.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/AtualizarVagaHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/Contracts/AtualizarVagaRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/Contracts/CriarVagaRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/Contracts/VagaResponse.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/CriarVagaHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/ExcluirVagaHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/ListarVagasHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Vagas/ObterVagaPorIdHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Abstractions/ValueObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Cliente.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Empresa.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Controllers/Filiais/FiliaisController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Infra/Hateoas/LinkBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Api/Infra/Pagination/PaginationHeaders.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Common/PagedResponse.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Common/PaginationRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Filiais/CreateFilialRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Filiais/FilialResponse.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/DTOs/Filiais/UpdateFilialRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/DependencyInjection/ServiceCollectionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/Mapping/FilialMapper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Filiais/CreateFilialUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Filiais/DeleteFilialUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Filiais/GetFilialUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Filiais/ListFiliaisUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Application/UseCases/Filiais/UpdateFilialUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Filial.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Funcionario.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Localizacao.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Moto.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Operador.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Patio.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Entities/Vaga.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IClienteRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IEmpresaRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IFilialRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IFuncionarioRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/ILocalizacaoRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IMotoRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IOperadorRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IPatioRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IVagaRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/ValueObjects/Cnpj.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/ValueObjects/Cpf.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/ValueObjects/Email.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/ValueObjects/Periodo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/ValueObjects/Telefone.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/EmpresaConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Domain/Repositories/IRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/DependencyInjection/ServiceCollectionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/valer/RiderProjects/EasyMotoChallenger-Csharp/src/EasyMoto.Infrastructure/Persistence/AppDbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/AppDbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/FilialConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/FuncionarioConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/LocalizacaoConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/OperadorConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/PatioConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Configurations/VagaConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Converters/ValueObjectConverters.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/ClienteRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/EmpresaRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/FilialRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/FuncionarioRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/LocalizacaoRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/MotoRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/OperadorRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/PatioRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Repositories/VagaRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Repositories/FilialRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/EasyMoto.Infrastructure/Persistence/Repositories/RepositoryBase.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -437,7 +497,7 @@
       <workItem from="1758754176059" duration="12601000" />
       <workItem from="1758817979907" duration="24681000" />
       <workItem from="1758907800802" duration="32759000" />
-      <workItem from="1758990766351" duration="20407000" />
+      <workItem from="1758990766351" duration="29226000" />
     </task>
     <task id="LOCAL-00001" summary="chore(estrutura): criar solução EasyMoto e projetos base (Api, Application, Domain, Infrastructure) com referências entre camadas">
       <option name="closed" value="true" />
@@ -623,7 +683,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758998723080</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="refactor(clientelocacao): alinhar repositório e contrato; mapear entidade no EF">
+      <option name="closed" value="true" />
+      <created>1759012521214</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1759012521214</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -667,7 +735,8 @@
     <MESSAGE value="feat(vagas): numeroVaga vira string; snake_case + repos/handlers ajustados; migração Ajustes_Finais_Vagas (BREAKING CHANGE)" />
     <MESSAGE value="feat(patio): trocar PK para int e alinhar FK em vagas" />
     <MESSAGE value="feat(funcionario): alterar chave primária para int e alinhar consumo" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(funcionario): alterar chave primária para int e alinhar consumo" />
+    <MESSAGE value="refactor(clientelocacao): alinhar repositório e contrato; mapear entidade no EF" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(clientelocacao): alinhar repositório e contrato; mapear entidade no EF" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

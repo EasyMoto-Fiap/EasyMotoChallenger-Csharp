@@ -7,10 +7,10 @@ Foco em **boas práticas REST**, **paginações**, **HATEOAS**, **status codes a
 
 - 🟦 **.NET 8** / ASP.NET Core Web API  
 - 🗃️ **Entity Framework Core** (EF Core)  
-- 🐘 **PostgreSQL** (provider **Npgsql**)  
+- 🐘 **PostgreSQL**  
 - 📦 **EF Core Migrations**  
-- 🧭 **HATEOAS** (links nos responses)  
-- 📄 **Swagger/OpenAPI** (+ exemplos com *Swashbuckle.AspNetCore.Filters*)  
+- 🧭 **HATEOAS** 
+- 📄 **Swagger/OpenAPI** 
 
 ---
 

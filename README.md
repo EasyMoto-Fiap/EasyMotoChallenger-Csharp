@@ -1,7 +1,6 @@
 # 🚦 EasyMoto API – FIAP Challenger (Sprint 3 — Advanced .NET 8)
 
 **EasyMoto** é uma API RESTful para gerenciamento de **filiais, usuários, motos** e **notificações**, pensada para o contexto de locação e operação de frotas.  
-Foco em **boas práticas REST**, **paginações**, **HATEOAS**, **status codes adequados** e **Swagger/OpenAPI com exemplos**.
 
 ## 🛠️ Tecnologias
 

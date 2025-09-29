@@ -139,8 +139,10 @@ POST   /api/notificacoes/{id}/marcar-lida
 ### LegendaStatus (POST)
 ```json
 {
-  "nome": "Disponível",
-  "descricao": "Moto pronta para uso"
+  "titulo": "Disponível",
+  "descricao": "Moto pronta para uso",
+  "corHex": "#28A745",
+  "ativo": true
 }
 ```
 
@@ -149,10 +151,11 @@ POST   /api/notificacoes/{id}/marcar-lida
 {
   "tipo": 0,
   "mensagem": "Moto cadastrada",
-  "escopo": 0,
   "motoId": 1,
-  "usuarioOrigemId": 3
+  "usuarioOrigemId": 3,
+  "escopo": 0
 }
+
 ```
 > `tipo`: por exemplo `0=MOTO_CADASTRADA`, `1=MOTO_ATUALIZADA`  
 > `escopo`: `0=GLOBAL`, `1=USUARIO`, `2=FILIAL`

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EasyMoto.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+528492ee0650bc811004290d0695d4aa796938bb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f606de7b8c9bd59390c3e1104c599ceef6227773")]
 [assembly: System.Reflection.AssemblyProductAttribute("EasyMoto.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EasyMoto.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

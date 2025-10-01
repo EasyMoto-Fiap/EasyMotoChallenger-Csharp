@@ -199,6 +199,15 @@ dotnet run --project src/EasyMoto.Api
 - A API sobe em `http://localhost:5230`  
 - Swagger: `http://localhost:5230/swagger`
 
+---
+
+## 🔎 Testes
+
+### Como rodar os testes
+```bash
+dotnet test -v minimal
+
+```
 
 ## 🧱 Arquitetura (camadas)
 

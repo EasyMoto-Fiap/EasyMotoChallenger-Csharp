@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EasyMoto.Api.Controllers;
 
+
 [ApiController]
 [ApiVersion("1.0")]
 [Route("api/v{version:apiVersion}/clientes")]

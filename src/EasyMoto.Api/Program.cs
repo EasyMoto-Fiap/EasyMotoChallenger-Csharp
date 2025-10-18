@@ -16,7 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseOracle(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepositoryMongo>();
-builder.Services.AddScoped<IMotoRepository, MotoRepository>();
+builder.Services.AddScoped<IMotoRepository, MotoRepositoryMongo>();
 builder.Services.AddScoped<ILocacaoRepository, LocacaoRepository>();
 
 builder.Services.AddScoped<CriarClienteHandler>();

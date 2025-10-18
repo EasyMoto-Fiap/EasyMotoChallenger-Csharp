@@ -9,6 +9,11 @@ using Microsoft.OpenApi.Models;
 using EasyMoto.Infrastructure.Mongo;
 using Asp.Versioning;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using EasyMoto.Api.Extensions;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Swashbuckle.AspNetCore.Filters;
+using EasyMoto.Api.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +22,7 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepositoryMongo>();
 builder.Services.AddScoped<IMotoRepository, MotoRepositoryMongo>();
-builder.Services.AddScoped<ILocacaoRepository, LocacaoRepository>();
+builder.Services.AddScoped<ILocacaoRepository, LocacaoRepositoryMongo>();
 
 builder.Services.AddScoped<CriarClienteHandler>();
 builder.Services.AddScoped<ObterClientePorIdHandler>();
@@ -41,7 +46,10 @@ builder.Services.AddControllers();
 
 builder.Services.Configure<MongoSettings>(builder.Configuration.GetSection("Mongo"));
 builder.Services.AddSingleton<MongoDbContext>();
-builder.Services.AddHealthChecks().AddCheck<MongoHealthCheck>("mongo");
+
+builder.Services.AddHealthChecks()
+    .AddCheck("self", () => HealthCheckResult.Healthy(), tags: new[] { "live" })
+    .AddCheck<MongoHealthCheck>("mongo", tags: new[] { "ready" });
 
 builder.Services.AddApiVersioning(o =>
 {
@@ -59,10 +67,12 @@ builder.Services.AddApiVersioning(o =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(opt =>
 {
-    opt.SwaggerDoc("v1", new OpenApiInfo { Title = "EasyMoto API", Version = "v1", Description = "API do CP5 — v1" });
+    opt.SwaggerDoc("v1", new OpenApiInfo { Title = "EasyMoto API", Version = "v1", Description = "API do CP4 — v1" });
     opt.SwaggerDoc("v2", new OpenApiInfo { Title = "EasyMoto API", Version = "v2", Description = "API do CP5 — v2" });
     opt.EnableAnnotations();
+    opt.ExampleFilters();
 });
+builder.Services.AddSwaggerExamplesFromAssemblyOf<LocacoesController>();
 
 var app = builder.Build();
 
@@ -84,7 +94,25 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapControllers();
-app.MapHealthChecks("/health");
+
+app.MapHealthChecks("/health", new HealthCheckOptions
+{
+    Predicate = _ => true,
+    ResponseWriter = HealthCheckExtensions.WriteResponse
+});
+
+app.MapHealthChecks("/health/live", new HealthCheckOptions
+{
+    Predicate = r => r.Tags.Contains("live"),
+    ResponseWriter = HealthCheckExtensions.WriteResponse
+});
+
+app.MapHealthChecks("/health/ready", new HealthCheckOptions
+{
+    Predicate = r => r.Tags.Contains("ready"),
+    ResponseWriter = HealthCheckExtensions.WriteResponse
+});
+
 app.MapGet("/ping", () => Results.Ok("pong"));
 
 app.Run();

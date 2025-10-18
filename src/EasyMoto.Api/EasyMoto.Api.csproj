@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EasyMoto.Application\EasyMoto.Application.csproj" />
     <ProjectReference Include="..\EasyMoto.Infrastructure\EasyMoto.Infrastructure.csproj" />
+      
   </ItemGroup>
 
 </Project>

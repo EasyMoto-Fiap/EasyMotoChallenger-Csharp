@@ -32,6 +32,8 @@ public sealed class LocacoesController : ControllerBase
     }
 
     [HttpPost]
+    [MapToApiVersion("1.0")]
+    [MapToApiVersion("2.0")]
     public async Task<IActionResult> Criar([FromBody] CriarLocacaoRequest request, CancellationToken ct)
     {
         var result = await _criar.Handle(request, ct);
@@ -39,6 +41,8 @@ public sealed class LocacoesController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
+    [MapToApiVersion("1.0")]
+    [MapToApiVersion("2.0")]
     public async Task<IActionResult> ObterPorId([FromRoute] int id, CancellationToken ct)
     {
         var result = await _obter.Handle(id, ct);
@@ -47,6 +51,8 @@ public sealed class LocacoesController : ControllerBase
     }
 
     [HttpGet]
+    [MapToApiVersion("1.0")]
+    [MapToApiVersion("2.0")]
     public async Task<IActionResult> Listar(CancellationToken ct)
     {
         var result = await _listar.Handle(ct);
@@ -54,6 +60,8 @@ public sealed class LocacoesController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
+    [MapToApiVersion("1.0")]
+    [MapToApiVersion("2.0")]
     public async Task<IActionResult> Atualizar([FromRoute] int id, [FromBody] AtualizarLocacaoRequest request, CancellationToken ct)
     {
         var result = await _atualizar.Handle(id, request, ct);
@@ -62,6 +70,8 @@ public sealed class LocacoesController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
+    [MapToApiVersion("1.0")]
+    [MapToApiVersion("2.0")]
     public async Task<IActionResult> Excluir([FromRoute] int id, CancellationToken ct)
     {
         var ok = await _excluir.Handle(id, ct);

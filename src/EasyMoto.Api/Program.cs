@@ -15,7 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseOracle(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IClienteRepository, ClienteRepositoryMongo>();
 builder.Services.AddScoped<IMotoRepository, MotoRepository>();
 builder.Services.AddScoped<ILocacaoRepository, LocacaoRepository>();
 

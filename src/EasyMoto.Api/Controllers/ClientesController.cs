@@ -1,11 +1,13 @@
-﻿using EasyMoto.Application.Clientes;
+﻿using Asp.Versioning;
+using EasyMoto.Application.Clientes;
 using EasyMoto.Application.Clientes.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EasyMoto.Api.Controllers;
 
 [ApiController]
-[Route("api/clientes")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/clientes")]
 public sealed class ClientesController : ControllerBase
 {
     private readonly CriarClienteHandler _criar;

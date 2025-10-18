@@ -1,11 +1,13 @@
-﻿using EasyMoto.Application.Locacoes;
+﻿using Asp.Versioning;
+using EasyMoto.Application.Locacoes;
 using EasyMoto.Application.Locacoes.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EasyMoto.Api.Controllers;
 
 [ApiController]
-[Route("api/locacoes")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/locacoes")]
 public sealed class LocacoesController : ControllerBase
 {
     private readonly CriarLocacaoHandler _criar;

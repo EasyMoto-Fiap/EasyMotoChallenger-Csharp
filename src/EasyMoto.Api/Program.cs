@@ -1,4 +1,4 @@
- using EasyMoto.Application.Clientes;
+using EasyMoto.Application.Clientes;
 using EasyMoto.Application.Locacoes;
 using EasyMoto.Application.Motos;
 using EasyMoto.Domain.Repositories;
@@ -6,13 +6,16 @@ using EasyMoto.Infrastructure.Persistence;
 using EasyMoto.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Oracle.EntityFrameworkCore;
-using Swashbuckle.AspNetCore.Annotations;
+using EasyMoto.Infrastructure.Mongo;
+using Asp.Versioning;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseOracle(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddSingleton<SequenceService>();
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IMotoRepository, MotoRepository>();
@@ -37,15 +40,29 @@ builder.Services.AddScoped<AtualizarLocacaoHandler>();
 builder.Services.AddScoped<ExcluirLocacaoHandler>();
 
 builder.Services.AddControllers();
+
+builder.Services.Configure<MongoSettings>(builder.Configuration.GetSection("Mongo"));
+builder.Services.AddSingleton<MongoDbContext>();
+builder.Services.AddHealthChecks().AddCheck<MongoHealthCheck>("mongo");
+
+builder.Services.AddApiVersioning(o =>
+{
+    o.DefaultApiVersion = new ApiVersion(1, 0);
+    o.AssumeDefaultVersionWhenUnspecified = true;
+    o.ReportApiVersions = true;
+    o.ApiVersionReader = new UrlSegmentApiVersionReader();
+})
+.AddApiExplorer(o =>
+{
+    o.GroupNameFormat = "'v'VVV";
+    o.SubstituteApiVersionInUrl = true;
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(opt =>
 {
-    opt.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "EasyMoto API",
-        Version = "v1",
-        Description = "cp4 - fiap"
-    });
+    opt.SwaggerDoc("v1", new OpenApiInfo { Title = "EasyMoto API", Version = "v1", Description = "API do CP5 — v1" });
+    opt.SwaggerDoc("v2", new OpenApiInfo { Title = "EasyMoto API", Version = "v2", Description = "API do CP5 — v2" });
     opt.EnableAnnotations();
 });
 
@@ -57,11 +74,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(ui =>
     {
         ui.SwaggerEndpoint("/swagger/v1/swagger.json", "EasyMoto API v1");
-        ui.DocumentTitle = "EasyMoto API";
+        ui.SwaggerEndpoint("/swagger/v2/swagger.json", "EasyMoto API v2");
         ui.RoutePrefix = "swagger";
+        ui.DocumentTitle = "EasyMoto API";
+        ui.DocExpansion(DocExpansion.None);
+        ui.DefaultModelsExpandDepth(-1);
+        ui.DisplayRequestDuration();
     });
 }
 
 app.UseHttpsRedirection();
+
 app.MapControllers();
+app.MapHealthChecks("/health");
+app.MapGet("/ping", () => Results.Ok("pong"));
+
 app.Run();

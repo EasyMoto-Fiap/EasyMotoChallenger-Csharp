@@ -14,6 +14,7 @@ using EasyMoto.Api.Extensions;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Swashbuckle.AspNetCore.Filters;
 using EasyMoto.Api.Controllers;
+using EasyMoto.Api.Swagger.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -71,6 +72,8 @@ builder.Services.AddSwaggerGen(opt =>
     opt.SwaggerDoc("v2", new OpenApiInfo { Title = "EasyMoto API", Version = "v2", Description = "API do CP5 — v2" });
     opt.EnableAnnotations();
     opt.ExampleFilters();
+    opt.DocumentFilter<TagOrderDocumentFilter>();
+    opt.OrderActionsBy(api => $"{api.GroupName}_{api.RelativePath}");
 });
 builder.Services.AddSwaggerExamplesFromAssemblyOf<LocacoesController>();
 
@@ -112,7 +115,5 @@ app.MapHealthChecks("/health/ready", new HealthCheckOptions
     Predicate = r => r.Tags.Contains("ready"),
     ResponseWriter = HealthCheckExtensions.WriteResponse
 });
-
-app.MapGet("/ping", () => Results.Ok("pong"));
 
 app.Run();

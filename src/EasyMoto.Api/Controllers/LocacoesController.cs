@@ -2,12 +2,17 @@
 using EasyMoto.Application.Locacoes;
 using EasyMoto.Application.Locacoes.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
+using Swashbuckle.AspNetCore.Filters;
+using EasyMoto.Api.Swagger.Examples.Locacoes;
+
 
 namespace EasyMoto.Api.Controllers;
 
 [ApiController]
 [ApiVersion("1.0")]
 [ApiVersion("2.0")]
+[Produces("application/json")]
 [Route("api/v{version:apiVersion}/locacoes")]
 public sealed class LocacoesController : ControllerBase
 {
@@ -32,17 +37,26 @@ public sealed class LocacoesController : ControllerBase
     }
 
     [HttpPost]
+    [Consumes("application/json")]
     [MapToApiVersion("1.0")]
     [MapToApiVersion("2.0")]
+    [SwaggerOperation(Summary = "Cria uma locação")]
+    [ProducesResponseType(typeof(LocacaoResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Criar([FromBody] CriarLocacaoRequest request, CancellationToken ct)
     {
         var result = await _criar.Handle(request, ct);
-        return Created($"/api/locacoes/{result.IdLocacao}", result);
+        return Created($"/api/v{HttpContext.GetRequestedApiVersion()}/locacoes/{result.IdLocacao}", result);
     }
 
     [HttpGet("{id:int}")]
     [MapToApiVersion("1.0")]
     [MapToApiVersion("2.0")]
+    [SwaggerOperation(Summary = "Obtém uma locação por id")]
+    [ProducesResponseType(typeof(LocacaoResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> ObterPorId([FromRoute] int id, CancellationToken ct)
     {
         var result = await _obter.Handle(id, ct);
@@ -53,6 +67,9 @@ public sealed class LocacoesController : ControllerBase
     [HttpGet]
     [MapToApiVersion("1.0")]
     [MapToApiVersion("2.0")]
+    [SwaggerOperation(Summary = "Lista locações")]
+    [ProducesResponseType(typeof(IEnumerable<LocacaoResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Listar(CancellationToken ct)
     {
         var result = await _listar.Handle(ct);
@@ -60,8 +77,15 @@ public sealed class LocacoesController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
+    [Consumes("application/json")]
     [MapToApiVersion("1.0")]
     [MapToApiVersion("2.0")]
+    [SwaggerOperation(Summary = "Atualiza uma locação")]
+    [SwaggerRequestExample(typeof(AtualizarLocacaoRequest), typeof(AtualizarLocacaoRequestExample))]
+    [ProducesResponseType(typeof(LocacaoResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Atualizar([FromRoute] int id, [FromBody] AtualizarLocacaoRequest request, CancellationToken ct)
     {
         var result = await _atualizar.Handle(id, request, ct);
@@ -72,6 +96,10 @@ public sealed class LocacoesController : ControllerBase
     [HttpDelete("{id:int}")]
     [MapToApiVersion("1.0")]
     [MapToApiVersion("2.0")]
+    [SwaggerOperation(Summary = "Exclui uma locação")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Excluir([FromRoute] int id, CancellationToken ct)
     {
         var ok = await _excluir.Handle(id, ct);

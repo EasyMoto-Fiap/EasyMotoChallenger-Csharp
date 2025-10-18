@@ -363,3 +363,16 @@ MigrationBackup/
 FodyWeavers.xsd
 
 appsettings.Development.json
+.idea/
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+.idea/
+bin/
+obj/
+.vs/
+*.user
+*.suo

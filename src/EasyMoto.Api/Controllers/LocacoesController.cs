@@ -6,7 +6,6 @@ using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Filters;
 using EasyMoto.Api.Swagger.Examples.Locacoes;
 
-
 namespace EasyMoto.Api.Controllers;
 
 [ApiController]
@@ -41,6 +40,9 @@ public sealed class LocacoesController : ControllerBase
     [MapToApiVersion("1.0")]
     [MapToApiVersion("2.0")]
     [SwaggerOperation(Summary = "Cria uma locação")]
+    [SwaggerRequestExample(typeof(CriarLocacaoRequest), typeof(CriarLocacaoRequestExample))]
+    [SwaggerResponse(201, "Criado", typeof(LocacaoResponse))]
+    [SwaggerResponseExample(201, typeof(LocacaoResponseExample))]
     [ProducesResponseType(typeof(LocacaoResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
@@ -54,6 +56,9 @@ public sealed class LocacoesController : ControllerBase
     [MapToApiVersion("1.0")]
     [MapToApiVersion("2.0")]
     [SwaggerOperation(Summary = "Obtém uma locação por id")]
+    [SwaggerResponse(200, "OK", typeof(LocacaoResponse))]
+    [SwaggerResponse(404, "Não encontrada")]
+    [SwaggerResponseExample(200, typeof(LocacaoResponseExample))]
     [ProducesResponseType(typeof(LocacaoResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
@@ -68,6 +73,8 @@ public sealed class LocacoesController : ControllerBase
     [MapToApiVersion("1.0")]
     [MapToApiVersion("2.0")]
     [SwaggerOperation(Summary = "Lista locações")]
+    [SwaggerResponse(200, "OK", typeof(IEnumerable<LocacaoResponse>))]
+    [SwaggerResponseExample(200, typeof(LocacaoListResponseExample))]
     [ProducesResponseType(typeof(IEnumerable<LocacaoResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Listar(CancellationToken ct)
@@ -82,6 +89,9 @@ public sealed class LocacoesController : ControllerBase
     [MapToApiVersion("2.0")]
     [SwaggerOperation(Summary = "Atualiza uma locação")]
     [SwaggerRequestExample(typeof(AtualizarLocacaoRequest), typeof(AtualizarLocacaoRequestExample))]
+    [SwaggerResponse(200, "OK", typeof(LocacaoResponse))]
+    [SwaggerResponse(404, "Não encontrada")]
+    [SwaggerResponseExample(200, typeof(LocacaoResponseExample))]
     [ProducesResponseType(typeof(LocacaoResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -97,6 +107,8 @@ public sealed class LocacoesController : ControllerBase
     [MapToApiVersion("1.0")]
     [MapToApiVersion("2.0")]
     [SwaggerOperation(Summary = "Exclui uma locação")]
+    [SwaggerResponse(204, "Sem conteúdo")]
+    [SwaggerResponse(404, "Não encontrada")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]

@@ -9,7 +9,7 @@ public class TagOrderDocumentFilter : IDocumentFilter
 {
     public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
     {
-        var desired = new[] { "Clientes", "Motos", "Locacoes", "Health" };
+        var desired = new[] { "Health", "Clientes", "Motos", "Locacoes",  };
 
         foreach (var name in desired)
             if (!swaggerDoc.Tags.Any(t => t.Name == name))

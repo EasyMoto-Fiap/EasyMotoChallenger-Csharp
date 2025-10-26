@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
+using EasyMoto.Api.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,22 @@ builder.Services.AddSwaggerGen(c =>
     c.OperationFilter<EasyMoto.Api.Swagger.ApiVersionHeaderOperationFilter>();
     c.SupportNonNullableReferenceTypes();
     c.CustomSchemaIds(t => t.FullName);
+
+    c.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme
+    {
+        Description = "Informe a chave no header x-api-key",
+        Type = SecuritySchemeType.ApiKey,
+        Name = "x-api-key",
+        In = ParameterLocation.Header
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "ApiKey" } },
+            Array.Empty<string>()
+        }
+    });
 });
 builder.Services.AddSwaggerExamplesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -98,6 +115,7 @@ app.UseSwaggerUI(c =>
 });
 app.UseCors("frontend");
 app.UseHttpsRedirection();
+app.UseMiddleware<ApiKeyMiddleware>();
 app.UseAuthorization();
 app.MapControllers();
 

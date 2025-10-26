@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace EasyMoto.Api.Controllers.Auth;
 
@@ -11,6 +13,8 @@ public sealed class AuthController : ControllerBase
 {
     [AllowAnonymous]
     [HttpPost("login")]
+    [SwaggerOperation(Summary = "Login", Description = "Autenticação por e-mail e senha.")]
+    [SwaggerRequestExample(typeof(LoginRequest), typeof(EasyMoto.Api.Swagger.Examples.Auth.LoginRequestExample))]
     [ProducesResponseType(typeof(LoginResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public Task<IActionResult> Login([FromBody] LoginRequest request)

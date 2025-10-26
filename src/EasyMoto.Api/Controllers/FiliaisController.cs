@@ -2,8 +2,11 @@ using EasyMoto.Api.Infra.Hateoas;
 using EasyMoto.Application.DTOs.Filiais;
 using EasyMoto.Application.UseCases.Filiais;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
+using Swashbuckle.AspNetCore.Filters;
+using EasyMoto.Api.Swagger.Examples.Filiais;
 
-namespace EasyMoto.Api.Controllers.Filiais
+namespace EasyMoto.Api.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]
@@ -32,10 +35,18 @@ namespace EasyMoto.Api.Controllers.Filiais
         }
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Cria uma filial", Description = "Cria uma nova filial.")]
+        [SwaggerRequestExample(typeof(CreateFilialRequest), typeof(CreateFilialRequestExample))]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Create([FromBody] CreateFilialRequest request)
         {
             var filial = await _create.Execute(request);
-            filial.Links = LinkBuilder.Build($"/api/filiais/{filial.Id}", $"/api/filiais/{filial.Id}", $"/api/filiais/{filial.Id}");
+            filial.Links = LinkBuilder.Build(
+                self:   $"/api/filiais/{filial.Id}",
+                update: $"/api/filiais/{filial.Id}",
+                delete: $"/api/filiais/{filial.Id}"
+            );
             return CreatedAtAction(nameof(GetById), new { id = filial.Id }, filial);
         }
 
@@ -51,7 +62,12 @@ namespace EasyMoto.Api.Controllers.Filiais
         {
             var filial = await _get.Execute(id);
             if (filial == null) return NotFound();
-            filial.Links = LinkBuilder.Build($"/api/filiais/{id}", $"/api/filiais/{id}", $"/api/filiais/{id}");
+
+            filial.Links = LinkBuilder.Build(
+                self:   $"/api/filiais/{id}",
+                update: $"/api/filiais/{id}",
+                delete: $"/api/filiais/{id}"
+            );
             return Ok(filial);
         }
 
@@ -60,9 +76,15 @@ namespace EasyMoto.Api.Controllers.Filiais
         {
             var ok = await _update.Execute(id, request);
             if (!ok) return NotFound();
+
             var filial = await _get.Execute(id);
             if (filial == null) return NotFound();
-            filial.Links = LinkBuilder.Build($"/api/filiais/{id}", $"/api/filiais/{id}", $"/api/filiais/{id}");
+
+            filial.Links = LinkBuilder.Build(
+                self:   $"/api/filiais/{id}",
+                update: $"/api/filiais/{id}",
+                delete: $"/api/filiais/{id}"
+            );
             return Ok(filial);
         }
 

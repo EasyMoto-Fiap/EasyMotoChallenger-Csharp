@@ -21,8 +21,11 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "EasyMoto.Api", Version = "v1" });
     c.SwaggerDoc("v2", new OpenApiInfo { Title = "EasyMoto.Api", Version = "v2" });
+
+    c.EnableAnnotations();
     c.ExampleFilters();
     c.OperationFilter<EasyMoto.Api.Swagger.ApiVersionHeaderOperationFilter>();
+    c.DocumentFilter<EasyMoto.Api.Swagger.SwaggerTagOrderDocumentFilter>();
     c.SupportNonNullableReferenceTypes();
     c.CustomSchemaIds(t => t.FullName);
 

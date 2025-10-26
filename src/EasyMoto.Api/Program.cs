@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using EasyMoto.Api.Security;
+using EasyMoto.Api.ML;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,6 +51,8 @@ builder.Services.AddSwaggerExamplesFromAssemblies(AppDomain.CurrentDomain.GetAss
 builder.Services.AddApplication();
 builder.Services.AddInfrastructureMongo(builder.Configuration);
 builder.Services.AddMongo(builder.Configuration);
+
+builder.Services.AddSingleton<IMaintenancePredictionService, MaintenancePredictionService>();
 
 builder.Services.AddCors(options =>
 {

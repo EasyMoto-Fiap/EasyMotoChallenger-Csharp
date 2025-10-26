@@ -27,7 +27,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddSwaggerExamplesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddApplication();
-builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddInfrastructureMongo(builder.Configuration);
 builder.Services.AddMongo(builder.Configuration);
 
 builder.Services.AddCors(options =>

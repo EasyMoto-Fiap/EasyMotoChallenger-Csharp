@@ -4,6 +4,8 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 namespace EasyMoto.Api.Controllers;
 
 [ApiController]
+[ApiVersion("1.0")]
+[ApiVersion("2.0")]
 [Route("health")]
 public sealed class HealthController : ControllerBase
 {

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace EasyMoto.Api.Controllers.Filiais
 {
     [ApiController]
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     [Route("api/[controller]")]
     public class FiliaisController : ControllerBase
     {

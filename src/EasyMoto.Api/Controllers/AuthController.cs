@@ -4,9 +4,12 @@ using System.Security.Cryptography;
 using System.Text;
 using EasyMoto.Application.DTOs.Usuarios;
 
+
 namespace EasyMoto.Api.Controllers.Auth
 {
     [ApiController]
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {

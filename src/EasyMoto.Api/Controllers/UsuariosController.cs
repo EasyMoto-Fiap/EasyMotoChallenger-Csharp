@@ -2,12 +2,12 @@ using EasyMoto.Api.Infra.Hateoas;
 using EasyMoto.Application.DTOs.Usuarios;
 using EasyMoto.Application.UseCases.Usuarios.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using EasyMoto.Application.UseCases.Usuarios.Implementations;
 
 namespace EasyMoto.Api.Controllers.Usuarios
 {
     [ApiController]
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     [Route("api/[controller]")]
     public class UsuariosController : ControllerBase
     {

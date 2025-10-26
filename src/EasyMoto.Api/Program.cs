@@ -19,6 +19,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "EasyMoto.Api", Version = "v1" });
+    c.SwaggerDoc("v2", new OpenApiInfo { Title = "EasyMoto.Api", Version = "v2" });
     c.ExampleFilters();
     c.OperationFilter<EasyMoto.Api.Swagger.ApiVersionHeaderOperationFilter>();
     c.SupportNonNullableReferenceTypes();
@@ -45,6 +46,12 @@ builder.Services.AddApiVersioning(o =>
     o.DefaultApiVersion = new ApiVersion(1, 0);
     o.ReportApiVersions = true;
     o.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
+});
+
+builder.Services.AddVersionedApiExplorer(o =>
+{
+    o.GroupNameFormat = "'v'VVV";
+    o.SubstituteApiVersionInUrl = false;
 });
 
 builder.Services.AddProblemDetails(options =>
@@ -84,7 +91,11 @@ var app = builder.Build();
 app.UseMiddleware<CorrelationIdMiddleware>();
 app.UseExceptionHandler();
 app.UseSwagger();
-app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "EasyMoto.Api v1"); });
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "EasyMoto.Api v1");
+    c.SwaggerEndpoint("/swagger/v2/swagger.json", "EasyMoto.Api v2");
+});
 app.UseCors("frontend");
 app.UseHttpsRedirection();
 app.UseAuthorization();

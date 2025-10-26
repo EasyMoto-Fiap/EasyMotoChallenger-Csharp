@@ -2,6 +2,7 @@ using EasyMoto.Application.DependencyInjection;
 using EasyMoto.Infrastructure.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
+using EasyMoto.Infrastructure.Mongo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,9 @@ builder.Services.AddSwaggerExamplesFromAssemblies(AppDomain.CurrentDomain.GetAss
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddMongo(builder.Configuration);
+builder.Services.AddHealthChecks().AddCheck<MongoHealthCheck>("mongo");
+
 
 var app = builder.Build();
 
@@ -28,4 +32,5 @@ app.UseSwaggerUI(c =>
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+app.MapHealthChecks("/health");
 app.Run();

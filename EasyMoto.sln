@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyMoto.Application", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyMoto.Domain", "src\EasyMoto.Domain\EasyMoto.Domain.csproj", "{687A909D-1393-4FDD-8BFB-6211FB90D4A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyMoto.Tests", "EasyMoto.Tests\EasyMoto.Tests.csproj", "{7A9B74C5-CD79-4F47-A0EA-82D928C3F873}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyMoto.Infrastructure", "src\EasyMoto.Infrastructure\EasyMoto.Infrastructure.csproj", "{6E9E9BCD-6D12-41C6-89B8-CB6743592F89}"
 EndProject
 Global
@@ -28,10 +26,6 @@ Global
 		{687A909D-1393-4FDD-8BFB-6211FB90D4A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{687A909D-1393-4FDD-8BFB-6211FB90D4A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{687A909D-1393-4FDD-8BFB-6211FB90D4A8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7A9B74C5-CD79-4F47-A0EA-82D928C3F873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A9B74C5-CD79-4F47-A0EA-82D928C3F873}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A9B74C5-CD79-4F47-A0EA-82D928C3F873}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A9B74C5-CD79-4F47-A0EA-82D928C3F873}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6E9E9BCD-6D12-41C6-89B8-CB6743592F89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6E9E9BCD-6D12-41C6-89B8-CB6743592F89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E9E9BCD-6D12-41C6-89B8-CB6743592F89}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -89,5 +89,5 @@ app.UseCors("frontend");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
-app.MapHealthChecks("/health");
+
 app.Run();

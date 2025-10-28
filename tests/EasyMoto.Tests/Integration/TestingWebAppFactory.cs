@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using EasyMoto.Domain.Entities;
 using EasyMoto.Domain.Repositories;
 using EasyMoto.Tests.TestDoubles;

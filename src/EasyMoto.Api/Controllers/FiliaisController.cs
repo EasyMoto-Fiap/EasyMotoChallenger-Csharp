@@ -51,6 +51,7 @@ namespace EasyMoto.Api.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "Lista filiais", Description = "Retorna uma lista paginada de filiais.")]
         public async Task<IActionResult> GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
             var items = await _list.Execute(page, pageSize);
@@ -58,6 +59,7 @@ namespace EasyMoto.Api.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [SwaggerOperation(Summary = "Obtém filial por ID", Description = "Retorna os detalhes de uma filial existente.")]
         public async Task<IActionResult> GetById(int id)
         {
             var filial = await _get.Execute(id);
@@ -72,6 +74,7 @@ namespace EasyMoto.Api.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [SwaggerOperation(Summary = "Atualiza filial", Description = "Atualiza os dados da filial informada.")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateFilialRequest request)
         {
             var ok = await _update.Execute(id, request);
@@ -89,6 +92,7 @@ namespace EasyMoto.Api.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [SwaggerOperation(Summary = "Remove filial", Description = "Exclui a filial informada.")]
         public async Task<IActionResult> Delete(int id)
         {
             var ok = await _delete.Execute(id);

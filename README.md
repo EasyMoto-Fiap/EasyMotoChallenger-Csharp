@@ -1,96 +1,42 @@
-# 🚦 EasyMoto API – FIAP Challenger (Sprint 3 — Advanced .NET 8)
+# 🚦 EasyMoto API – FIAP Challenger (Sprint 4 — .NET 8)
 
-**EasyMoto** é uma API RESTful para gerenciamento de **filiais, usuários, motos** e **notificações**, pensada para o contexto de locação e operação de frotas.  
+**EasyMoto** é uma API RESTful para gestão de **filiais, usuários, motos**, **legendas de status** e **notificações** — voltada ao cenário de operação/locação de frotas.
+
+---
+
+## 🆕 Sprint 4
+- 🔐 **Segurança por API Key** (via **.NET User Secrets**; header padrão `X-Api-Key`)
+- 🍃 **MongoDB** como banco principal (MongoDB Desktop/Compass ou serviço local)
+- 🔢 **Versionamento da API** (header `x-api-version`, padrão **1.0**)
+- 🧠 **Endpoint com ML.NET** (ex.: previsão de manutenção)
+- ❤️ **Health Checks** (app e dependências, incluindo Mongo)
+- 🧪 **Testes**: xUnit (unidade) + **WebApplicationFactory** (integração)
+- 📄 **Swagger** com summaries e examples por recurso
+
+---
 
 ## 🛠️ Tecnologias
-
-- 🟦 **.NET 8** / ASP.NET Core Web API  
-- 🗃️ **Entity Framework Core** (EF Core)  
-- 🐘 **PostgreSQL**  
-- 📦 **EF Core Migrations**  
-- 🧭 **HATEOAS** 
-- 📄 **Swagger/OpenAPI** 
-
----
-
-## 🧩 Domínio e Entidades
-
-> Justificativa do domínio: o gerenciamento de motos em múltiplas filiais exige cadastro padronizado, status operacionais claros e comunicação de eventos (notificações) para operadores, garantindo rastreabilidade e escala.
-
-### Entidades principais:
-
-- **Filial**: `Id, Nome, Cep, Cidade, UF`  
-- **Usuario** (Operador/Admin): `Id, Nome, Email, SenhaHash, Cpf, Telefone, Role, FilialId, Ativo`  
-- **Moto**: `Id, Placa, Modelo, Ano, Cor, Ativo, FilialId, Categoria, StatusOperacional, LegendaStatusId?, QrCode, CreatedAt, UpdatedAt`  
-
-### Entidades de apoio:
-- **LegendaStatus** (catálogo de status com legenda): `Id, Nome, Descricao`  
-- **Notificacao** (eventos como “moto cadastrada”): `Id, Tipo, Mensagem, Escopo, MotoId?, UsuarioOrigemId, CriadaEm`  
-- **Leitura de Notificação** (marcação de lido por usuário): `NotificacaoId, UsuarioId, LidoEm`
-
-### Relacionamentos:
-
-- `Usuario (N)–(1) Filial`  
-- `Moto (N)–(1) LegendaStatus`  
-- `Notificacao (N)–(0..1) Moto`  
-- `Notificacao (N)–(1) UsuarioOrigem`  
-- `NotificacaoLeitura (N)–(1) Notificacao` e `(N)–(1) Usuario`
+- 🟦 **.NET 8** / ASP.NET Core Web API
+- 🍃 **MongoDB** + **MongoDB .NET Driver**
+- 🧠 **ML.NET**
+- 🧪 **xUnit** + **WebApplicationFactory**
+- 🧭 **HATEOAS** (links nos recursos)
+- 📄 **Swagger/OpenAPI** (+ `Swashbuckle.AspNetCore.Annotations` e `Filters`)
+- 🔐 **API Key** com **.NET User Secrets**
 
 ---
 
-## 🔗 Endpoints (principais)
+## 🧱 Arquitetura (camadas)
+- **Domain** – entidades e contratos de repositório
+- **Application** – DTOs e *use cases*
+- **Infrastructure** – persistência (MongoDB) e repositórios
+- **API** – Controllers, Swagger, segurança, versionamento e middlewares
 
-Rotas `api/[controller]`.:
-
-### Filiais
-```
-GET    /api/filiais?page=1&pageSize=10
-GET    /api/filiais/{id}
-POST   /api/filiais
-PUT    /api/filiais/{id}
-DELETE /api/filiais/{id}
-```
-
-### Usuários
-```
-GET    /api/usuarios?page=1&pageSize=10
-GET    /api/usuarios/{id}
-POST   /api/usuarios
-PUT    /api/usuarios/{id}
-DELETE /api/usuarios/{id}
-```
-
-### Motos
-```
-GET    /api/motos?page=1&pageSize=10
-GET    /api/motos/{id}
-POST   /api/motos
-PUT    /api/motos/{id}
-DELETE /api/motos/{id}
-```
-
-### Legendas de Status
-```
-GET    /api/legendasstatus?page=1&pageSize=10
-GET    /api/legendasstatus/{id}
-POST   /api/legendasstatus
-PUT    /api/legendasstatus/{id}
-DELETE /api/legendasstatus/{id}
-```
-
-### Notificações
-```
-GET    /api/notificacoes?page=1&pageSize=10
-GET    /api/notificacoes/{id}
-POST   /api/notificacoes
-DELETE /api/notificacoes/{id}
-POST   /api/notificacoes/{id}/marcar-lida
-```
 ---
 
-## 📦 Exemplos de Payload
+## 📦 Exemplos de Payload (POST)
 
-### Filial (POST)
+### Filial
 ```json
 {
   "nome": "Filial Centro",
@@ -100,7 +46,7 @@ POST   /api/notificacoes/{id}/marcar-lida
 }
 ```
 
-### Usuário (POST)
+### Usuário
 ```json
 {
   "nomeCompleto": "Ana Operadora",
@@ -115,9 +61,9 @@ POST   /api/notificacoes/{id}/marcar-lida
   "filialId": 1
 }
 ```
-> `perfil`: `0=OPERADOR`, `1=ADMIN`.
+> `perfil`: `0=OPERADOR`, `1=ADMIN`
 
-### Moto (POST)
+### Moto
 ```json
 {
   "placa": "ABC1D23",
@@ -135,7 +81,7 @@ POST   /api/notificacoes/{id}/marcar-lida
 > `categoria`: `0=POP`, `1=SPORT`, `2=E`  
 > `statusOperacional`: `0=DISPONIVEL`, `1=ALUGADA`, `2=MANUTENCAO`
 
-### LegendaStatus (POST)
+### LegendaStatus
 ```json
 {
   "titulo": "Disponível",
@@ -145,7 +91,7 @@ POST   /api/notificacoes/{id}/marcar-lida
 }
 ```
 
-### Notificacao (POST)
+### Notificação
 ```json
 {
   "tipo": 0,
@@ -154,10 +100,7 @@ POST   /api/notificacoes/{id}/marcar-lida
   "usuarioOrigemId": 3,
   "escopo": 0
 }
-
 ```
-> `tipo`: por exemplo `0=MOTO_CADASTRADA`, `1=MOTO_ATUALIZADA`  
-> `escopo`: `0=GLOBAL`, `1=USUARIO`, `2=FILIAL`
 
 ### Marcar Notificação como Lida
 `POST /api/notificacoes/{id}/marcar-lida`
@@ -169,58 +112,83 @@ POST   /api/notificacoes/{id}/marcar-lida
 
 ---
 
-## 🚀 Como rodar o projeto
+## 🔐 Autenticação (API Key) e Versionamento
 
-### 1) Clonar
+- **API Key** no header:
+  ```
+  X-Api-Key: SUA_CHAVE
+  ```
+
+- **Versão da API** (opcional; padrão `1.0`):
+  ```
+  x-api-version: 1.0
+  ```
+
+Exemplo `curl`:
+```bash
+curl -X GET http://localhost:5230/api/motos   -H "X-Api-Key: SUA_CHAVE"   -H "x-api-version: 1.0"
+```
+
+---
+
+## ⚙️ Como rodar (MongoDB + User Secrets)
+
+### 1) Pré-requisitos
+- .NET 8 SDK
+- MongoDB rodando em `mongodb://localhost:27017` (MongoDB Desktop)
+
+### 2) Clonar
 ```bash
 git clone https://github.com/valor-null/EasyMotoChallenger-Csharp.git
 cd EasyMotoChallenger-Csharp
 ```
 
-### 2) Configurar conexão com o PostgreSQL
-Edite `src/EasyMoto.Api/appsettings.Development.json` (ou variável de ambiente) e ajuste a sua connection string:
-
-```json
-{
-  "ConnectionStrings": {
-    "DefaultConnection": ""
-  }
-}
+### 3) Configurar **.NET User Secrets** (no projeto da API)
+```bash
+cd src/EasyMoto.Api
+dotnet user-secrets init
+dotnet user-secrets set "Auth:ApiKey" "SUA_CHAVE_AQUI"
+dotnet user-secrets set "Auth:HeaderName" "X-Api-Key"
+dotnet user-secrets set "Mongo:ConnectionString" "mongodb://localhost:27017"
+dotnet user-secrets set "Mongo:Database" "easymoto_dev"
 ```
 
-### 3) Restaurar, migrar e executar
+### 4) Executar
 ```bash
 dotnet restore
-dotnet tool install --global dotnet-ef # se ainda não tiver
-dotnet ef database update -p src/EasyMoto.Infrastructure -s src/EasyMoto.Api
 dotnet run --project src/EasyMoto.Api
 ```
-
-- A API sobe em `http://localhost:5230`  
+- API: `http://localhost:5230`
 - Swagger: `http://localhost:5230/swagger`
+- Health: `http://localhost:5230/health`
 
 ---
 
-## 🔎 Testes
+## 🪷 Executar em Development (Windows/PowerShell)
 
-### Como rodar os testes
-```bash
-dotnet test -v minimal
-
+```powershell
+$env:ASPNETCORE_ENVIRONMENT="Development"
+dotnet run --project src/EasyMoto.Api/EasyMoto.Api.csproj
 ```
 
-## 🧱 Arquitetura (camadas)
+### Criar/definir a API Key (User Secrets do projeto da API)
+```
+dotnet user-secrets init --project src/EasyMoto.Api/EasyMoto.Api.csproj
+dotnet user-secrets set  --project src/EasyMoto.Api/EasyMoto.Api.csproj "Auth:ApiKey" "EM_3f8b2a4c9b7e4e6e9a7c1f2d3a5b8c"
+dotnet user-secrets set  --project src/EasyMoto.Api/EasyMoto.Api.csproj "Auth:HeaderName" "X-Api-Key"
+dotnet user-secrets set  --project src/EasyMoto.Api/EasyMoto.Api.csproj "Mongo:ConnectionString" "mongodb://localhost:27017"
+dotnet user-secrets set  --project src/EasyMoto.Api/EasyMoto.Api.csproj "Mongo:Database" "easymoto_dev"
+dotnet user-secrets list --project src/EasyMoto.Api/EasyMoto.Api.csproj
+```
+---
 
-- **Domain**: entidades e contratos de repositório  
-- **Application**: DTOs, *use cases* (casos de uso), *mappers* e validações de orquestração  
-- **Infrastructure**: EF Core (`DbContext`), mapeamentos (`Configurations`), repositórios  
-- **API**: Controllers, configuração do Swagger e exposição HTTP
+## 🧪 Testes
+```bash
+dotnet test -v minimal
+```
 
 ---
 
 ## 👩‍💻 Integrantes
-
-- 💁‍♀️ **Valéria Conceição Dos Santos** — RM: **557177**  
-- 💁‍♀️ **Mirela Pinheiro Silva Rodrigues** — RM: **558191**
-- 💁‍♀️ **Luiz Eduardo Da Silva Pinto** — RM: **555213**
----
+- **Valéria Conceição Dos Santos** — RM: **557177**
+- **Mirela Pinheiro Silva Rodrigues** — RM: **558191**

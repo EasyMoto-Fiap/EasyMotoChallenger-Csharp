@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.HttpsPolicy;
 
 namespace EasyMoto.Tests.Integration
 {
@@ -15,7 +16,7 @@ namespace EasyMoto.Tests.Integration
         {
             builder.UseEnvironment("Test");
 
-            builder.ConfigureAppConfiguration((ctx, config) =>
+            builder.ConfigureAppConfiguration((_, config) =>
             {
                 var overrides = new Dictionary<string, string?>
                 {
@@ -43,6 +44,7 @@ namespace EasyMoto.Tests.Integration
 
                 services.AddSingleton<IMotoRepository>(motoRepo);
                 services.AddSingleton<IFilialRepository>(filialRepo);
+                services.PostConfigure<HttpsRedirectionOptions>(o => o.HttpsPort = 443);
             });
         }
     }

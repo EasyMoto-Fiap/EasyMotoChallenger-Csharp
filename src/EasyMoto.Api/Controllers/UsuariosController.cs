@@ -2,8 +2,11 @@ using EasyMoto.Api.Infra.Hateoas;
 using EasyMoto.Application.DTOs.Usuarios;
 using EasyMoto.Application.UseCases.Usuarios.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
+using Swashbuckle.AspNetCore.Filters;
+using EasyMoto.Api.Swagger.Examples.Usuarios;
 
-namespace EasyMoto.Api.Controllers.Usuarios
+namespace EasyMoto.Api.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]
@@ -32,10 +35,13 @@ namespace EasyMoto.Api.Controllers.Usuarios
         }
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Cria um usuário", Description = "Cria um novo usuário.")]
+        [SwaggerRequestExample(typeof(CreateUsuarioRequest), typeof(CreateUsuarioRequestExample))]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Create([FromBody] CreateUsuarioRequest request)
         {
             var u = await _create.Execute(request);
-            if (u == null) return Problem("Falha ao criar o usuário");
 
             u.Links = LinkBuilder.Build(
                 self: $"/api/usuarios/{u.Id}",
@@ -46,6 +52,8 @@ namespace EasyMoto.Api.Controllers.Usuarios
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "Lista usuários", Description = "Retorna uma lista paginada de usuários.")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
             var items = await _list.Execute(page, pageSize);
@@ -53,6 +61,9 @@ namespace EasyMoto.Api.Controllers.Usuarios
         }
 
         [HttpGet("{id:int}")]
+        [SwaggerOperation(Summary = "Obtém usuário por ID", Description = "Retorna os detalhes de um usuário existente.")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(int id)
         {
             var u = await _get.Execute(id);
@@ -67,6 +78,9 @@ namespace EasyMoto.Api.Controllers.Usuarios
         }
 
         [HttpPut("{id:int}")]
+        [SwaggerOperation(Summary = "Atualiza usuário", Description = "Atualiza os dados do usuário informado.")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateUsuarioRequest request)
         {
             var ok = await _update.Execute(id, request);
@@ -75,6 +89,9 @@ namespace EasyMoto.Api.Controllers.Usuarios
         }
 
         [HttpDelete("{id:int}")]
+        [SwaggerOperation(Summary = "Remove usuário", Description = "Exclui o usuário informado.")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(int id)
         {
             var ok = await _delete.Execute(id);
